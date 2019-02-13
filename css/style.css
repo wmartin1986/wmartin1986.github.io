@@ -15,8 +15,8 @@ body {
   justify-content: top;
   align-items: top;
   flex-wrap: wrap;
-  font-family: 'Cinzel';
-  font-weight: 1000;
+  font-family: 'Anton';
+  font-weight: 100;
   color: white;
   position: relative;
   margin: 0;
@@ -58,10 +58,10 @@ body {
 
 .text__first {
 	margin-left: 15vmin;
-	text-shadow: 1px 1px black, 3px 3px #5fbff9;
+	text-shadow: 1px 1px black, 4px 4px #5fbff9;
 }
 
 .text__second {
-  margin-left: 28vmin;
-  text-shadow: 1px 1px black, 3px 3px #f06543;
+  margin-left: 40vmin;
+  text-shadow: 1px 1px black, 4px 4px #f06543;
 }
