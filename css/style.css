@@ -1,0 +1,78 @@
+@import "compass/css3";
+
+body, html {
+  margin: 0;
+  height: 100%; 
+  background: url(Construct.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: 'Cinzel';
+  font-weight: 1000;
+  color: white;
+  position: relative;
+  margin: 0;
+}
+
+.text {
+  display: inline-block;
+  font-size: 15vmin;
+  line-height: 1.205;
+}
+
+.text__first, .text__second {
+  position: relative;
+}
+
+.text__word {
+  opacity: 0;
+}
+
+.text__first-bg, .text__second-bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.text__first-bg {
+  background-color: #5fbff9;
+}
+
+.text__second-bg {
+  background-color: #f06543;
+}
+
+.text__first {
+	text-shadow: 2px 2px black;
+}
+
+.text__second {
+  margin-left: 15vmin;
+  text-shadow: 2px 2px black;
+}
+
+.image {
+  position: relative;
+  top: 0%;
+  width: 100%;
+}
+h2 {
+  position: absolute;
+  top: 0%;
+  left: 20%;
+  width: 100%;
+}
