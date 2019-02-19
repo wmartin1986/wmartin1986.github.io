@@ -23,13 +23,13 @@ body {
 }
 
 .signoff {
-	right: 10%;
-	bottom: 15%;
+	right: 12%;
+	bottom: 10%;
 	position: absolute;
 	font-family: 'Roboto';
     font-size: 5vmin;
     color: white;
-	text-shadow: 1px 2px 1px #000000, 4px 4px 1px #889fa2;
+	text-shadow: 1px 2px 1px #323638, 4px 4px 1px #889fa2;
 }
 
 .text {
