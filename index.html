@@ -1,1246 +1,974 @@
 <!DOCTYPE html>
-    <html lang="en"> 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/img/willpower_favicon.png">
+  <title>willpower.codes | Web Design &amp; Digital Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ── VARIABLES ── */
+    :root {
+      --green-bg:     rgba(22,163,74,.11);
+      --green-text:   #15803d;
+      --accent:       #b96b28;
+      --accent-lt:    #d4885a;
+      --accent-dk:    #8a4f1e;
+      --accent-faint: rgba(185,107,40,.10);
+      --bg:           #faf8f5;
+      --surface:      #ffffff;
+      --surface2:     #f2ede7;
+      --border:       #e5ddd4;
+      --text:         #1a1410;
+      --text2:        #5c4c3d;
+      --text3:        #9b8878;
+      --radius:       12px;
+      --radius-lg:    20px;
+      --shadow:       0 2px 16px rgba(26,20,16,.08);
+      --shadow-lg:    0 8px 40px rgba(26,20,16,.14);
+      --nav-h:        68px;
+      --max-w:        1200px;
+    }
+    body.dark {
+      --green-bg:  rgba(74,222,128,.13);
+      --green-text:#4ade80;
+      --bg:        #17120d;
+      --surface:   #231a12;
+      --surface2:  #2d2016;
+      --border:    #3d2d1e;
+      --text:      #f0ebe4;
+      --text2:     #c8b5a4;
+      --text3:     #7d6b5c;
+      --shadow:    0 2px 16px rgba(0,0,0,.30);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,.50);
+    }
 
-        <!--==================== UNICONS ====================-->
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background .25s, color .25s; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
 
-        <!--==================== SWIPER CSS ====================-->
-        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    /* ── UTILITY ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+    .section    { padding: 5rem 0; }
+    .section--alt { background: var(--surface2); }
 
-        <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="assets/css/styles.css">
+    .label {
+      display: inline-block;
+      font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800;
+      color: var(--text); margin-bottom: .9rem; line-height: 1.15;
+    }
+    .section-desc { color: var(--text2); margin-bottom: 3rem; max-width: 540px; }
 
-        <title>willpower.codes</title>
-    </head>
-    <body>
-        <!--==================== HEADER ====================-->
-        <header class="header" id="header">
-         <nav class="nav container">
-            <a href="#" class="nav__logo">willpower.codes</a>
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .7rem 1.4rem; border-radius: 8px;
+      font-size: .875rem; font-weight: 600; transition: all .2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dk); transform: translateY(-1px); }
+    .btn-outline { border: 1.5px solid var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list grid">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link active-link">
-                            <i class="uil uil-estate nav__icon"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#about" class="nav__link">
-                            <i class="uil uil-user-circle nav__icon"></i> About
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#skills" class="nav__link">
-                            <i class="uil uil-file-edit-alt nav__icon"></i> Skills
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#services" class="nav__link">
-                            <i class="uil uil-briefcase-alt nav__icon"></i> Services
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#portfolio" class="nav__link">
-                            <i class="uil uil-image-v nav__icon"></i> Portfolio
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">
-                            <i class="uil uil-envelope nav__icon"></i> Contact
-                        </a>
-                    </li>
-                </ul>
-                <i class="uil uil-times nav__close" id="nav-close"></i>
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--nav-h); display: flex; align-items: center;
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color .25s, box-shadow .25s, background .25s;
+    }
+    .nav.scrolled { border-color: var(--border); box-shadow: var(--shadow); }
+    .nav__inner {
+      display: flex; align-items: center;
+      width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; gap: 2rem;
+    }
+    .nav__logo {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--accent); white-space: nowrap; flex-shrink: 0;
+    }
+    .nav__links { display: flex; align-items: center; gap: 1.75rem; margin: 0 auto; }
+    .nav__links a { font-size: .85rem; font-weight: 500; color: var(--text2); transition: color .2s; }
+    .nav__links a:hover, .nav__links a.active { color: var(--accent); }
+    .nav__actions { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
+
+    .nav__icon-btn {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text2); border: 1.5px solid var(--border);
+      font-size: 1rem; transition: all .2s;
+    }
+    .nav__icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .nav__hamburger { display: none; }
+
+    /* Mobile overlay */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 199;
+      background: var(--bg); flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--text); transition: color .2s; }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-menu__close { position: absolute; top: 1.25rem; right: 1.5rem; font-size: 1.5rem; color: var(--text2); }
+
+    /* ── HERO ── */
+    .hero { padding-top: calc(var(--nav-h) + 5rem); padding-bottom: 5rem; }
+    .hero__grid {
+      display: grid; grid-template-columns: 1fr 460px; align-items: center; gap: 4rem;
+    }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-bg); color: var(--green-text);
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+      padding: .35rem .9rem; border-radius: 99px; margin-bottom: 1.5rem;
+    }
+    .hero__eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green-text); }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.14;
+      color: var(--text); margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero__sub { font-size: 1rem; color: var(--text2); line-height: 1.75; margin-bottom: 2rem; max-width: 500px; }
+    .hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+    .hero__social { display: flex; align-items: center; gap: .75rem; }
+    .hero__social-label { font-size: .78rem; color: var(--text3); }
+    .hero__social-link {
+      display: flex; align-items: center; gap: .35rem;
+      font-size: .82rem; font-weight: 500; color: var(--text2);
+      border: 1.5px solid var(--border); padding: .28rem .7rem;
+      border-radius: 6px; transition: all .2s;
+    }
+    .hero__social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Hero card */
+    .hero__card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 2rem;
+      box-shadow: var(--shadow-lg); position: relative;
+    }
+    .hero__card::before {
+      content: ''; position: absolute; top: -22px; right: -22px;
+      width: 110px; height: 110px; border-radius: 50%;
+      background: var(--accent-faint); z-index: -1;
+    }
+    .hero__card::after {
+      content: ''; position: absolute; bottom: -14px; left: -14px;
+      width: 70px; height: 70px; border-radius: 50%;
+      background: var(--accent-faint); z-index: -1;
+    }
+    .hero__photo {
+      width: 240px; height: 240px; border-radius: var(--radius);
+      object-fit: cover; margin: 0 auto 1.25rem;
+    }
+    .hero__card-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; text-align: center; margin-bottom: .2rem; }
+    .hero__card-role { font-size: .82rem; color: var(--text3); text-align: center; margin-bottom: 1.5rem; }
+    .hero__stats { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
+    .hero__stat { background: var(--surface2); border-radius: 10px; padding: .7rem .9rem; }
+    .hero__stat-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--accent); display: block; }
+    .hero__stat-lbl { font-size: .72rem; color: var(--text3); }
+
+    /* ── PLATFORMS STRIP ── */
+    .platforms { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); padding: 1.1rem 0; overflow: hidden; }
+    .platforms__track { display: flex; gap: 2.5rem; align-items: center; white-space: nowrap; animation: ticker 28s linear infinite; }
+    .platforms__track:hover { animation-play-state: paused; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .platforms__item { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); }
+    .platforms__sep { color: var(--accent); opacity: .5; }
+
+    /* ── ABOUT ── */
+    .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about__bio { font-size: .975rem; color: var(--text2); line-height: 1.8; margin-bottom: 1.25rem; }
+    .about__stats { display: flex; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
+    .about__stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--accent); display: block; }
+    .about__stat-lbl { font-size: .75rem; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* Timeline */
+    .tl { position: relative; padding-left: 1.75rem; }
+    .tl::before { content: ''; position: absolute; left: 0; top: .4rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent); border-radius: 2px; }
+    .tl__item { position: relative; padding-bottom: 2rem; }
+    .tl__item::before { content: ''; position: absolute; left: -2.1rem; top: .45rem; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+    .tl__period { font-size: .7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .25rem; }
+    .tl__role { font-weight: 600; color: var(--text); margin-bottom: .15rem; }
+    .tl__org { font-size: .85rem; color: var(--text2); margin-bottom: .35rem; }
+    .tl__desc { font-size: .82rem; color: var(--text3); line-height: 1.65; }
+
+    /* ── PORTFOLIO ── */
+    .portfolio__filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .filter-btn {
+      padding: .4rem 1rem; border-radius: 99px;
+      font-size: .82rem; font-weight: 500; color: var(--text2);
+      border: 1.5px solid var(--border); transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .portfolio__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .pcard {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; transition: transform .25s, box-shadow .25s;
+    }
+    .pcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pcard.hidden { display: none; }
+    .pcard__thumb { position: relative; height: 210px; overflow: hidden; }
+    .pcard__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .pcard:hover .pcard__thumb img { transform: scale(1.06); }
+    .pcard__overlay {
+      position: absolute; inset: 0; background: rgba(26,20,16,.72);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .25s;
+    }
+    .pcard:hover .pcard__overlay { opacity: 1; }
+    .pcard__overlay a {
+      background: var(--accent); color: #fff;
+      padding: .5rem 1.2rem; border-radius: 8px;
+      font-size: .82rem; font-weight: 600; transition: background .2s;
+    }
+    .pcard__overlay a:hover { background: var(--accent-dk); }
+    .pcard__body { padding: 1rem 1.2rem; }
+    .pcard__tag {
+      display: inline-block; font-size: .68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--accent); background: var(--accent-faint);
+      padding: .18rem .55rem; border-radius: 4px; margin-bottom: .45rem;
+    }
+    .pcard__title { font-weight: 600; color: var(--text); margin-bottom: .2rem; font-size: .95rem; }
+    .pcard__desc { font-size: .8rem; color: var(--text3); line-height: 1.55; }
+    .portfolio__footer { text-align: center; margin-top: 3rem; }
+
+    /* ── SERVICES ── */
+    .services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .scard {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem; transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .scard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+    .scard__icon { font-size: 1.6rem; margin-bottom: .9rem; }
+    .scard__title { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: .5rem; }
+    .scard__desc { font-size: .855rem; color: var(--text2); line-height: 1.65; }
+
+    /* ── PROCESS ── */
+    .process__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .pstep { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; }
+    .pstep__num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: .5rem; }
+    .pstep__icon { font-size: 1.4rem; margin-bottom: .65rem; }
+    .pstep__title { font-weight: 700; color: var(--text); margin-bottom: .4rem; }
+    .pstep__desc { font-size: .84rem; color: var(--text2); line-height: 1.6; }
+
+    /* ── SKILLS ── */
+    .skills__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .skill-cat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
+    .skill-cat__title { font-weight: 700; font-size: .9rem; color: var(--text); margin-bottom: .9rem; display: flex; align-items: center; gap: .4rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .skill-tag { background: var(--surface2); color: var(--text2); font-size: .78rem; font-weight: 500; padding: .28rem .65rem; border-radius: 6px; }
+
+    /* ── TESTIMONIALS ── */
+    .tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .tcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+    .tcard__stars { color: var(--accent); font-size: .9rem; letter-spacing: .05em; margin-bottom: 1rem; }
+    .tcard__quote { font-size: .885rem; color: var(--text2); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .tcard__author { display: flex; align-items: center; gap: .75rem; }
+    .tcard__avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
+    .tcard__name { font-weight: 600; font-size: .875rem; color: var(--text); }
+    .tcard__role { font-size: .78rem; color: var(--text3); }
+    .tcard__role a { color: var(--accent); }
+
+    /* ── CONTACT ── */
+    .contact__grid { display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: start; }
+    .cinfo__item { display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1.75rem; }
+    .cinfo__icon { width: 42px; height: 42px; border-radius: 10px; background: var(--accent-faint); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .cinfo__lbl { font-size: .73rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: .15rem; }
+    .cinfo__val { font-weight: 600; color: var(--text); font-size: .925rem; }
+
+    .cform { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ffield { margin-bottom: 1.2rem; }
+    .flabel { display: block; font-size: .8rem; font-weight: 600; color: var(--text2); margin-bottom: .35rem; }
+    .finput, .fselect, .ftextarea {
+      width: 100%; padding: .65rem .95rem;
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: 8px; color: var(--text); font: inherit; font-size: .875rem;
+      transition: border-color .2s;
+    }
+    .finput:focus, .fselect:focus, .ftextarea:focus { outline: none; border-color: var(--accent); }
+    .ftextarea { resize: vertical; min-height: 130px; }
+    .fsubmit {
+      width: 100%; padding: .85rem; background: var(--accent); color: #fff;
+      border-radius: 8px; font-weight: 600; font-size: .95rem;
+      transition: background .2s;
+    }
+    .fsubmit:hover { background: var(--accent-dk); }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 0; }
+    .footer__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+    .footer__logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; }
+    .footer__tag { font-size: .85rem; color: var(--text3); line-height: 1.65; }
+    .footer__head { font-weight: 600; font-size: .875rem; color: var(--text); margin-bottom: 1rem; }
+    .footer__links { display: flex; flex-direction: column; gap: .55rem; }
+    .footer__links a { font-size: .85rem; color: var(--text2); transition: color .2s; }
+    .footer__links a:hover { color: var(--accent); }
+    .footer__citem { font-size: .85rem; color: var(--text2); margin-bottom: .55rem; }
+    .footer__bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer__copy { font-size: .78rem; color: var(--text3); }
+    .footer__bottom-links { display: flex; gap: 1.25rem; }
+    .footer__bottom-links a { font-size: .8rem; color: var(--text3); transition: color .2s; }
+    .footer__bottom-links a:hover { color: var(--accent); }
+
+    /* ── SCROLL TOP ── */
+    .scroll-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+      width: 42px; height: 42px; background: var(--accent); color: #fff;
+      border-radius: 10px; font-size: 1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s, transform .25s;
+    }
+    .scroll-top.show { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { transform: translateY(-2px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero__grid      { grid-template-columns: 1fr; }
+      .hero__card      { max-width: 400px; margin: 0 auto; }
+      .about__grid     { grid-template-columns: 1fr; gap: 3rem; }
+      .process__grid   { grid-template-columns: repeat(2, 1fr); }
+      .skills__grid    { grid-template-columns: repeat(2, 1fr); }
+      .contact__grid   { grid-template-columns: 1fr; gap: 3rem; }
+      .footer__grid    { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .portfolio__grid  { grid-template-columns: repeat(2, 1fr); }
+      .services__grid   { grid-template-columns: repeat(2, 1fr); }
+      .tgrid            { grid-template-columns: 1fr; }
+      .pricing__grid    { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .nav__links  { display: none; }
+      .nav__hamburger { display: flex; }
+      .nav__cta    { display: none; }
+      .hero        { padding-top: calc(var(--nav-h) + 3rem); }
+      .portfolio__grid { grid-template-columns: 1fr; }
+      .services__grid  { grid-template-columns: 1fr; }
+      .skills__grid    { grid-template-columns: 1fr; }
+      .frow            { grid-template-columns: 1fr; }
+      .footer__grid    { grid-template-columns: 1fr; gap: 2rem; }
+      .footer__bottom  { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (max-width: 540px) {
+      .process__grid { grid-template-columns: 1fr; }
+      .about__stats  { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="nav__inner">
+    <a href="#home" class="nav__logo">willpower.codes</a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" id="theme-toggle" title="Toggle dark mode">🌙</button>
+      <a href="#contact" class="btn btn-primary nav__cta" style="padding:.55rem 1.1rem;font-size:.82rem;">Let's Talk</a>
+      <button class="nav__icon-btn nav__hamburger" id="menu-btn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__close nav__icon-btn" id="menu-close">✕</button>
+  <a href="#about">About</a>
+  <a href="#portfolio">Work</a>
+  <a href="#services">Services</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero__grid">
+      <div>
+        <div class="hero__eyebrow">Available for new projects</div>
+        <h1>Premium Web Design &amp; Strategy. <em>Your Dedicated Technical Partner.</em></h1>
+        <p class="hero__sub">Full-stack web designer and developer with 15+ years building websites, brands, and digital systems for SMBs and solo founders. High-quality results without the agency price tag.</p>
+        <div class="hero__ctas">
+          <a href="#portfolio" class="btn btn-primary">See My Work</a>
+          <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+        </div>
+        <div class="hero__social">
+          <span class="hero__social-label">Find me on</span>
+          <a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" class="hero__social-link">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero__card">
+          <img src="assets/img/profile.png" alt="Will Martin" class="hero__photo">
+          <div class="hero__card-name">Will Martin</div>
+          <div class="hero__card-role">Denver, CO &middot; willpower.codes</div>
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-num">15+</span>
+              <span class="hero__stat-lbl">Years Building</span>
             </div>
-            <div class="nav__btns">
-                <!--Dark/Light Mode-->
-                <i class="uil uil-moon change-theme" id="theme-button"></i>
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="uil uil-bars"></i>
-                </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num">50+</span>
+              <span class="hero__stat-lbl">Projects Done</span>
             </div>
-         </nav>
-        </header>
-
-        <!--==================== MAIN ====================-->
-        <main class="main">
-            <!--==================== HOME ====================-->
-            <section class="home section" id="home">
-                <div class="home__container container grid">
-                    <div class="home__content grid">
-                        <div class="home__social">
-                            <a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" class="home__social-icon">
-                                <i class="uil uil-linkedin"></i>
-                            </a>
-                        </div>
-
-                        <div class="home__img">
-                            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <mask id="mask0" mask-type="alpha">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547
-                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775
-                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666
-                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                </mask>
-                                <g mask="url(#mask0)">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346
-                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403
-                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028
-                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-
-                                    <image class="home__blob-img" x="12" y="16" href="assets/img/profile.png"/>
-                                </g>
-                            </svg>
-                        </div>
-
-                        <div class="home__data">
-                            <h1 class="home__title">Hey! I'm Will</h1><br>
-                            <h3 class="home__subtitle">A web & print designer, developer, and e-commerce specialist.</h3>
-                            <p class="home_description">My passion is to help small businesses achieve big results online.</p><br>
-                            <a href="#contact" class="button button--flex">
-                                Contact Me <i class="uil uil-message button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="home__scroll">
-                        <a href="#about" class="home__scroll-button button--flex">
-                            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                            <span class="home__scroll-name">Scroll down</span>
-                            <i class="uil uil-angle-down home__scroll-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
-                <h2 class="section__title">About Me</h2>
-                <span class="section__subtitle">My introduction</span>
-
-
-                <div class="about__container container grid">
-                    <img src="assets/img/willpower_logo.png" alt="" class="about__img">
-
-                    <div class="about__data">
-                        <p class="about__description">
-                        I'm a Freelance designer specializing in personal & e-commerce website design. I have been building websites most of my life, and enjoy learning about different types of businesses and how they operate. willpower.codes has really formed me as a developer, through clients with specific aspirations and clear direction always challenging me to learn more and venture into new platforms/tech!<br><br> I have strong background in using Adobe software: especially Illustrator, Photoshop & Premier. I am capable of producing both vector & raster designs for a multitude of applications around the internet and through printed media. Working with HD content to create awe-inspiring video content is one of my favorite jobs to do.<br><br> I have always been inquisitive about e-commerce web tech and worked with a number of different platforms including WordPress & Shopify/BigCommerce. I can code in many languages including: HTML, CSS, Liquid, JavaScript, Python and Java. I am very interested in finding new ways to implement fresh frameworks and technologies and stayed tuned to other designers to learn and collaborate.
-                        </p>
-
-                        <div class="about__info">
-                            <div>
-                                <span class="about__info-title">15+</span>
-                                <span class="about__info-name">Years <br> experience</span>
-                            </div>
-
-                            <div>
-                                <span class="about__info-title">30+</span>
-                                <span class="about__info-name">Completed <br> projects</span>
-                            </div>
-
-                            <div>
-                                <span class="about__info-title">06+</span>
-                                <span class="about__info-name">Companies <br> worked with</span>
-                            </div>
-                        </div>
-
-                        <div class="about__buttons">
-                            <a href="https://tinyurl.com/williammartinresume" class="button button--flex" target="blank">
-                                Online Resume  <i class="uil uil-external-link-alt"></i>
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== SKILLS ====================-->
-            <section class="skills section" id="skills">
-                <h2 class="section__title">Skills</h2>
-                <span class="section__subtitle">My technical aptitudes</span>
-
-                <div class="skills__container container grid">
-                    
-                        <!--==================== FRONT END SKILLS ====================-->
-                        <div class="skills__content skills__open">
-                            <div class="skills__header">
-                                <i class="uil uil-brackets-curly skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Frontend development</h1>
-                                    <span class="skills__subtitle">More than 15 years</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">HTML</h3>
-                                        <span class="skills__number">95%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__html"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">CSS</h3>
-                                        <span class="skills__number">80%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__css"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">JavaScript</h3>
-                                        <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__js"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">React</h3>
-                                        <span class="skills__number">60%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__react"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!--==================== Design SKILLS ====================-->
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <i class="uil uil-illustration skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Designer</h1>
-                                    <span class="skills__subtitle">More than 10 years</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Photoshop</h3>
-                                        <span class="skills__number">95%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__photoshop"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Illustrator</h3>
-                                        <span class="skills__number">80%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__illustrator"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Sketch</h3>
-                                        <span class="skills__number">65%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__sketch"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">WordPress</h3>
-                                        <span class="skills__number">90%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__wordpress"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Canva</h3>
-                                        <span class="skills__number">95%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__canva"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!--==================== E-Commerce SKILLS ====================-->
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <i class="uil uil-store skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">E-Commerce</h1>
-                                    <span class="skills__subtitle">More than 6 years</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">E-Commerce<br>(Shopify/BigCommerce)</h3>
-                                        <span class="skills__number">90%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__platforms"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Omni-channel Marketplace Selling</h3>
-                                        <span class="skills__number">85%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__marketplaces"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Search Engine Optimization (SEO)</h3>
-                                        <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__seo"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Brand & Product Copywriting</h3>
-                                        <span class="skills__number">95%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__copywriting"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">PPC Ads<br> (Google, Meta, etc.)</h3>
-                                        <span class="skills__number">80%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__ads"></span>
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Email Marketing, SMS/Newsletter</h3>
-                                        <span class="skills__number">80%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__email"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    
-                </div>
-            </section>
-
-            <!--==================== QUALIFICATION ====================-->
-            <section class="qualification section">
-                <h2 class="section__title">Qualifications</h2>
-                <span class="section__subtitle">My journey</span>
-
-                <div class="qualification__container container">
-                    <div class="qualification__tabs">
-                        <div class="qualification__button button--flex qualification__active" data-target="#education">
-                            <i class="uil uil-graduation-cap qualification__icon"></i>
-                            Education
-                        </div>
-
-                        <div class="qualification__button button--flex" data-target="#work">
-                            <i class="uil uil-briefcase-alt qualification__icon"></i></i>
-                            Work
-                        </div>
-                    </div>
-
-                    <div class="qualification__sections">
-                        <!--Education-->
-                        <div class="qualification__content qualification__active" data-content id="education">
-
-                            <!--Education 1, PCC-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualfication__title">Graphic & Web Design Coursework</h3>
-                                    <span class="qualication__subtitle">AA: Business Administration <br> Pueblo Community College</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2005-2006
-                                    </div>
-                                </div>
-
-                                <div></div>
-                            </div>
-                            
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Education 2, CU Boulder-->
-                            <div class="qualification__data">
-                                <div></div>
-
-                                <div></div>
-
-                                <div>
-                                    <h3 class="qualfication__title">HTML, JavaScript & Web Dev Coursework</h3>
-                                    <span class="qualication__subtitle">BA: English Language <br> University of Colorado - Boulder</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2007-2009
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <br>
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Education 3, Microsoft-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualfication__title">Web 2.0 UX Design Cert.</h3>
-                                    <span class="qualication__subtitle">Microsoft</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2015
-                                    </div>
-                                </div>
-
-                                <div></div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Education 4, Microsoft-->
-                            <div class="qualification__data">
-                                <div></div>
-
-                                <div></div>
-
-                                <div>
-                                    <h3 class="qualfication__title">SharePoint & Cloud Tech in Web Dev Cert.</h3>
-                                    <span class="qualication__subtitle">Microsoft</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2016
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <br>
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Education 5, Microsoft-->
-                            <div class="qualification__data">
-                                                             
-
-                                <div>
-                                    <h3 class="qualfication__title">CSS & HTML5 Web Dev Cert.</h3>
-                                    <span class="qualication__subtitle">Microsoft</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2016
-                                    </div>
-                                </div>
-
-                                <div></div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Education 6, San Jose State-->
-                            <div class="qualification__data">
-                                <div></div>
-
-                                <div></div>
-                                 
-                                <div>
-                                    <h3 class="qualfication__title">Web UI Design and Dev</h3>
-                                    <span class="qualication__subtitle">San Jose State University</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2017
-                                    </div>
-                                </div>
-
-                                
-                            </div>
-
-                        </div>
-                        <div><br></div>
-                        <!--Work-->
-                        <div class="qualification__content" data-content id="work">
-
-                            <!--Work 1, willpower.codes-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualfication__title">willpower.codes</h3>
-                                    <span class="qualication__subtitle">Freelance Web & Print Designer <br> Founded LLC, various projects</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2007-2012
-                                    </div>
-                                </div>
-
-                                <div></div>
-
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Work 2, Microsoft-->
-                            <div class="qualification__data">
-                                <div></div>
-
-                                <div>
-                            
-                                </div>
-
-                                <div>
-                                    <h3 class="qualfication__title">Microsoft</h3>
-                                    <span class="qualication__subtitle">Business Administrator <br> Engineering Team Websites & Event Promotions Design</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2012-2018
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <br>
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Work 3, access.mobile-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualfication__title">access.mobile</h3>
-                                    <span class="qualication__subtitle">Executive Assistant to the CEO <br> Brand, Marketing & Ad Design</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2019-2020
-                                    </div>
-                                </div>
-
-                                <div>
-                                
-                                </div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Work 4, Little Colorado-->
-                            <div class="qualification__data">
-                                <div></div>
-
-                                <div>
-                                 
-                                </div>
-
-                                <div>
-                                    <h3 class="qualfication__title">Little Colorado LLC</h3>
-                                    <span class="qualication__subtitle">Marketing Manager <br> Brand, Website, Marketing & Social Media  Design & Management</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2020-2022
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Qualification Seperator-->
-                            <div class="qualification__seperator-icon">
-                                <br>
-                                <i class="uil uil-angle-down qualification__seperator"></i>
-                                <br>
-                            </div>
-
-                            <!--Work 5, willpower.codes-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualfication__title">willpower.codes</h3>
-                                    <span class="qualication__subtitle">Reformed LLC to offer services for Web & Print Design, Web Development, E-Commerce, PPC Ads & Social Media</span>
-                                    <div class="qualification__calendar">
-                                        <i class="uil uil-schedule"></i>
-                                        2023
-                                    </div>
-                                </div>
-
-                                <div>
-                                    
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== SERVICES ====================-->
-            <section class="services section" id="services">
-                <h2 class="section__title">Services</h2>
-                <span class="section__subtitle">What I can do for you</span>
-
-                <div class="services__container container grid">
-                    <!--Service 1, Website Design-->
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-web-grid-alt services__icon"></i>
-                            <h3 class="services__title">Website Design</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More
-                            <i class="uil uil-corner-up-right-alt button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Website Design, Web Development & Webmaster-on-Retainer Services.</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>We meet and discuss your needs.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>I conceptualize & develop the front end of your website.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Web pages are developed with rich content.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>I think about the user experience and make it intuitive.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>I position your branding and highlight your message.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Your needs are met, and wishes granted~.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Webmaster services to save you a lot of time updating your website!</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Service 2, Ecommerce-->
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-shopping-bag services__icon"></i>
-                            <h3 class="services__title">E-Commerce</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More
-                            <i class="uil uil-corner-up-right-alt button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Fully-featured E-Commerce Stores.</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>We discuss the needs of your store and select a platform for backend.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Product catalog & collections built, metafields instantiated.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Design of front page, product page, About, cart, checkout.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>I create or leverage your company branding and incorporate your message.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>You will get tours and training meetings to learn your new store inside and out.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>I will assist you with your setup, sales tax liability, and payments.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Apps and custom development modules your store may want or need.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Multi-channel marketplace & wholesale setup for your products.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Service 3, Marketing-->
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-megaphone services__icon"></i>
-                            <h3 class="services__title">Marketing</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More
-                            <i class="uil uil-corner-up-right-alt button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Marketing your product(s).</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>PPC (Pay Per Click) Ads (Google, Meta, TikTok).</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Display Advertisements.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Social Media Management and Content Creation.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Email newsletter / marketing campaigns.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Influencer & Affliates Coordination.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Service 4, SEO-->
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-search services__icon"></i>
-                            <h3 class="services__title">SEO</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More
-                            <i class="uil uil-corner-up-right-alt button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Optimizing your presence on the internet.</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Website speed optimization.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>SEO (Search Engine Optimization) for your website & product pages.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Image optimization for your website & campaigns.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Ranking analytics & strategy.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Service 5, Brand-->
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-user-circle services__icon"></i>
-                            <h3 class="services__title">Brand Design</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More
-                            <i class="uil uil-corner-up-right-alt button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Get the assets you need to tell your story.</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Logo Design.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Branding Colors, UI/UX, Typography.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Media & News Feature Pages/Materials.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Stationery, Letterhead, Business Cards.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Email Signatures, Employee Branding, Swag/Merch, Communications Branding.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Service 6, Print-->
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-print services__icon"></i>
-                            <h3 class="services__title">Print Design</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More
-                            <i class="uil uil-corner-up-right-alt button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Print it out and get it in front of people.</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Business Cards.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Posters.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Brochures.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>T-shirt/Apparel Designs.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Newspaper/Magazine Advertisements.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Flags, Yard Signs, Decals, Signicades.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Invites, Announcements.</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Resumes/CVs.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== PORTFOLIO ====================-->
-            <section class="portfolio section" id="portfolio">
-                <section class="portfolio section" id="portfolio">
-                    <h2 class="section__title">Portfolio</h2>
-                    <span class="section__subtitle">Some examples of my work</span>
-
-                    <div class="portfolio__container container swiper-container">
-                        <div class="swiper-wrapper">
-
-                            <!--Portfolio 1-->
-                            <div class="portfolio__content grid swiper-slide">
-                                <img src="assets/img/portfolio1.jpg" alt="" class="portfolio__img">
-
-                                <div class="portfolio__data">
-                                    <h3 class="portfolio__title">Modern Websites</h3>
-                                    <p class="portfolio__description">Responsive web design that adapts to devices, browsers & all resolutions. Animated interactions and engaging UI. Clean and minimal design to draw the eye where you want it.</p>
-                                    <a href="gallery.html" class="button button--flex button--small portfolio__button">
-                                        Examples 
-                                        <i class="uil uil-arrow-right button__icon"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!--Portfolio 2-->
-                            <div class="portfolio__content grid swiper-slide">
-                                <img src="assets/img/portfolio2.jpg" alt="" class="portfolio__img">
-
-                                <div class="portfolio__data">
-                                    <h3 class="portfolio__title">Brand Design</h3>
-                                    <p class="portfolio__description">Logos, Letterhead, Media Pages, Signatures, Communications. Storytelling through brand image & color pallet packages.</p>
-                                    <a href="gallery.html" class="button button--flex button--small portfolio__button">
-                                        Examples
-                                        <i class="uil uil-arrow-right button__icon"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!--Portfolio 3-->
-                            <div class="portfolio__content grid swiper-slide">
-                                <img src="assets/img/portfolio3.jpg" alt="" class="portfolio__img">
-
-                                <div class="portfolio__data">
-                                    <h3 class="portfolio__title">E-Commerce Stores</h3>
-                                    <p class="portfolio__description">Shopify, BigCommerce, Ecwid. Delivering product & SEO first E-Commerce design. Full back-end knowledge and store setup for tax & legal liabilities.</p>
-                                    <a href="gallery.html" class="button button--flex button--small portfolio__button">
-                                        Examples
-                                        <i class="uil uil-arrow-right button__icon"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Swiper Arrows-->
-                        <div class="swiper-button-next">
-                            <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-                        </div>
-                        <div class="swiper-button-prev">
-                            <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-                        </div>
-
-                        <!--Swiper Pagination-->
-                        <div class="swiper-pagination"></div>
-
-                    </div>
-                </section>
-            </section>
-
-            <!--==================== TESTIMONIALS ====================-->
-            <section class="testimonial section">
-                <section class="testimonial section">
-                    <h2 class="section__title">Testimonials</h2>
-                    <span class="section__subtitle">Clients say the best things about my work!</span>
-
-                    <div class="testimonial__container container swiper-container">
-                        <div class="swiper-wrapper">
-                            <!--Testimonial 1-->
-                            <div class="testimonial__content swiper-slide">
-                                <div class="testimonial__data">
-                                    <div class="testimonial__header">
-                                        <img src="assets/img/testimonial1.jpg" alt="" class="testimonial__img">
-
-                                        <div>
-                                            <h3 class="testimonial__name">Kuna, Regional Manager of Zipcar Hawaii</h3>
-                                            <span class="testimonial__client">Resume & LinkedIn Design Client</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial__description">I got so much interest after the redesign of my resume & LinkedIn, that I have two jobs now. I was able to break into management and remote work. I truly feel like so many doors have opened for me. Thanks so much!</p>
-                            </div>
-
-                            <!--Testimonial 2-->
-                            <div class="testimonial__content swiper-slide">
-                                <div class="testimonial__data">
-                                    <div class="testimonial__header">
-                                        <img src="assets/img/testimonial2.jpg" alt="" class="testimonial__img">
-
-                                        <div>
-                                            <h3 class="testimonial__name">Ashley, <a href="https://www.buttonandbug.com" target="_blank" class="button--link">Button & Bug</a></h3>
-                                            <span class="testimonial__client">Shopify E-Commerce Website</span>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial__description">My customers were absolutely thrilled by the new design, and I am thrilled by the power of my store. I was trained and able to ask my questions as needed, what a relief! Definitely so much better prepared than my last experience, and I have a handle on my own store finally! I'm so grateful for all the added SEO and front page/about work. Your attention to detail on products was fantastic. Thanks!</p>
-                            </div>
-
-                            <!--Testimonial 3-->
-                            <div class="testimonial__content swiper-slide">
-                                <div class="testimonial__data">
-                                    <div class="testimonial__header">
-                                        <img src="assets/img/testimonial4.jpg" alt="" class="testimonial__img">
-
-                                        <div>
-                                            <h3 class="testimonial__name">River, Music Director & Instructor</h3>
-                                            <span class="testimonial__client">Business Cards</span>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial__description">My entire business really turned around because people would always want to hang onto my card. I was able to leave some everywhere I went and organically promote myself. I have so much work now... I don't know what to do with it. Thanks so much!</p>
-                            </div>
-
-                            <!--Testimonial 4-->
-                            <div class="testimonial__content swiper-slide">
-                                <div class="testimonial__data">
-                                    <div class="testimonial__header">
-                                        <img src="assets/img/testimonial3.jpg" alt="" class="testimonial__img">
-
-                                        <div>
-                                            <h3 class="testimonial__name">Noelle & Bill, <a href="https://www.littlecolorado.com" target="_blank" class="button--link">Little Colorado</a></h3>
-                                            <span class="testimonial__client">E-Commerce Website, PPC, Marketing, and Social Media Client</span>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial__description">Will has done so much for us. We are omni-channel marketplace capable, we have strong PPC Ad campaigns generating new leads and sales, our social media has never looked better, and our website is a dream come true. We really felt like we could trust Will to do anything we needed.</p>
-                            </div>
-
-                            <!--Testimonial 5-->
-                            <div class="testimonial__content swiper-slide">
-                                <div class="testimonial__data">
-                                    <div class="testimonial__header">
-                                        <img src="assets/img/testimonial5.jpg" alt="" class="testimonial__img">
-
-                                        <div>
-                                            <h3 class="testimonial__name">Sara, <a href="https://www.accessmobile.io" target="_blank" class="button--link">access.mobile</a></h3>
-                                            <span class="testimonial__client">Webmaster, Digital/Print Ads, Media Page, and Letterhead</span>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                        <i class="uil uil-star testimonial__icon-star"></i>
-                                    </div>
-                                </div>
-
-                                <p class="testimonial__description">Will did everything we asked him to and more!</p>
-                            </div>
-                        </div>
-                        
-                        <!--Pagination-->
-                        <div class="swiper-pagination swiper-pagination-testimonial"></div>
-
-                    </div>
-                </section>
-            </section>
-
-            <!--==================== CONTACT ME ====================-->
-            <section class="contact section" id="contact">
-                <h2 class="section__title">Contact Me</h2>
-                <span class="section__subtitle">Get in touch.</span>
-
-                <div class="contact__container container grid">
-                    <div>
-                        <div class="contact__information">
-                            <i class="uil uil-phone contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">Call or Text Me</h3>
-                                <span class="contact__subtitle">720-583-4787</span>
-                            </div>
-                        </div>
-
-                        <div class="contact__information">
-                            <i class="uil uil-fast-mail contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">Email Me</h3>
-                                <span class="contact__subtitle">w_martin@outlook.com</span>
-                            </div>
-                        </div>
-
-                        <div class="contact__information">
-                            <i class="uil uil-linkedin contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">LinkedIn</h3>
-                                <span class="contact__subtitle">https://www.linkedin.com/in/will-martin1986/</span>
-                            </div>
-                        </div>
-
-                        <div class="contact__information">
-                            <i class="uil uil-map contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">Location</h3>
-                                <span class="contact__subtitle">Denver, CO</span>
-                            </div>
-                        </div>
-                    </div>                 
-                    
-                        <!--Form Submit-->
-                        <form action="https://formsubmit.co/w_martin@outlook.com" method="POST" class="contact__form">
-                            <div class="contact__inputs grid"></div>
-                                <div class="contact__content">
-                                    <input type="text" name="Name" placeholder="Name" required class="contact__input">
-                                </div>
-                                <div><br></div>
-                                <div class="contact__content">
-                                    <input type="email" name="Email" placeholder="Email" required class="contact__input">
-                                </div>
-                                <div><br></div>
-                                <div class="contact__content">
-                                    <textarea name="Message" id="Message" cols="1" rows="7" placeholder="Enter your message" class="contact__input"></textarea>
-                                </div>
-                                <div><br></div>
-                                <div>
-                                    <button type="submit" class="button--flex">&nbsp;Send Message <i class="uil uil-message button__icon"></i>
-                                    </button>
-                                </div>
-                            </div>    
-                        </form>
-                    
-
-                </div>
-            </section>
-        </main>
-
-        <!--==================== FOOTER ====================-->
-        <footer class="footer">
-            <div class="footer__bg">
-                <div class="footer__container container grid">
-                    <div>
-                        <a href="#"><h1 class="footer__title">willpower.codes</h1></a>
-                        <span class="footer__subtitle">Web & Print Designer<br>Developer<br>E-Commerce Specialist</span>
-                    </div>
-
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#services" class="footer__links">Services</a>
-                        </li>
-                        <li>
-                            <a href="#portfolio" class="footer__links">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#contact" class="footer__links">Contact</a>
-                        </li>
-                    </ul>
-
-                    <div class="footer__socials">
-                        <a href="https://www.linkedin.com/in/will-martin1986/" class="footer__social"><i class="uil uil-linkedin"></i></a>
-                    </div>
-                </div>
-
-                <p class="footer__copy">&#169; willpower.codes 2007 - <script>document.write(new Date().getFullYear())</script>. All rights reserved.</p>
+            <div class="hero__stat">
+              <span class="hero__stat-num">5&nbsp;★</span>
+              <span class="hero__stat-lbl">Client Rating</span>
             </div>
-        </footer>
+            <div class="hero__stat">
+              <span class="hero__stat-num">10+</span>
+              <span class="hero__stat-lbl">Platforms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!--==================== SCROLL TOP ====================-->
-        <a href="#" class="scrollup" id="scroll-up">
-            <i class="uil uil-top-arrow-from-top scrollup__icon"></i>
-        </a>
+<!-- PLATFORMS STRIP -->
+<div class="platforms">
+  <div class="platforms__track" id="platforms-track">
+    <span class="platforms__item">WordPress</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Shopify</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Drupal</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Airtable</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">HubSpot</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Salesforce</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Zapier</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Figma</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Adobe Creative Suite</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">ChatGPT / Claude AI</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Webflow</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Squarespace</span><span class="platforms__sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="platforms__item">WordPress</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Shopify</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Drupal</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Airtable</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">HubSpot</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Salesforce</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Zapier</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Figma</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Adobe Creative Suite</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">ChatGPT / Claude AI</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Webflow</span><span class="platforms__sep">·</span>
+    <span class="platforms__item">Squarespace</span><span class="platforms__sep">·</span>
+  </div>
+</div>
 
-        <!--==================== SWIPER JS ====================-->
-        <script src="assets/js/swiper-bundle.min.js"></script>
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about__grid">
+      <div>
+        <span class="label">About</span>
+        <h2 class="section-title">Building the web since 2007</h2>
+        <p class="about__bio">I've been building websites and digital brands since 2007: freelancing, working in-house at startups, and doing enterprise-level project work at a Denver digital agency. Today, I specialize in helping small businesses and independent entrepreneurs get the kind of polished, high-performing web presence that used to require a big agency budget.</p>
+        <p class="about__bio">I build with modern tools and AI-assisted workflows that keep quality high and timelines short. Whether you need a five-page brochure site or a full e-commerce operation, I handle the full stack: strategy, design, development, copy, and launch.</p>
+        <div class="about__stats">
+          <div>
+            <span class="about__stat-num">15+</span>
+            <span class="about__stat-lbl">Years Building</span>
+          </div>
+          <div>
+            <span class="about__stat-num">10+</span>
+            <span class="about__stat-lbl">Platforms</span>
+          </div>
+          <div>
+            <span class="about__stat-num">50+</span>
+            <span class="about__stat-lbl">Projects</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Work With Me</a>
+      </div>
+      <div>
+        <span class="label">Experience</span>
+        <div class="tl">
+          <div class="tl__item">
+            <div class="tl__period">2023 - Current</div>
+            <div class="tl__role">Technical Sales Engineer <span style="font-weight:400;color:var(--text3)">/ Digital Project Manager / Service Desk</span></div>
+            <div class="tl__org">Fruition, Denver Digital Agency</div>
+            <div class="tl__desc">Scope and sell complex web projects through technical discovery and AI-powered RFP evaluations, scopes, and proposals. Build full-stack internal tools to automate workflows across the software development lifecycle. Deliver expert web support across WordPress, Drupal, and Shopify, and manage projects end-to-end from kickoff through launch.</div>
+          </div>
+          <div class="tl__item">
+            <div class="tl__period">2020 - 2023</div>
+            <div class="tl__role">Marketing &amp; Administrative Manager</div>
+            <div class="tl__org">Little Colorado, Denver</div>
+            <div class="tl__desc">Owned the full digital presence of a growing e-commerce brand: website design and development, online advertising, social media, and custom internal tooling for inventory tracking and performance reporting. Managed all marketing, partnerships, and day-to-day business operations.</div>
+          </div>
+          <div class="tl__item">
+            <div class="tl__period">2019 - 2020</div>
+            <div class="tl__role">Executive Assistant to the CEO</div>
+            <div class="tl__org">Access.mobile, Denver</div>
+            <div class="tl__desc">Built and maintained a custom CRM tool, managed website updates, and created branded marketing materials for a tech startup. Coordinated executive operations and a week-long international company retreat.</div>
+          </div>
+          <div class="tl__item">
+            <div class="tl__period">2012 - 2018</div>
+            <div class="tl__role">Business Administrator</div>
+            <div class="tl__org">Microsoft, Mountain View</div>
+            <div class="tl__desc">Supported engineering teams at one of the world's largest tech companies. Contributed to team websites and event promotion design while managing communications, executive support, and operational logistics across the organization.</div>
+          </div>
+          <div class="tl__item">
+            <div class="tl__period">2007 - Present</div>
+            <div class="tl__role">Freelance Web &amp; Print Designer</div>
+            <div class="tl__org">willpower.codes, Denver</div>
+            <div class="tl__desc">Custom websites, logos, print ads, and magazines built with a focus on conversions. Advertising strategy via Google Ads and social media, graphic design, social content, and photography for SMBs and entrepreneurs across Colorado and beyond.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!--==================== MAIN JS ====================-->
-        <script src="assets/js/main.js"></script>
-    </body>
+<!-- PORTFOLIO -->
+<section class="section section--alt" id="portfolio">
+  <div class="container">
+    <span class="label">Portfolio</span>
+    <h2 class="section-title">Featured Work</h2>
+    <p class="section-desc">A selection of projects spanning web design, brand identity, e-commerce, and AI-assisted apps.</p>
+
+    <div class="portfolio__filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web &amp; CMS</button>
+      <button class="filter-btn" data-filter="ecom">E-Commerce</button>
+      <button class="filter-btn" data-filter="brand">Brand &amp; Logo</button>
+      <button class="filter-btn" data-filter="print">Print &amp; Design</button>
+    </div>
+
+    <div class="portfolio__grid">
+
+      <!-- Web -->
+      <div class="pcard" data-cat="web">
+        <div class="pcard__thumb"><img src="assets/img/gallery/crema.jpg" alt="Crema Coffee"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Web</span><div class="pcard__title">Crema Coffee Roasters</div><div class="pcard__desc">Custom WordPress site with brand integration, e-commerce setup, and on-page SEO.</div></div>
+      </div>
+
+      <div class="pcard" data-cat="web">
+        <div class="pcard__thumb"><img src="assets/img/gallery/homeroom.jpg" alt="Homeroom"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Web</span><div class="pcard__title">Homeroom</div><div class="pcard__desc">Small business website redesign with updated copy, photography curation, and SEO structure.</div></div>
+      </div>
+
+      <div class="pcard" data-cat="web">
+        <div class="pcard__thumb"><img src="assets/img/gallery/sodura.JPG" alt="Sodura"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Web</span><div class="pcard__title">Sodura</div><div class="pcard__desc">WordPress CMS build with WooCommerce, custom fields, and Salesforce lead capture integration.</div></div>
+      </div>
+
+      <!-- E-Commerce -->
+      <div class="pcard" data-cat="ecom">
+        <div class="pcard__thumb"><img src="assets/img/gallery/buttonandbug.jpg" alt="Button &amp; Bug"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">E-Commerce</span><div class="pcard__title">Button &amp; Bug</div><div class="pcard__desc">Shopify storefront with custom theme, optimized product pages, SEO, and owner training.</div></div>
+      </div>
+
+      <div class="pcard" data-cat="ecom">
+        <div class="pcard__thumb"><img src="assets/img/gallery/littlecolorado.jpg" alt="Little Colorado"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">E-Commerce</span><div class="pcard__title">Little Colorado</div><div class="pcard__desc">E-commerce redesign with omni-channel marketplace setup, PPC campaigns, and social media management.</div></div>
+      </div>
+
+      <!-- Brand -->
+      <div class="pcard" data-cat="brand">
+        <div class="pcard__thumb"><img src="assets/img/gallery/LittleandBraveLogo_ColorSlogan.jpg" alt="Little &amp; Brave"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Brand</span><div class="pcard__title">Little &amp; Brave</div><div class="pcard__desc">Logo design and brand identity system with color palette, typography, and usage guidelines.</div></div>
+      </div>
+
+      <div class="pcard" data-cat="brand">
+        <div class="pcard__thumb"><img src="assets/img/gallery/tossuplogo.jpg" alt="Toss Up Sports"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Brand</span><div class="pcard__title">Toss Up Sports</div><div class="pcard__desc">Logo system and brand identity for a sports entertainment startup.</div></div>
+      </div>
+
+      <div class="pcard" data-cat="brand">
+        <div class="pcard__thumb"><img src="assets/img/gallery/MemoryChests_Logo.jpg" alt="Memory Chests"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Brand</span><div class="pcard__title">Memory Chests</div><div class="pcard__desc">Logo and full brand identity for a keepsake product brand, print and web ready.</div></div>
+      </div>
+
+      <!-- Print -->
+      <div class="pcard" data-cat="print">
+        <div class="pcard__thumb"><img src="assets/img/gallery/rivercards.jpg" alt="Business Cards"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Print</span><div class="pcard__title">River Music - Business Cards</div><div class="pcard__desc">Custom card design that became an organic referral tool, driving consistent new bookings.</div></div>
+      </div>
+
+      <div class="pcard" data-cat="print" data-hide-all="true">
+        <div class="pcard__thumb"><img src="assets/img/gallery/SimpleconsLookBook.jpg" alt="Simplecons Lookbook"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
+        <div class="pcard__body"><span class="pcard__tag">Print</span><div class="pcard__title">Simplecons Lookbook</div><div class="pcard__desc">Product catalog and print-ready lookbook design for a lifestyle brand.</div></div>
+      </div>
+
+    </div>
+
+    <div class="portfolio__footer">
+      <a href="gallery.html" class="btn btn-outline">Browse Full Portfolio Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <span class="label">Services</span>
+    <h2 class="section-title">What I Can Do for You</h2>
+    <p class="section-desc">From a single landing page to a full brand overhaul, I cover the full spectrum of web and digital design.</p>
+
+    <div class="services__grid">
+      <div class="scard">
+        <div class="scard__icon">🌐</div>
+        <div class="scard__title">Website Design &amp; Development</div>
+        <div class="scard__desc">Custom websites built on WordPress, Shopify, or plain HTML/CSS. Mobile-first, fast, accessible, and structured to convert visitors into clients.</div>
+      </div>
+      <div class="scard">
+        <div class="scard__icon">🛍️</div>
+        <div class="scard__title">Shopify &amp; E-Commerce</div>
+        <div class="scard__desc">Product-focused storefronts with clean UX, optimized checkout, multi-channel marketplace setup, and hands-on training so you own and run your store confidently.</div>
+      </div>
+      <div class="scard">
+        <div class="scard__icon">⚙️</div>
+        <div class="scard__title">WordPress &amp; CMS Build</div>
+        <div class="scard__desc">Theme customization, plugin integration, and full builds on WordPress, Drupal, or Webflow. Your content, your control, no developer dependency.</div>
+      </div>
+      <div class="scard">
+        <div class="scard__icon">🔗</div>
+        <div class="scard__title">Integrations &amp; AI-Powered Workflows</div>
+        <div class="scard__desc">Connect your site to Salesforce, Zapier, HubSpot, Airtable, and more. Build custom AI tools and automations that eliminate repetitive tasks and scale your operations.</div>
+      </div>
+      <div class="scard">
+        <div class="scard__icon">✏️</div>
+        <div class="scard__title">Brand Identity &amp; Logo Design</div>
+        <div class="scard__desc">Logos, color palettes, and brand systems that give your business a professional, consistent look across every touchpoint, print and digital.</div>
+      </div>
+      <div class="scard">
+        <div class="scard__icon">📈</div>
+        <div class="scard__title">SEO, AIO &amp; Paid Ads</div>
+        <div class="scard__desc">On-page SEO, AI-driven content optimization, WCAG 2.2 AA accessibility audits, and paid advertising on Google and Meta. Get found, stay found, and convert at every stage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section--alt" id="process">
+  <div class="container">
+    <span class="label">How It Works</span>
+    <h2 class="section-title">My Process</h2>
+    <p class="section-desc">A clear workflow from first call to launch day, with no surprises along the way.</p>
+
+    <div class="process__grid">
+      <div class="pstep">
+        <div class="pstep__num">01</div>
+        <div class="pstep__icon">💬</div>
+        <div class="pstep__title">Discover</div>
+        <div class="pstep__desc">We talk through your goals, your audience, and what success looks like for your project. No commitment required.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">02</div>
+        <div class="pstep__icon">📐</div>
+        <div class="pstep__title">Plan</div>
+        <div class="pstep__desc">I map out scope, timeline, and deliverables. A clear proposal with flat pricing, so you know exactly what you're getting.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">03</div>
+        <div class="pstep__icon">🔨</div>
+        <div class="pstep__title">Build</div>
+        <div class="pstep__desc">Clean, well-structured code and thoughtful design. Regular check-ins keep us aligned and feedback rounds are built in.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__num">04</div>
+        <div class="pstep__icon">🚀</div>
+        <div class="pstep__title">Launch</div>
+        <div class="pstep__desc">QA testing, accessibility review against WCAG 2.2 AA standards, and go-live. CMS training and ongoing support available after launch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <span class="label">Skills</span>
+    <h2 class="section-title">Tools &amp; Expertise</h2>
+    <p class="section-desc">A broad but practical skillset built over 15+ years of real client work across platforms, industries, and project types.</p>
+
+    <div class="skills__grid">
+      <div class="skill-cat">
+        <div class="skill-cat__title">🖥️ CMS &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">WordPress</span><span class="skill-tag">Shopify</span><span class="skill-tag">Drupal</span>
+          <span class="skill-tag">Webflow</span><span class="skill-tag">Squarespace</span><span class="skill-tag">BigCommerce</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat__title">💻 Frontend &amp; Dev</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML / CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span>
+          <span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">WCAG 2.2 AA</span><span class="skill-tag">Accessibility Remediation</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat__title">🤖 AI &amp; Automation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ChatGPT / Claude</span><span class="skill-tag">Cursor AI</span><span class="skill-tag">Zapier</span>
+          <span class="skill-tag">n8n</span><span class="skill-tag">Airtable Automations</span><span class="skill-tag">AI App Building</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat__title">🔗 Integrations &amp; CRM</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Salesforce</span><span class="skill-tag">HubSpot</span><span class="skill-tag">Airtable</span>
+          <span class="skill-tag">Mailchimp</span><span class="skill-tag">Google Analytics</span><span class="skill-tag">Google Tag Manager</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat__title">🎨 Design Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span><span class="skill-tag">Adobe Photoshop</span><span class="skill-tag">Adobe Illustrator</span>
+          <span class="skill-tag">Adobe InDesign</span><span class="skill-tag">Canva</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat__title">📈 Marketing &amp; Ads</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Google Ads / PPC</span><span class="skill-tag">Meta Ads</span><span class="skill-tag">Email Marketing</span>
+          <span class="skill-tag">SEO / Copywriting</span><span class="skill-tag">Social Media</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section--alt" id="testimonials">
+  <div class="container">
+    <span class="label">Testimonials</span>
+    <h2 class="section-title">What Clients Say</h2>
+    <p class="section-desc">Real feedback from clients across web design, e-commerce, branding, and print.</p>
+
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="tcard__stars">★★★★★</div>
+        <p class="tcard__quote">"After the redesign of my resume and LinkedIn, I landed two jobs. I broke into management and remote work. So many doors have opened that I didn't know were available to me."</p>
+        <div class="tcard__author">
+          <img src="assets/img/testimonial1.jpg" alt="Kuna" class="tcard__avatar">
+          <div>
+            <div class="tcard__name">Kuna</div>
+            <div class="tcard__role">Regional Manager, Zipcar Hawaii &middot; Resume &amp; LinkedIn Client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard__stars">★★★★★</div>
+        <p class="tcard__quote">"My customers were thrilled by the new design, and I am thrilled by how my store performs. I finally have a handle on my own store, and the attention to detail on the SEO and product pages was fantastic."</p>
+        <div class="tcard__author">
+          <img src="assets/img/testimonial2.jpg" alt="Ashley" class="tcard__avatar">
+          <div>
+            <div class="tcard__name">Ashley</div>
+            <div class="tcard__role"><a href="https://www.buttonandbug.com" target="_blank">Button &amp; Bug</a> &middot; Shopify E-Commerce Store</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard__stars">★★★★★</div>
+        <p class="tcard__quote">"Will has done so much for us. We are omni-channel marketplace capable, our PPC campaigns are generating strong leads, and our website is a dream come true. We truly felt like we could trust Will with anything."</p>
+        <div class="tcard__author">
+          <img src="assets/img/testimonial3.jpg" alt="Noelle & Bill" class="tcard__avatar">
+          <div>
+            <div class="tcard__name">Noelle &amp; Bill</div>
+            <div class="tcard__role"><a href="https://www.littlecolorado.com" target="_blank">Little Colorado</a> &middot; E-Commerce &amp; Marketing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section--alt" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div>
+        <span class="label">Contact</span>
+        <h2 class="section-title">Let's Build Something Together</h2>
+        <p style="color:var(--text2);line-height:1.75;margin-bottom:2.5rem;">Ready to get started or just have questions? Reach out and I'll get back to you within one business day.</p>
+
+        <div class="cinfo__item">
+          <div class="cinfo__icon">📞</div>
+          <div><div class="cinfo__lbl">Phone / Text</div><div class="cinfo__val">720-583-4787</div></div>
+        </div>
+        <div class="cinfo__item">
+          <div class="cinfo__icon">📧</div>
+          <div><div class="cinfo__lbl">Email</div><div class="cinfo__val">w_martin@outlook.com</div></div>
+        </div>
+        <div class="cinfo__item">
+          <div class="cinfo__icon">📍</div>
+          <div><div class="cinfo__lbl">Location</div><div class="cinfo__val">Denver, Colorado</div></div>
+        </div>
+        <div class="cinfo__item">
+          <div class="cinfo__icon">💼</div>
+          <div><div class="cinfo__lbl">LinkedIn</div><div class="cinfo__val"><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" style="color:var(--accent)">will-martin1986</a></div></div>
+        </div>
+      </div>
+
+      <div class="cform">
+        <form action="https://formsubmit.co/w_martin@outlook.com" method="POST">
+          <input type="hidden" name="_subject" value="New project inquiry from willpower.codes">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="frow">
+            <div class="ffield">
+              <label class="flabel">First Name</label>
+              <input type="text" name="first_name" class="finput" placeholder="Jane" required>
+            </div>
+            <div class="ffield">
+              <label class="flabel">Last Name</label>
+              <input type="text" name="last_name" class="finput" placeholder="Smith">
+            </div>
+          </div>
+          <div class="ffield">
+            <label class="flabel">Email Address</label>
+            <input type="email" name="email" class="finput" placeholder="jane@yourbusiness.com" required>
+          </div>
+          <div class="ffield">
+            <label class="flabel">Project Type</label>
+            <select name="project_type" class="fselect">
+              <option value="">Select a service...</option>
+              <option>Website Design &amp; Development</option>
+              <option>Shopify / E-Commerce</option>
+              <option>WordPress / CMS Build</option>
+              <option>Brand Identity &amp; Logo</option>
+              <option>AI Workflows &amp; Automation</option>
+              <option>SEO &amp; Integrations</option>
+              <option>Print Design</option>
+              <option>Resume &amp; LinkedIn Design</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="ffield">
+            <label class="flabel">Tell me about your project</label>
+            <textarea name="message" class="ftextarea" placeholder="What are you trying to accomplish? Any details about timeline or budget are helpful." required></textarea>
+          </div>
+          <button type="submit" class="fsubmit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">willpower.codes</div>
+        <div class="footer__tag">Web design and digital strategy for growing businesses. Quality work, honest pricing, no agency overhead.</div>
+      </div>
+      <div>
+        <div class="footer__head">Quick Links</div>
+        <nav class="footer__links">
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#services">Services</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a href="gallery.html">Full Gallery</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer__head">Get in Touch</div>
+        <div class="footer__citem">720-583-4787</div>
+        <div class="footer__citem">w_martin@outlook.com</div>
+        <div class="footer__citem">Denver, Colorado</div>
+        <div style="margin-top:.9rem;"><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" style="color:var(--accent);font-size:.85rem;font-weight:600;">LinkedIn Profile &rarr;</a></div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 willpower.codes &middot; Will Martin &middot; All rights reserved</div>
+      <div class="footer__bottom-links">
+        <a href="https://www.linkedin.com/in/will-martin1986/" target="_blank">LinkedIn</a>
+        <a href="gallery.html">Portfolio Gallery</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top">&#8593;</button>
+
+<script>
+  // ── DARK MODE ──
+  const body = document.body;
+  const themeBtn = document.getElementById('theme-toggle');
+  if (localStorage.getItem('wpTheme') === 'dark') { body.classList.add('dark'); themeBtn.textContent = '☀️'; }
+  themeBtn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    const dark = body.classList.contains('dark');
+    themeBtn.textContent = dark ? '☀️' : '🌙';
+    localStorage.setItem('wpTheme', dark ? 'dark' : 'light');
+  });
+
+  // ── NAV SCROLL ──
+  const mainNav = document.getElementById('main-nav');
+  const scrollTopBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    mainNav.classList.toggle('scrolled', window.scrollY > 50);
+    scrollTopBtn.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+
+  // ── ACTIVE NAV LINK ──
+  const navAs = document.querySelectorAll('.nav__links a');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`.nav__links a[href="#${e.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+
+  // ── MOBILE MENU ──
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-btn').addEventListener('click', () => mobileMenu.classList.add('open'));
+  document.getElementById('menu-close').addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // ── PORTFOLIO FILTER ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.pcard').forEach(c => {
+        const wrongCat = f !== 'all' && c.dataset.cat !== f;
+        const hiddenInAll = f === 'all' && c.dataset.hideAll === 'true';
+        c.classList.toggle('hidden', wrongCat || hiddenInAll);
+      });
+    });
+  });
+  // hide on initial load
+  document.querySelectorAll('.pcard[data-hide-all="true"]').forEach(c => c.classList.add('hidden'));
+
+  // ── SCROLL TOP ──
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
 </html>

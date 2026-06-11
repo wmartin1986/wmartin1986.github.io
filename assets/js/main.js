@@ -96,6 +96,14 @@ modalClose.forEach((modalClose) => {
     })
 })
 
+modalViews.forEach((modalView) => {
+    modalView.addEventListener('click', (e) => {
+        if (e.target === modalView) {
+            modalViews.forEach((mv) => mv.classList.remove('active-modal'))
+        }
+    })
+})
+
 
 /*==================== PORTFOLIO SWIPER  ====================*/
 let swiperPortfolio = new Swiper(".portfolio__container", {
