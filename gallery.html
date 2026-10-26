@@ -1,615 +1,521 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/gallery.css">
-    <link rel="stylesheet" href="assets/css/glightbox.min.css">
-
-    <title>willpower.codes Lightbox Gallery</title>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WLEP8DW36"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2WLEP8DW36');
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio · Will Martin | willpower.codes</title>
+  <meta name="description" content="The full portfolio of Will Martin: web projects managed for Denver International Airport, E-470, the Colorado Attorney General's Office, and more, plus websites, storefronts, brand identities, and campaigns.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfolio · Will Martin">
+  <meta property="og:description" content="Web projects, storefronts, brand identities, and campaigns from willpower.codes.">
+  <meta name="theme-color" content="#F7F6F2">
+  <link rel="icon" type="image/png" href="assets/img/willpower_favicon.png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2WLEP8DW36"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2WLEP8DW36');
+  </script>
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
-    <body>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-        <!--GALLERY NAV-->
-        <div style="padding: 1rem 2rem; background: #1b1915; display: flex; align-items: center; justify-content: space-between;">
-            <a href="index.html" style="color: #c8966b; font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 600; text-decoration: none;">willpower.codes</a>
-            <a href="index.html#contact" style="color: #c8966b; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-decoration: none; border: 1px solid #c8966b; padding: 0.4rem 1rem; border-radius: 4px;">Get in Touch</a>
-        </div>
-        <div style="padding: 1.5rem 2rem 0.5rem; background: #1b1915;">
-            <a href="index.html" style="color: #aaa; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; text-decoration: none;">&#8592; Back to Portfolio</a>
-            <h2 style="color: #fff; font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin: 0.5rem 0 0.25rem;">Portfolio Gallery</h2>
-            <p style="color: #aaa; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; margin: 0 0 1.5rem;">Click any image to view full size with details.</p>
-        </div>
+<header class="site-header" id="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="willpower.codes home"><span class="brand__mark" aria-hidden="true">W</span>willpower.codes</a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
+      <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a class="btn btn--primary btn--sm" href="index.html#contact">Let's talk</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-        <!--GALLERY-->
+<main id="main">
 
-        <main class="gallery-page">
-            <section class="gallery-span">
-                <div class="gallery-item w-2 h-3">
-                    <a href="assets/img/gallery/buttonandbug.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-bnb"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/buttonandbug.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-bnb">
-                      <h3 class="custom-title">Button and Bug</h3>
-                      <span class="gallery-type">E-Commerce Website<br>Shopify<br>SEO</span>
-                      <p class="custom-description">Button and Bug is a website I built and setup with the Shopify Store backend. It leverages modern Shopify 2.0 elements to achieve responsive design for both mobile and desktop resolutions.<br><br> Handcrafted SEO copy really make the front page shine and display the product's unique value to the customer. Product pages uses metafields and custom liquid to get a custom look with dynamic elements. <br><br> Setup top to bottom of the legal, tax and payment elements was setup in a 2-hour meeting. Customer was trained on how to use their store in a 2 hour training session.<br><br><br>See it live:<br></p>
-                      <a href="https://www.buttonandbug.com" target="_blank">www.buttonandbug.com</a>
-                    </div>  
-                  </div>
-                <div class="gallery-item">
-                    <a href="assets/img/gallery/tossuplogo.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-toss"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/tossuplogo.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-toss">
-                      <h3 class="custom-title">Tossup</h3>
-                      <span class="gallery-type">Logo</span>
-                      <p class="custom-description">One of the logos I am most proud of creating while at Microsoft. My team was put on experimental social and one-use apps called "Snacky Apps" for a time. I worked with the design team to collaborate on this logo design, which ended up being used for the official app!</p>
-                    </div>  
-                  </div>
-                <div class="gallery-item w-2 h-3">
-                    <a href="assets/img/gallery/littlecolorado.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-llc"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/littlecolorado.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-llc">
-                      <h3 class="custom-title">Little Colorado</h3>
-                      <span class="gallery-type">E-Commerce Website<br>Shopify<br>SEO<br>Google Ads<br>Email Newsletter</span>
-                      <p class="custom-description">Little Colorado started as an E-Commerce website client and became much more with time, and I grew to essentially manage the entire technical & administrative side of the business. This website evolved over time as I was able to work on it, and features so many cool elements like Shopify 2.0 responsive design, metafields & mega menus.<br><br><br>See it live:<br></p>
-                      www.littlecolorado.com
-                    </div>  
-                  </div>
-                <div class="gallery-item w-2">
-                    <a href="assets/img/gallery/sodura.JPG" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-sodura"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/sodura.JPG" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-sodura">
-                      <h3 class="custom-title">Sodura</h3>
-                      <span class="gallery-type">Logo<br>E-Commerce Website<br>Word Press</span>
-                      <p class="custom-description">Sodura was a client which Little Colorado eventually acquired. They wanted a very simple and easy to use Word Press website with new branding and a focus on simplicity. The logo was designed to be extremely pallatable to printing on wood, black and white, and color. <br><br><br>See it live:<br></p>
-                      <a href="https://www.sodura.com" target="_blank">www.sodura.com</a>
-                    </div>  
-                  </div>
-                  <div class="gallery-item w-3">
-                    <a href="assets/img/gallery/llc_instacarousel.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-carousel"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/llc_instacarousel.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-carousel">
-                      <h3 class="custom-title">The Tot/Little Colorado</h3>
-                      <span class="gallery-type">Social Media<br>Branding<br>SEO</span>
-                      <p class="custom-description">An example of the click-through SEO carousels I would build for Instagram content and promotional use.</p>
-                    </div>  
-                  </div>
-                <div class="gallery-item w-2 h-3">
-                    <a href="assets/img/gallery/woodtoybox.jpg" 
-                    class="glightbox"
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-woodtoybox"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/woodtoybox.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-woodtoybox">
-                      <h3 class="custom-title">WoodToyBox.com</h3>
-                      <span class="gallery-type">Logo<br>E-Commerce Website<br>Shopify<br>SEO</span>
-                      <p class="custom-description">WoodToyBox was a client which became another acquisition of Little Colorado's. They wanted a playful but muted logo that was easy to read in a number of applications with or without the graphic. I settled on a fun text shape with a cute teddy bear graphic. The website features fun typography and simplistic design, focused on drawing the customer's attention to the various toy boxes and chests they offer. Custom copy brand SEO accompanys the design elements, to really sell this product. <br><br><br>See it live:<br></p>
-                      <a href="https://www.woodtoybox.com" target="_blank">www.woodtoybox.com</a>
-                    </div>  
-                  </div>
-                  <div class="gallery-item">
-                    <a href="assets/img/gallery/littlecolorado_amazon.JPG" 
-                       class="glightbox"
-                       data-glightbox="description: .custom-description-llc_amazon"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/littlecolorado_amazon.JPG" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-llc_amazon">
-                      <h3 class="custom-title">Little Colorado Amazon</h3>
-                      <span class="gallery-type">E-Commerce Website<br>Amazon<br>SEO</span>
-                      <p class="custom-description">Once Little Colorado was trademarked and brand registered with Amazon, I built their Amazon fulfillment business from the ground up and included a brand storefront page for customer's to find on Amazon and lend legitimacy to the small business brand in the global market.<br><br><br>See it live:<br></p>
-                      <a href="https://www.amazon.com/stores/LittleColoradoLLC/LittleColoradoLLC/page/13A038DC-80A8-4C2B-89A9-4A206AA68CB5" target="_blank">Little Colorado Amazon.com</a>
-                    </div>  
-                  </div>
-                  <div class="gallery-item w-4">
-                    <a href="assets/img/gallery/LittleandBraveLogo_ColorSlogan.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-lnb"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/LittleandBraveLogo_ColorSlogan.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-lnb">
-                      <h3 class="custom-title">Little & Brave</h3>
-                      <span class="gallery-type">Logo</span>
-                      <p class="custom-description">Logo for the E-Commerce Brand Little & Brave. They wanted a throw-back design to "The Little Red Balloon."</p>
-                      
-                    </div>  
-                  </div>
-                  <div class="gallery-item h-2">
-                    <a href="assets/img/gallery/SimpleconsLookBook.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-amscons"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/SimpleconsLookBook.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-amscons">
-                      <h3 class="custom-title">access.mobile</h3>
-                      <span class="gallery-type">Branding<br>Print Design<br>Poster<br>Logo</span>
-                      <p class="custom-description">access.mobile wanted to brand and promote their values with a colorful poster including some great imagery.</p>
-                      
-                    </div>  
-                  </div>
-                <div class="gallery-item h-2">
-                    <a href="assets/img/gallery/crema.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-crema"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/crema.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-crema">
-                      <h3 class="custom-title">Crema</h3>
-                      <span class="gallery-type">Logo<br>Print Ads</span>
-                      <p class="custom-description">Crema was a client I met through SVGMC while I worked for them. I ended up creating a number of assets for them including the print ads they still run today!</p>
-                    </div>  
-                  </div>
-                  <div class="gallery-item w-2 h-2">
-                    <a href="assets/img/gallery/LittleColoradosocial_full.JPG" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-llc_social"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/LittleColoradosocial_full.JPG" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-llc_social">
-                      <h3 class="custom-title">Little Colorado Social Media</h3>
-                      <span class="gallery-type">Social Media<br>Copywriting<br>SEO</span>
-                      <p class="custom-description">Managed the content creation, copywriting, photography assets & community of the Little Colorado social media for 2+ years. Instagram, Facebook, TikTok, Twitter.<br><br><br><i>*My content from 2020-2022</i><br><br>See it live :<br></p>
-                      <a href="https://www.instagram.com/littlecoloradotoddlers/" target="_blank">Little Colorado Instagram</a>
-                    </div>  
-                  </div>
-                  <div class="gallery-item">
-                    <a href="assets/img/gallery/kenya.png" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-kenya"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/kenya.png" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-kenya">
-                      <h3 class="custom-title">access.mobile</h3>
-                      <span class="gallery-type">Branding<br>Ads<br>Print Design</nr></span>
-                      <p class="custom-description">An ad for access.mobile to be used on the internet and in print for AmHealth Kenya.</p>
-                      
-                    </div>  
-                  </div>
-                <div class="gallery-item w-2">
-                  <a href="assets/img/gallery/NewIdeaLogo.jpg" 
-                  class="glightbox"
-                  data-glightbox="description: .custom-description-newidea"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/NewIdeaLogo.jpg" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-newidea">
-                    <h3 class="custom-title">New Idea Engineering</h3>
-                    <span class="gallery-type">Logo</span>
-                    <p class="custom-description">New Idea wanted a logo that looked simplistic and modern (without being flat) and could easily translate to black and white... but had a little more going on in a subtle way. We eventually landed on this striking blue hue and double line motif.</p>
-                  </div>  
-                </div>
-                <div class="gallery-item w-2 h-3">
-                  <a href="assets/img/gallery/amletterhead.png" 
-                  class="glightbox"
-                  data-glightbox="description: .custom-description-amletter"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/amletterhead.png" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-amletter">
-                    <h3 class="custom-title">access.mobile</h3>
-                    <span class="gallery-type">Print Design<br>Letterhead</span>
-                    <p class="custom-description">access.mobile needed a new letterhead design and I came up with this mix of minimalism and readability that still held onto some color.</p>
-                  </div>  
-                </div>
-                <div class="gallery-item w-3">
-                  <a href="assets/img/gallery/MemoryChests_Logo.jpg" 
-                  class="glightbox"
-                  data-glightbox="description: .custom-description-memory"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/MemoryChests_Logo.jpg" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-memory">
-                    <h3 class="custom-title">Memory Chests</h3>
-                    <span class="gallery-type">Logo</span>
-                    <p class="custom-description">Logo for the E-Commerce Brand Memory Chests. They wanted something that could easily be printed into wood.</p>
-                    
-                  </div>  
-                </div>
-                <div class="gallery-item h-2">
-                  <a href="assets/img/gallery/llc_email.JPG" 
-                  class="glightbox"
-                  data-glightbox="description: .custom-description-llc_email"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/llc_email.JPG" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-llc_email">
-                    <h3 class="custom-title">Little Colorado Newsletters</h3>
-                    <span class="gallery-type">Email Marketing<br>Newsletter<br>Copywriting<br>SEO</span>
-                    <p class="custom-description">Sent monthly newsletters to the customers of Little Colorado. Marketing customer journeys, promoting sales, and highlighting new products</p>
-                    
-                  </div>  
-                </div>
-                <div class="gallery-item h-2">
-                  <a href="assets/img/gallery/am_presspage.jpg" 
-                  class="glightbox"
-                  data-glightbox="description: .custom-description-am_press"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/am_presspage.jpg" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-am_press">
-                    <h3 class="custom-title">access.mobile</h3>
-                    <span class="gallery-type">Branding<br>Press Page<br>Print & File Design</nr></span>
-                    <p class="custom-description">I designed the Press Page that was distributed in 2019 which showcases access.mobile's various appearance in the press and media. This was designed for use as a distributable Word document.</p>
-                    
-                  </div>  
-                </div>
-                
-                <div class="gallery-item h-2">
-                    <a href="assets/img/gallery/KunaResume.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-kuna"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/KunaResume.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-kuna">
-                      <h3 class="custom-title">Kuna's Resume</h3>
-                      <span class="gallery-type">Branding<br>Logo<br>Resume<br>LinkedIn</span>
-                      <p class="custom-description">Kuna wanted a resume that would stand out in a number of ways to a number of different professions. He was able to carry this branding & logo into his social media and marketing of himself.<br><br>This logo features playful dots leading the eye to Kuna's name and capping out the copy extremely well. The color draws in the reader without distracting from the content and easily switches to black & white.</p>
-                    </div>  
-                  </div>
-                <div class="gallery-item">
-                    <a href="assets/img/gallery/rivercards.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-river"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/rivercards.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-river">
-                      <h3 class="custom-title">River's Business Cards</h3>
-                      <span class="gallery-type">Branding<br>Logo<br>Business Cards</span>
-                      <p class="custom-description">River had a need to distribute business cards that people wouldn't want to throw away. We agreed an eye-catching design would convince many people to hang onto his card. He was able to build a successful client-base, and I still see his cards being held onto today!</p>
-                    </div>  
-                  </div>
-                  <div class="gallery-item h-2">
-                    <a href="assets/img/gallery/homeroom.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-yoga"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/homeroom.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-yoga">
-                      <h3 class="custom-title">Homeroom Yoga</h3>
-                      <span class="gallery-type">Branding<br>Logo<br>Business Cards</span>
-                      <p class="custom-description">The owner of Homeroom Yoga wanted a new look that could look striking in black background, since their studio was a modern design in black. She also wanted her Hawaiian heritage to show through on her business cards. I got her the natural, rough sketch look she wanted in her logo and she still uses the design in her studios today. Though they did move away from the black!</p>
-                    </div>  
-                  </div>
-                <div class="gallery-item w-2 h-3">
-                    <a href="assets/img/gallery/Zumba.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-zumba"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/Zumba.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-zumba">
-                      <h3 class="custom-title">Zumba Ad for Candi</h3>
-                      <span class="gallery-type">Poster<br>Print Design</span>
-                      <p class="custom-description">A Zumba instructor I knew was going to be teaching Zumba for Microsoft and she needed a way to promote the class. I offered to create her a poster and distribute it, and was able to join the class!</p>
-                    </div>  
-                  </div>
-                  <div class="gallery-item w-2">
-                    <a href="assets/img/gallery/pineda.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-pineda"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/pineda.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-pineda">
-                      <h3 class="custom-title">Pineda Chiropractic</h3>
-                      <span class="gallery-type">Logo<br>Business Cards</span>
-                      <p class="custom-description">Dr. Pineda wanted something fresh and artistic for her business cards.</p>
-                    </div>  
-                  </div>
-                  <div class="gallery-item h-2">
-                    <a href="assets/img/gallery/PrideParade.jpg" 
-                    class="glightbox"
-                    data-glightbox="description: .custom-description-pride"
-                    data-desc-position="right"
-                    >
-                      <img src="assets/img/gallery/PrideParade.jpg" alt="" class="gallery-img">
-                    </a>
-                    <div class="custom-description-pride">
-                      <h3 class="custom-title">Microsoft</h3>
-                      <span class="gallery-type">Poster<br>Print Design</span>
-                      <p class="custom-description">I got to be involved in a lot of promotional materials for Microsoft, and although the Microsoft corporation design concept is ultra-minimal - I really enjoyed this design. Always happy to be and ally and show support for good causes like equality!</p>
-                    </div>  
-                  </div>
-                  
-                <div class="gallery-item h-2">
-                  <a href="assets/img/gallery/KathyResume.jpg" 
-                  class="glightbox"
-                  data-glightbox="description: .custom-description-kathy"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/KathyResume.jpg" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-kathy">
-                    <h3 class="custom-title">Kathy's Resume</h3>
-                    <span class="gallery-type">Branding<br>Resume</span>
-                    <p class="custom-description">Kathleen is a professional woman who has a very diverse history in a number of different roles. She wanted a resume that looked fresh to younger eyes, and would tell the reader right away that she was technically savvy... while still remaining traditionally presentable to recruiters. I sold her on this professional and readable formatting with an accompanying black & white friendly version. With this resume, she began a career as an apprentice real-estate agent and still does that today!</p>
-                  </div>  
-                </div>
-                <div class="gallery-item">
-                    <a href="assets/img/gallery/GreenResume.jpg" 
-                       class="glightbox"
-                       data-glightbox="description: .custom-description-greenresume"
-                  data-desc-position="right"
-                  >
-                    <img src="assets/img/gallery/GreenResume.jpg" alt="" class="gallery-img">
-                  </a>
-                  <div class="custom-description-greenresume">
-                    <h3 class="custom-title">Green Resume Design</h3>
-                    <span class="gallery-type">Logo<br>Branding<br>Resume</span>
-                    <p class="custom-description">This is the resume that got Microsoft to give me a chance! I was given a lot of extra design work and learned from a lot of very smart people during my time at the company.</p>
-                  </div>  
-                </div>
-                <div class="gallery-item">
-                  <a href="assets/img/gallery/Runpreview.jpg" 
-                     class="glightbox"
-                     data-glightbox="description: .custom-description-run"
-                data-desc-position="right"
-                >
-                  <img src="assets/img/gallery/Runpreview.jpg" alt="" class="gallery-img">
-                </a>
-                <div class="custom-description-run">
-                  <h3 class="custom-title">Microsoft</h3>
-                  <span class="gallery-type">Poster<br>Print Design</span>
-                  <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-                </div>  
-              </div>
-              <div class="gallery-item">
-                <a href="assets/img/gallery/Pokerpreview.jpg" 
-                   class="glightbox"
-                   data-glightbox="description: .custom-description-run"
-              data-desc-position="right"
-              >
-                <img src="assets/img/gallery/Pokerpreview.jpg" alt="" class="gallery-img">
-              </a>
-              <div class="custom-description-run">
-                <h3 class="custom-title">Microsoft</h3>
-                <span class="gallery-type">Poster<br>Print Design</span>
-                <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-              </div>  
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/gallery/Boardgamesposter.jpg" 
-                 class="glightbox"
-                 data-glightbox="description: .custom-description-run"
-            data-desc-position="right"
-            >
-              <img src="assets/img/gallery/Boardgamesposter.jpg" alt="" class="gallery-img">
-            </a>
-            <div class="custom-description-run">
-              <h3 class="custom-title">Microsoft</h3>
-              <span class="gallery-type">Poster<br>Print Design</span>
-              <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-            </div>  
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/gallery/Auctionpreview.jpg" 
-                class="glightbox"
-                data-glightbox="description: .custom-description-run"
-            data-desc-position="right"
-            >
-              <img src="assets/img/gallery/Auctionpreview.jpg" alt="" class="gallery-img">
-            </a>
-            <div class="custom-description-run">
-              <h3 class="custom-title">Microsoft</h3>
-              <span class="gallery-type">Poster<br>Print Design</span>
-              <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-            </div>  
-          </div>
-          <div class="gallery-item">
-            <a href="assets/img/gallery/Potluckpreview.jpg" 
-              class="glightbox"
-              data-glightbox="description: .custom-description-run"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/Potluckpreview.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-run">
-            <h3 class="custom-title">Microsoft</h3>
-            <span class="gallery-type">Poster<br>Print Design</span>
-            <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-          </div>  
-          </div>
-          <div class="gallery-item">
-            <a href="assets/img/gallery/Nerfpreview.jpg" 
-              class="glightbox"
-              data-glightbox="description: .custom-description-run"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/Nerfpreview.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-run">
-            <h3 class="custom-title">Microsoft</h3>
-            <span class="gallery-type">Poster<br>Print Design</span>
-            <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-          </div>  
-          </div>
-          <div class="gallery-item w-2">
-            <a href="assets/img/gallery/SummerGamesPreview.jpg" 
-              class="glightbox"
-              data-glightbox="description: .custom-description-run"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/SummerGamesPreview.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-run">
-            <h3 class="custom-title">Microsoft</h3>
-            <span class="gallery-type">Poster<br>Print Design</span>
-            <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-          </div>  
-          </div>
-          <div class="gallery-item">
-            <a href="assets/img/gallery/Beerprev.jpg" 
-              class="glightbox"
-              data-glightbox="description: .custom-description-run"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/Beerprev.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-run">
-            <h3 class="custom-title">Microsoft</h3>
-            <span class="gallery-type">Poster<br>Print Design</span>
-            <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-          </div>  
-          </div>
-          <div class="gallery-item">
-            <a href="assets/img/gallery/Magic.jpg" 
-              class="glightbox"
-              data-glightbox="description: .custom-description-run"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/Magic.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-run">
-            <h3 class="custom-title">Microsoft</h3>
-            <span class="gallery-type">Poster<br>Print Design</span>
-            <p class="custom-description">One of the many poster designs I made for Microsoft events.</p>
-          </div>  
-          </div>
-          <div class="gallery-item w-2">
-            <a href="assets/img/gallery/OrianaConcert.jpg" 
-            class="glightbox"
-            data-glightbox="description: .custom-description-orianaxmas"
-            data-desc-position="right"
-            >
-              <img src="assets/img/gallery/OrianaConcert.jpg" alt="" class="gallery-img">
-            </a>
-            <div class="custom-description-orianaxmas">
-              <h3 class="custom-title">Oriana Chorale Chrismas Concert</h3>
-              <span class="gallery-type">Print Design<br>Ads</span>
-              <p class="custom-description">A specially sized promotional graphic for Oriana Chorale's Christmas Concert.</p>
-            </div>  
-          </div>   
-          <div class="gallery-item">
-            <a href="assets/img/gallery/Oriana2x3.jpg" 
-            class="glightbox"
-            data-glightbox="description: .custom-description-orianapop"
-            data-desc-position="right"
-            >
-              <img src="assets/img/gallery/Oriana2x3.jpg" alt="" class="gallery-img">
-            </a>
-            <div class="custom-description-orianapop">
-              <h3 class="custom-title">Oriana Chorale Pop Concert</h3>
-              <span class="gallery-type">Print Design<br>Ads</span>
-              <p class="custom-description">A poster I designed for the Oriana Chorale Pop Concert.</p>
-            </div>  
-          </div>                           
-        <div class="gallery-item w-2">
-          <a href="assets/img/gallery/rockymountain.jpg" 
-          class="glightbox"
-          data-glightbox="description: .custom-description-rocky"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/rockymountain.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-rocky">
-            <h3 class="custom-title">Rocky Mountain Arts Association</h3>
-            <span class="gallery-type">Logo</span>
-            <p class="custom-description">Rocky Mountain AA held a competition for logo design, and I won! They used this logo I created for a few years before redesigning to a text-only logo.</p>
-          </div>  
-        </div>
-          <div class="gallery-item">
-            <a href="assets/img/gallery/redribbonball.jpg" 
-              class="glightbox"
-              data-glightbox="description: .custom-description-redribbon"
-          data-desc-position="right"
-          >
-            <img src="assets/img/gallery/redribbonball.jpg" alt="" class="gallery-img">
-          </a>
-          <div class="custom-description-redribbon">
-            <h3 class="custom-title">Southern Colorado AIDS Project</h3>
-            <span class="gallery-type">Poster<br>Print Design</span>
-            <p class="custom-description">A poster I did as an ally for the Southern Colorado AIDS Project Red Ribbon Ball many years ago. Roseanne told me she liked the poster a lot.</p>
-          </div>  
-          </div>
-          <div class="gallery-item">
-            <a href="assets/img/gallery/bowling.jpg" 
-            class="glightbox"
-            data-glightbox="description: .custom-description-svgmcbowl"
-            data-desc-position="right"
-            >
-              <img src="assets/img/gallery/bowling.jpg" alt="" class="gallery-img">
-            </a>
-            <div class="custom-description-svgmcbowl">
-              <h3 class="custom-title">SVGMC</h3>
-              <span class="gallery-type">Website<br>Print Design<br>Ads</span>
-              <p class="custom-description">A poster I designed for use on the SVGMC website (which I integrated for them directly) and for printing.</p>
-            </div>  
-          </div>
-          
-                
-            </section>
-        </main>
-        <div style="text-align: center; padding: 3rem 2rem; background: #1b1915;">
-            <p style="color: #ccc; font-family: 'Montserrat', sans-serif; font-size: 1rem; margin-bottom: 1.25rem;">Like what you see? Let's talk about your project.</p>
-            <a href="index.html#contact" style="background: #c8966b; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 0.75rem 2rem; border-radius: 4px; text-decoration: none;">Get in Touch</a>
-        </div>
+<section class="container page-head">
+  <a class="link rise" href="index.html" style="font-size:14px">← Back to home</a>
+  <div class="page-head__row">
+    <div class="page-head__text">
+      <h1 class="rise rise-1">The full portfolio<span>.</span></h1>
+      <p class="rise rise-2">Web projects I've managed, websites and storefronts, brand identities, and campaigns for Microsoft and others. Select any piece for the full story.</p>
+    </div>
+    <div class="page-stats rise rise-3">
+      <div class="stat"><p class="stat__num" data-count-total>51</p><p class="meta">Pieces shown</p></div>
+      <div class="stat"><p class="stat__num">11</p><p class="meta">Projects managed</p></div>
+      <div class="stat"><p class="stat__num">2007<span>→</span></p><p class="meta">Building since</p></div>
+    </div>
+  </div>
+</section>
 
-        <script src="assets/js/glightbox.min.js"></script>
+<div class="filters">
+  <div class="container filters__inner" role="group" aria-label="Filter portfolio">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All work <span class="chip__count"></span></button>
+    <button class="chip" type="button" data-filter="managed" aria-pressed="false">Projects I've managed <span class="chip__count"></span></button>
+    <button class="chip" type="button" data-filter="web" aria-pressed="false">Websites &amp; e-commerce <span class="chip__count"></span></button>
+    <button class="chip" type="button" data-filter="brand" aria-pressed="false">Brand &amp; identity <span class="chip__count"></span></button>
+    <button class="chip" type="button" data-filter="print" aria-pressed="false">Print &amp; campaigns <span class="chip__count"></span></button>
+    <button class="chip" type="button" data-filter="marketing" aria-pressed="false">Marketing &amp; social <span class="chip__count"></span></button>
+    <button class="chip" type="button" data-filter="resume" aria-pressed="false">Resumes <span class="chip__count"></span></button>
+  </div>
+</div>
 
-        <script type="text/javascript">
-            const lightbox = GLightbox({ loop: true });
-        </script>
-        
-    </body>
+<!-- ── PROJECTS I'VE MANAGED ── -->
+<section class="container group" id="managed" data-group="managed" aria-labelledby="managed-title">
+  <div class="group__head">
+    <div>
+      <p class="group__kicker">Projects I've managed</p>
+      <h2 id="managed-title">Client web projects, discovery to launch.</h2>
+      <p>Web projects I've managed for agency and freelance clients as a digital project manager and technical sales engineer, from discovery and scoping through launch and ongoing operations.</p>
+    </div>
+  </div>
+  <ul class="managed-grid">
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-tile-name="Project C.U.R.E." data-tile-domain="projectcure.org" data-url="https://projectcure.org/" data-url-label="projectcure.org">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">projectcure.org</span></span>
+          <span class="brand-tile" aria-hidden="true"><span class="brand-tile__name">Project C.U.R.E.</span><span class="brand-tile__domain">projectcure.org</span></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2023 · Project manager</span>
+          <span class="managed-card__title">Project C.U.R.E.</span>
+          <span class="managed-card__short">Full WordPress redesign and build with HubSpot, Salesforce, Classy, and Stripe integrations.</span>
+          <span class="managed-card__tags">WordPress · Integrations · Automation · Graphic design</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>Project C.U.R.E. delivers donated medical supplies and equipment to health facilities around the world. I managed a full website redesign and build on WordPress, with custom blocks and custom graphics.</p><p>The build integrated HubSpot CRM, Salesforce, Classy and other donation platforms, and Stripe, and included a custom automation app for events.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-tile-name="Denver International Airport" data-tile-domain="flydenver.com" data-url="https://www.flydenver.com/" data-url-label="flydenver.com">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">flydenver.com</span></span>
+          <span class="brand-tile" aria-hidden="true"><span class="brand-tile__name">Denver International Airport</span><span class="brand-tile__domain">flydenver.com</span></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2023 – 2024 · Project &amp; account manager</span>
+          <span class="managed-card__title">Denver International Airport</span>
+          <span class="managed-card__short">Intranet and extranet resource sites, page building, and custom integrations.</span>
+          <span class="managed-card__tags">Website · Integrations · Discovery</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>I managed intranet and extranet resource sites for Denver International Airport, including page building, custom integrations, and statements of work and scopes. I also led client discovery and account management.</p><p>The intranet and extranet sites are private, so they aren't shown here.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/nativecampervans.webp" data-url="https://nativecampervans.com/" data-url-label="nativecampervans.com">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">nativecampervans.com</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/nativecampervans-sm.webp" width="760" height="707" alt="Native Campervans homepage" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2024 · Project manager</span>
+          <span class="managed-card__title">Native Campervans</span>
+          <span class="managed-card__short">E-commerce automation into Airtable and Salesforce, with lead qualification in HubSpot.</span>
+          <span class="managed-card__tags">E-commerce · Integrations · Automation</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>Native Campervans rents fully outfitted campervans from Denver, Las Vegas, Salt Lake City, Phoenix, and Los Angeles. I managed the automation that connects their e-commerce store to Airtable and Salesforce, plus lead qualification through HubSpot.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-tile-name="Kaneka Ubiquinol" data-tile-domain="ubiquinol.org" data-url="https://ubiquinol.org/" data-url-label="ubiquinol.org">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">ubiquinol.org</span></span>
+          <span class="brand-tile" aria-hidden="true"><span class="brand-tile__name">Kaneka Ubiquinol</span><span class="brand-tile__domain">ubiquinol.org</span></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2024 · Project manager</span>
+          <span class="managed-card__title">Ubiquinol</span>
+          <span class="managed-card__short">WordPress redesign with full WooCommerce store integration and Salesforce.</span>
+          <span class="managed-card__tags">WordPress · E-commerce · Integrations · Graphic design</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>Ubiquinol.org is a science-backed education site for Kaneka Ubiquinol. I managed a full website redesign on WordPress, with full WooCommerce store integration, Salesforce integrations, and graphic design.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/newq.webp" data-url="https://newq.com/shop/" data-url-label="newq.com/shop">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">newq.com/shop</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/newq-sm.webp" width="760" height="844" alt="NewQ online shop for Kaneka Ubiquinol supplements" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2024 · Project manager</span>
+          <span class="managed-card__title">NewQ</span>
+          <span class="managed-card__short">Full e-commerce website redesign and a new WooCommerce shop.</span>
+          <span class="managed-card__tags">WordPress · E-commerce · Website</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>I managed a full e-commerce website redesign for NewQ, including a new WooCommerce shop for Kaneka Ubiquinol supplements with filtering by dietary needs, quantity, dose, and brand.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/dcleaners.webp" data-url="https://www.dcleaners.com/" data-url-label="dcleaners.com">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">dcleaners.com</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/dcleaners-sm.webp" width="760" height="844" alt="Dependable Cleaners homepage" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2024 – 2025 · Project &amp; account manager</span>
+          <span class="managed-card__title">Dependable Cleaners</span>
+          <span class="managed-card__short">Website operations, automations, discovery, and account management.</span>
+          <span class="managed-card__tags">WebOps · Automation · Discovery</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>Dependable Cleaners is a Denver dry cleaner with more than 20 locations across Denver and Boulder. I handled website operations and automations, and led discovery and account management.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/coag.webp" data-url="https://coag.gov/" data-url-label="coag.gov">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">coag.gov</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/coag-sm.webp" width="760" height="844" alt="Colorado Attorney General website homepage" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2025 · Project manager</span>
+          <span class="managed-card__title">Colorado Attorney General</span>
+          <span class="managed-card__short">Custom training platform integrated with WordPress.</span>
+          <span class="managed-card__tags">WordPress · Web app · Integrations</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>I managed a custom training platform and its integration with WordPress for the Colorado Attorney General's Office.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/alta.webp" data-url="https://altaconvenience.com/" data-url-label="altaconvenience.com">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">altaconvenience.com</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/alta-sm.webp" width="760" height="844" alt="Alta Convenience homepage" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2025 · Project manager &amp; web operations</span>
+          <span class="managed-card__title">Alta Convenience</span>
+          <span class="managed-card__short">WordPress operations, custom animations, opt-ins, and alcohol-compliance automations.</span>
+          <span class="managed-card__tags">WordPress · WebOps · E-commerce · Automation</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>Alta Convenience runs convenience stores and gas stations in Colorado, Wyoming, and New Mexico. I managed website operations and WordPress, custom animations, user opt-ins, e-commerce functionality, and automations for alcohol-industry qualification requirements.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/cih.webp" data-url="https://www.c-ih.com/" data-url-label="c-ih.com">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">c-ih.com</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/cih-sm.webp" width="760" height="844" alt="C&amp;IH industrial hygiene consulting homepage" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2025 · Project manager</span>
+          <span class="managed-card__title">C&amp;IH</span>
+          <span class="managed-card__short">WordPress redesign, lead automation, and a full SEO content rewrite.</span>
+          <span class="managed-card__tags">WordPress · Website · SEO · Copywriting · Automation</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>C&amp;IH provides industrial and occupational hygiene consulting. I managed a full website redesign on WordPress, end-to-end lead automation, and a full SEO rewrite of the site's content.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/halepetdoor.webp" data-url="https://www.halepetdoor.com/" data-url-label="halepetdoor.com">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">halepetdoor.com</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/halepetdoor-sm.webp" width="760" height="844" alt="Hale Pet Door online store homepage" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2025 – 2026 · Project manager</span>
+          <span class="managed-card__title">Hale Pet Door</span>
+          <span class="managed-card__short">Full store build with wholesaler storefronts, ERP, and ShipStation integrations.</span>
+          <span class="managed-card__tags">Shopify · E-commerce · SEO · Integrations · Automation</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>Hale Pet Door makes dog and cat doors in the USA. I managed a full e-commerce store build and website redesign with full custom graphics and full SEO.</p><p>The project added custom wholesaler store websites, ERP and ShipStation integrations, and custom automations for e-commerce, fulfillment, and accounting.</p></div>
+    </li>
+
+    <li class="managed-card" data-cat="managed">
+      <button type="button" data-full="assets/img/managed/e470.webp" data-url="https://e470.com/camera" data-url-label="e470.com/camera">
+        <span class="browser"><span class="browser__frame">
+          <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">e470.com/camera</span></span>
+          <span class="browser__shot"><img src="assets/img/managed/e470-sm.webp" width="760" height="844" alt="E-470 live traffic camera map" loading="lazy" decoding="async"></span>
+        </span></span>
+        <span class="managed-card__body">
+          <span class="meta">2026 · Project manager &amp; web operations</span>
+          <span class="managed-card__title">E-470</span>
+          <span class="managed-card__short">Custom web app showing live camera feeds along the highway.</span>
+          <span class="managed-card__tags">Web app · WebOps</span>
+        </span>
+      </button>
+      <div class="card-desc" hidden><p>E-470 is the express toll highway along the eastern Denver metro area. I managed a full custom web app that displays live cameras across the highway, along with website operations management.</p></div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ── DESIGN & BUILD WORK ── -->
+<section class="container group" id="work" data-group="work" aria-labelledby="work-title">
+  <div class="group__head">
+    <h2 id="work-title" data-work-title>Design &amp; build work</h2>
+    <span class="meta" data-work-count></span>
+  </div>
+  <ul class="masonry">
+
+    <li class="work-card" data-cat="web"><button type="button" data-full="assets/img/work/button-and-bug.webp" data-url="https://www.buttonandbug.com" data-url-label="buttonandbug.com">
+      <span class="work-card__media"><img src="assets/img/work/button-and-bug-sm.webp" width="691" height="938" alt="Button &amp; Bug Shopify storefront homepage" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Website &amp; e-commerce</span><span class="work-card__title">Button &amp; Bug</span><span class="work-card__short">Shopify 2.0 storefront with metafield-driven product pages.</span><span class="work-card__tags">Shopify · E-commerce · SEO</span></span>
+    </button><div class="card-desc" hidden><p>Button &amp; Bug is a website I built and set up on Shopify. It uses Shopify 2.0 sections for responsive design on mobile and desktop, and handcrafted SEO copy makes the homepage shine by showing the product's unique value to the customer.</p><p>Product pages use metafields and custom Liquid for a custom look with dynamic elements. I set up the legal, tax, and payment configuration top to bottom in a two-hour meeting, then trained the owner on running their store in a two-hour session.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/tossup-logo.webp">
+      <span class="work-card__media"><img src="assets/img/work/tossup-logo-sm.webp" width="512" height="512" alt="Tossup app logo" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Tossup</span><span class="work-card__short">Logo for an experimental Microsoft app, used in the official release.</span><span class="work-card__tags">Logo · App</span></span>
+    </button><div class="card-desc" hidden><p>One of the logos I'm most proud of creating while at Microsoft. My team was assigned to experimental social and single-use apps called “Snacky Apps” for a time. I collaborated with the design team on this logo, which ended up being used for the official app!</p></div></li>
+
+    <li class="work-card" data-cat="web"><button type="button" data-full="assets/img/work/little-colorado.webp" data-url="https://www.littlecolorado.com" data-url-label="littlecolorado.com">
+      <span class="work-card__media"><img src="assets/img/work/little-colorado-sm.webp" width="691" height="938" alt="Little Colorado storefront homepage" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Website &amp; e-commerce</span><span class="work-card__title">Little Colorado</span><span class="work-card__short">A website client that grew into running the whole technical side.</span><span class="work-card__tags">Shopify · SEO · Google Ads · Email</span></span>
+    </button><div class="card-desc" hidden><p>Little Colorado started as an e-commerce website client and became much more with time: I grew to manage the entire technical and administrative side of the business.</p><p>The website evolved as I worked on it, with Shopify 2.0 responsive design, metafields, and mega menus.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-pride.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-pride-sm.webp" width="760" height="1175" alt="Microsoft Pride poster reading Proud together" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Pride poster</span><span class="work-card__short">Promotional poster for Microsoft's Pride parade group.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>I got to be involved in a lot of promotional materials for Microsoft, and although Microsoft's corporate design concept is ultra-minimal, I really enjoyed this design. Always happy to be an ally and show support for good causes like equality!</p></div></li>
+
+    <li class="work-card" data-cat="web"><button type="button" data-full="assets/img/work/sodura.webp" data-url="https://www.sodura.com" data-url-label="sodura.com">
+      <span class="work-card__media"><img src="assets/img/work/sodura-sm.webp" width="760" height="377" alt="Sodura website homepage" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Website &amp; logo</span><span class="work-card__title">Sodura</span><span class="work-card__short">Simple WordPress site and a logo built to print on wood.</span><span class="work-card__tags">WordPress · Logo · E-commerce</span></span>
+    </button><div class="card-desc" hidden><p>Sodura was a client that Little Colorado eventually acquired. They wanted a very simple, easy-to-use WordPress website with new branding and a focus on simplicity.</p><p>I designed the logo to be extremely friendly to printing on wood, in black and white, and in color.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/little-and-brave-logo.webp">
+      <span class="work-card__media"><img src="assets/img/work/little-and-brave-logo-sm.webp" width="760" height="233" alt="Little and Brave logo with a red balloon" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo</span><span class="work-card__title">Little &amp; Brave</span><span class="work-card__short">A throwback logo inspired by “The Little Red Balloon.”</span><span class="work-card__tags">Logo</span></span>
+    </button><div class="card-desc" hidden><p>Logo for the e-commerce brand Little &amp; Brave. They wanted a throwback design to “The Little Red Balloon.”</p></div></li>
+
+    <li class="work-card" data-cat="web"><button type="button" data-full="assets/img/work/woodtoybox.webp" data-url="https://www.woodtoybox.com" data-url-label="woodtoybox.com">
+      <span class="work-card__media"><img src="assets/img/work/woodtoybox-sm.webp" width="691" height="1000" alt="WoodToyBox storefront homepage" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Website &amp; logo</span><span class="work-card__title">WoodToyBox</span><span class="work-card__short">Playful logo and a product-first Shopify storefront.</span><span class="work-card__tags">Shopify · Logo · SEO</span></span>
+    </button><div class="card-desc" hidden><p>WoodToyBox became another of Little Colorado's acquisitions. They wanted a playful but muted logo that's easy to read in a number of applications, with or without the graphic, so I settled on a fun text shape with a cute teddy bear graphic.</p><p>The website features fun typography and simple design focused on drawing attention to the toy boxes and chests they offer, with custom brand SEO copy to really sell the product.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/access-mobile-kenya-ad.webp">
+      <span class="work-card__media"><img src="assets/img/work/access-mobile-kenya-ad-sm.webp" width="760" height="1114" alt="access.mobile patient engagement ad for AmHealth Kenya" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">access.mobile</span><span class="work-card__title">AmHealth Kenya ad</span><span class="work-card__short">Web and print ad for AmHealth Kenya.</span><span class="work-card__tags">Branding · Ads · Print design</span></span>
+    </button><div class="card-desc" hidden><p>An ad for access.mobile, used on the internet and in print for AmHealth Kenya.</p></div></li>
+
+    <li class="work-card" data-cat="marketing"><button type="button" data-full="assets/img/work/little-colorado-carousels.webp">
+      <span class="work-card__media"><img src="assets/img/work/little-colorado-carousels-sm.webp" width="760" height="380" alt="Little Colorado Instagram carousel slides" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Little Colorado</span><span class="work-card__title">Instagram SEO carousels</span><span class="work-card__short">Click-through carousels for Instagram and promotions.</span><span class="work-card__tags">Social media · Branding · SEO</span></span>
+    </button><div class="card-desc" hidden><p>An example of the click-through SEO carousels I built for Instagram content and promotional use.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/new-idea-logo.webp">
+      <span class="work-card__media"><img src="assets/img/work/new-idea-logo-sm.webp" width="760" height="456" alt="New Idea Engineering logo" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo</span><span class="work-card__title">New Idea Engineering</span><span class="work-card__short">Simple and modern without being flat.</span><span class="work-card__tags">Logo</span></span>
+    </button><div class="card-desc" hidden><p>New Idea wanted a logo that looked simple and modern without being flat, could easily translate to black and white, and had a little more going on in a subtle way. We eventually landed on this striking blue hue and double-line motif.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-giving-5k.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-giving-5k-sm.webp" width="760" height="1175" alt="Giving 5K Run event poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Giving 5K Run</span><span class="work-card__short">Event poster for a Microsoft giving campaign run.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="web"><button type="button" data-full="assets/img/work/little-colorado-amazon.webp" data-url="https://www.amazon.com/stores/LittleColoradoLLC/LittleColoradoLLC/page/13A038DC-80A8-4C2B-89A9-4A206AA68CB5" data-url-label="Little Colorado on Amazon">
+      <span class="work-card__media"><img src="assets/img/work/little-colorado-amazon-sm.webp" width="760" height="528" alt="Little Colorado Amazon brand storefront" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Little Colorado</span><span class="work-card__title">Amazon brand store</span><span class="work-card__short">Amazon fulfillment business and brand storefront, built from the ground up.</span><span class="work-card__tags">Amazon · E-commerce · SEO</span></span>
+    </button><div class="card-desc" hidden><p>Once Little Colorado was trademarked and brand-registered with Amazon, I built their Amazon fulfillment business from the ground up, including a brand storefront page that helps customers find them on Amazon and lends the small business legitimacy in the global market.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/homeroom-yoga.webp">
+      <span class="work-card__media"><img src="assets/img/work/homeroom-yoga-sm.webp" width="691" height="1189" alt="Homeroom Yoga logo and business card" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo &amp; business cards</span><span class="work-card__title">Homeroom Yoga</span><span class="work-card__short">A hand-drawn mark built to stand out on black.</span><span class="work-card__tags">Branding · Logo · Business cards</span></span>
+    </button><div class="card-desc" hidden><p>The owner of Homeroom Yoga wanted a new look that would be striking on a black background, since their studio was a modern design in black. She also wanted her Hawaiian heritage to show through on her business cards.</p><p>I got her the natural, rough-sketch look she wanted in her logo, and she still uses the design in her studios today, though they did move away from the black!</p></div></li>
+
+    <li class="work-card" data-cat="resume"><button type="button" data-full="assets/img/work/kuna-resume.webp">
+      <span class="work-card__media"><img src="assets/img/work/kuna-resume-sm.webp" width="760" height="984" alt="Kuna's resume with personal logo" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Kuna</span><span class="work-card__title">Kuna's resume &amp; brand</span><span class="work-card__short">A personal brand that carried into LinkedIn and social.</span><span class="work-card__tags">Branding · Logo · Resume · LinkedIn</span></span>
+    </button><div class="card-desc" hidden><p>Kuna wanted a resume that would stand out in a number of ways to a number of different professions. He carried this branding and logo into his social media and his self-marketing.</p><p>The logo features playful dots that lead the eye to Kuna's name and cap off the copy. The color draws the reader in without distracting from the content, and it switches easily to black and white.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/oriana-goes-pop.webp">
+      <span class="work-card__media"><img src="assets/img/work/oriana-goes-pop-sm.webp" width="600" height="900" alt="Oriana Goes Pop concert poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Oriana Chorale</span><span class="work-card__title">Oriana Goes Pop!</span><span class="work-card__short">Concert poster for Oriana Chorale's pop concert.</span><span class="work-card__tags">Print design · Ads</span></span>
+    </button><div class="card-desc" hidden><p>A poster I designed for the Oriana Chorale Pop Concert.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/memory-chests-logo.webp">
+      <span class="work-card__media"><img src="assets/img/work/memory-chests-logo-sm.webp" width="760" height="285" alt="MemoryChests.com logo" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo</span><span class="work-card__title">Memory Chests</span><span class="work-card__short">A logo designed to be printed into wood.</span><span class="work-card__tags">Logo</span></span>
+    </button><div class="card-desc" hidden><p>Logo for the e-commerce brand Memory Chests. They wanted something that could easily be printed into wood.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-board-games.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-board-games-sm.webp" width="760" height="1175" alt="Board Games for Giving tournament poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Board Games for Giving</span><span class="work-card__short">Tournament poster for a Microsoft giving campaign event.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/crema-print-ad.webp">
+      <span class="work-card__media"><img src="assets/img/work/crema-print-ad-sm.webp" width="760" height="923" alt="Crema Coffee Roasting Company print ad" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Crema Coffee Roasting Company</span><span class="work-card__title">Crema print ad</span><span class="work-card__short">Print ads the client still runs today.</span><span class="work-card__tags">Logo · Print ads</span></span>
+    </button><div class="card-desc" hidden><p>Crema was a client I met through SVGMC while I worked for them. I ended up creating a number of assets for them, including the print ads they still run today!</p></div></li>
+
+    <li class="work-card" data-cat="marketing"><button type="button" data-full="assets/img/work/little-colorado-social.webp" data-url="https://www.instagram.com/littlecoloradotoddlers/" data-url-label="Little Colorado on Instagram">
+      <span class="work-card__media"><img src="assets/img/work/little-colorado-social-sm.webp" width="630" height="1400" alt="Grid of Little Colorado social media posts" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Little Colorado</span><span class="work-card__title">Little Colorado social media</span><span class="work-card__short">Two-plus years of content, copy, photography, and community.</span><span class="work-card__tags">Social media · Copywriting · SEO</span></span>
+    </button><div class="card-desc" hidden><p>I managed the content creation, copywriting, photography assets, and community of Little Colorado's social media for more than two years across Instagram, Facebook, TikTok, and Twitter.</p><p>The content shown is my work from 2020 to 2022.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/rocky-mountain-arts-logo.webp">
+      <span class="work-card__media"><img src="assets/img/work/rocky-mountain-arts-logo-sm.webp" width="760" height="409" alt="Rocky Mountain Arts Association logo" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo competition winner</span><span class="work-card__title">Rocky Mountain Arts Association</span><span class="work-card__short">Winning entry in an open logo competition.</span><span class="work-card__tags">Logo</span></span>
+    </button><div class="card-desc" hidden><p>Rocky Mountain Arts Association held a competition for logo design, and I won! They used this logo I created for a few years before redesigning to a text-only logo.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-poker.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-poker-sm.webp" width="760" height="1175" alt="Poker Tournament for Giving poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Poker Tournament for Giving</span><span class="work-card__short">Event poster for a Microsoft giving campaign tournament.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/access-mobile-values-poster.webp">
+      <span class="work-card__media"><img src="assets/img/work/access-mobile-values-poster-sm.webp" width="760" height="984" alt="access.mobile company values poster with icons" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">access.mobile</span><span class="work-card__title">Company values poster</span><span class="work-card__short">A colorful poster that brands and promotes company values.</span><span class="work-card__tags">Branding · Print design · Poster</span></span>
+    </button><div class="card-desc" hidden><p>access.mobile wanted to brand and promote their values with a colorful poster that included some great imagery.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/pineda-chiropractic.webp">
+      <span class="work-card__media"><img src="assets/img/work/pineda-chiropractic-sm.webp" width="760" height="475" alt="Pineda Chiropractic and Rehabilitation business card" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo &amp; business cards</span><span class="work-card__title">Pineda Chiropractic</span><span class="work-card__short">Fresh, artistic business cards.</span><span class="work-card__tags">Logo · Business cards</span></span>
+    </button><div class="card-desc" hidden><p>Dr. Pineda wanted something fresh and artistic for her business cards.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-summer-games.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-summer-games-sm.webp" width="760" height="492" alt="Summer Games event flyer for San Francisco" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Summer Games</span><span class="work-card__short">Event flyer for a Microsoft team outing in San Francisco.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="resume"><button type="button" data-full="assets/img/work/kathy-resume.webp">
+      <span class="work-card__media"><img src="assets/img/work/kathy-resume-sm.webp" width="760" height="984" alt="Kathleen's resume design" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Kathleen</span><span class="work-card__title">Kathy's resume</span><span class="work-card__short">A fresh, tech-savvy resume that still reads as traditional.</span><span class="work-card__tags">Branding · Resume</span></span>
+    </button><div class="card-desc" hidden><p>Kathleen is a professional with a very diverse history across a number of roles. She wanted a resume that looked fresh to younger eyes and told the reader right away that she was technically savvy, while still remaining traditionally presentable to recruiters.</p><p>I sold her on this professional, readable formatting with an accompanying black-and-white-friendly version. With this resume, she began a career as an apprentice real estate agent, and she still does that today!</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/red-ribbon-ball.webp">
+      <span class="work-card__media"><img src="assets/img/work/red-ribbon-ball-sm.webp" width="684" height="882" alt="Red Ribbon Ball poster featuring Roseanne Barr" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Southern Colorado AIDS Project</span><span class="work-card__title">Red Ribbon Ball poster</span><span class="work-card__short">Event poster for a benefit gala.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>A poster I did as an ally for the Southern Colorado AIDS Project Red Ribbon Ball many years ago. Roseanne told me she liked the poster a lot.</p></div></li>
+
+    <li class="work-card" data-cat="marketing"><button type="button" data-full="assets/img/work/little-colorado-newsletter.webp">
+      <span class="work-card__media"><img src="assets/img/work/little-colorado-newsletter-sm.webp" width="760" height="1324" alt="Little Colorado holiday email newsletter" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Little Colorado</span><span class="work-card__title">Little Colorado newsletters</span><span class="work-card__short">Monthly newsletters and customer journeys.</span><span class="work-card__tags">Email marketing · Newsletter · Copywriting · SEO</span></span>
+    </button><div class="card-desc" hidden><p>I sent monthly newsletters to Little Colorado customers, marketing customer journeys, promoting sales, and highlighting new products.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-give-auction.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-give-auction-sm.webp" width="760" height="1175" alt="Give Auction 2015 poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Give Auction</span><span class="work-card__short">Auction poster for a Microsoft giving campaign.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="brand"><button type="button" data-full="assets/img/work/river-saddler-cards.webp">
+      <span class="work-card__media"><img src="assets/img/work/river-saddler-cards-sm.webp" width="760" height="870" alt="River Saddler music business card" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Logo &amp; business cards</span><span class="work-card__title">River's business cards</span><span class="work-card__short">Business cards people wouldn't want to throw away.</span><span class="work-card__tags">Branding · Logo · Business cards</span></span>
+    </button><div class="card-desc" hidden><p>River needed business cards that people wouldn't want to throw away. We agreed an eye-catching design would convince many people to hang onto his card.</p><p>He was able to build a successful client base, and I still see his cards being held onto today!</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/oriana-christmas-concert.webp">
+      <span class="work-card__media"><img src="assets/img/work/oriana-christmas-concert-sm.webp" width="760" height="418" alt="Oriana Chorale 25th anniversary Christmas concert graphic" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Oriana Chorale</span><span class="work-card__title">Christmas concert graphic</span><span class="work-card__short">A specially sized promotional graphic.</span><span class="work-card__tags">Print design · Ads</span></span>
+    </button><div class="card-desc" hidden><p>A specially sized promotional graphic for Oriana Chorale's Christmas Concert.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-nerf-battle.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-nerf-battle-sm.webp" width="760" height="1175" alt="Nerf Battle event poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Nerf Battle</span><span class="work-card__short">Event poster for a Microsoft team event.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/access-mobile-letterhead.webp">
+      <span class="work-card__media"><img src="assets/img/work/access-mobile-letterhead-sm.webp" width="760" height="990" alt="access.mobile letterhead" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">access.mobile</span><span class="work-card__title">Letterhead</span><span class="work-card__short">Minimal, readable letterhead that keeps some color.</span><span class="work-card__tags">Print design · Letterhead</span></span>
+    </button><div class="card-desc" hidden><p>access.mobile needed a new letterhead design, and I came up with this mix of minimalism and readability that still held onto some color.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/svgmc-bowling.webp">
+      <span class="work-card__media"><img src="assets/img/work/svgmc-bowling-sm.webp" width="760" height="1351" alt="SVGMC bowling tournament poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">SVGMC</span><span class="work-card__title">Bowling tournament poster</span><span class="work-card__short">Poster for print and the SVGMC website.</span><span class="work-card__tags">Website · Print design · Ads</span></span>
+    </button><div class="card-desc" hidden><p>A poster I designed for use on the SVGMC website, which I integrated for them directly, and for printing.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-potluck.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-potluck-sm.webp" width="760" height="1175" alt="Potluck for Giving poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Potluck for Giving</span><span class="work-card__short">Event poster for a Microsoft giving campaign potluck.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="resume"><button type="button" data-full="assets/img/work/will-martin-resume.webp">
+      <span class="work-card__media"><img src="assets/img/work/will-martin-resume-sm.webp" width="760" height="984" alt="Will Martin's green resume design" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">My own</span><span class="work-card__title">Green resume design</span><span class="work-card__short">The resume that got Microsoft to give me a chance.</span><span class="work-card__tags">Logo · Branding · Resume</span></span>
+    </button><div class="card-desc" hidden><p>This is the resume that got Microsoft to give me a chance! I was given a lot of extra design work and learned from a lot of very smart people during my time at the company.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-beer-pong.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-beer-pong-sm.webp" width="760" height="1175" alt="Beer pong tournament for giving poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Beer Pong for Giving</span><span class="work-card__short">Tournament poster for a Microsoft giving campaign event.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/access-mobile-press-page.webp">
+      <span class="work-card__media"><img src="assets/img/work/access-mobile-press-page-sm.webp" width="617" height="1400" alt="access.mobile press page listing media appearances" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">access.mobile</span><span class="work-card__title">Press page</span><span class="work-card__short">A distributable press page of media appearances.</span><span class="work-card__tags">Branding · Press page · Print &amp; file design</span></span>
+    </button><div class="card-desc" hidden><p>I designed the press page distributed in 2019, which showcases access.mobile's various appearances in the press and media. It was designed for use as a distributable Word document.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-magic-tournament.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-magic-tournament-sm.webp" width="760" height="1175" alt="Magic: The Gathering tournament for giving poster" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Microsoft</span><span class="work-card__title">Magic: The Gathering tournament</span><span class="work-card__short">Tournament poster for a Microsoft giving campaign event.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>One of the many poster designs I made for Microsoft events.</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/microsoft-zumba.webp">
+      <span class="work-card__media"><img src="assets/img/work/microsoft-zumba-sm.webp" width="760" height="1174" alt="Zumba class poster for Microsoft Silicon Valley" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">Candi</span><span class="work-card__title">Zumba class poster</span><span class="work-card__short">A poster to promote a Zumba class at Microsoft.</span><span class="work-card__tags">Poster · Print design</span></span>
+    </button><div class="card-desc" hidden><p>A Zumba instructor I knew was going to be teaching Zumba for Microsoft, and she needed a way to promote the class. I offered to create a poster for her and distribute it, and I was able to join the class!</p></div></li>
+
+    <li class="work-card" data-cat="print"><button type="button" data-full="assets/img/work/svgmc-concert-program.webp">
+      <span class="work-card__media"><img src="assets/img/work/svgmc-concert-program-sm.webp" width="350" height="936" alt="SVGMC concert program pages" loading="lazy" decoding="async"><span class="view-pill" aria-hidden="true">View details</span></span>
+      <span class="work-card__body"><span class="work-card__client">SVGMC</span><span class="work-card__title">Concert program</span><span class="work-card__short">Printed program design for an SVGMC concert.</span><span class="work-card__tags">Print design</span></span>
+    </button><div class="card-desc" hidden><p>A concert program I designed for SVGMC.</p></div></li>
+
+  </ul>
+</section>
+
+<section class="container" style="padding:40px 24px clamp(64px,8vw,96px)">
+  <div class="cta-card">
+    <div><h2>Like what you see?</h2><p>Tell me about your project. I reply within one business day.</p></div>
+    <div class="cta-card__actions">
+      <a class="btn btn--primary" href="index.html#contact">Start a project <span aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" href="mailto:w_martin@outlook.com">w_martin@outlook.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom meta" style="border-top:0"><span>© 2026 willpower.codes · Will Martin · Denver, CO</span><span style="display:flex;gap:20px;flex-wrap:wrap"><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a><a href="#main">Back to top <span aria-hidden="true">↑</span></a></span></div>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+  <div class="lightbox__layout">
+    <div class="lightbox__media" data-lb-media></div>
+    <div class="lightbox__info">
+      <div class="lightbox__top">
+        <span class="meta" data-lb-pos></span>
+        <button class="icon-btn" type="button" data-lb-close aria-label="Close details"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <p class="meta" data-lb-meta></p>
+      <h2 class="lightbox__title" id="lightbox-title" data-lb-title></h2>
+      <p class="lightbox__tags" data-lb-tags></p>
+      <div class="lightbox__desc" data-lb-desc></div>
+      <a class="link" data-lb-link href="#" target="_blank" rel="noopener" hidden></a>
+      <div class="lightbox__nav">
+        <button class="btn btn--ghost" type="button" data-lb-prev>← Previous</button>
+        <button class="btn btn--ghost" type="button" data-lb-next>Next →</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/portfolio.js" defer></script>
+</body>
 </html>

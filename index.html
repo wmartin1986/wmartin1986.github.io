@@ -1,983 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="assets/img/willpower_favicon.png">
-  <title>willpower.codes | Web Design &amp; Digital Strategy</title>
+  <title>Will Martin · Web Platforms, Integrations, and AI Tooling | willpower.codes</title>
+  <meta name="description" content="Will Martin designs, builds, and operates web platforms in Denver: WordPress, Drupal, and Shopify sites, Salesforce and HubSpot integrations, and AI tooling for teams.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Will Martin · willpower.codes">
+  <meta property="og:description" content="Web platforms, integrations, and AI tooling, designed, built, and operated by one accountable partner in Denver, Colorado.">
+  <meta property="og:image" content="assets/img/site/will-martin.webp">
+  <meta name="theme-color" content="#F7F6F2">
+  <link rel="icon" type="image/png" href="assets/img/willpower_favicon.png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2WLEP8DW36"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2WLEP8DW36');
+  </script>
+  <script>document.documentElement.classList.remove('no-js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WLEP8DW36"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2WLEP8DW36');
-</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
-  <style>
-    /* ── VARIABLES ── */
-    :root {
-      --green-bg:     rgba(22,163,74,.11);
-      --green-text:   #15803d;
-      --accent:       #b96b28;
-      --accent-lt:    #d4885a;
-      --accent-dk:    #8a4f1e;
-      --accent-faint: rgba(185,107,40,.10);
-      --bg:           #faf8f5;
-      --surface:      #ffffff;
-      --surface2:     #f2ede7;
-      --border:       #e5ddd4;
-      --text:         #1a1410;
-      --text2:        #5c4c3d;
-      --text3:        #9b8878;
-      --radius:       12px;
-      --radius-lg:    20px;
-      --shadow:       0 2px 16px rgba(26,20,16,.08);
-      --shadow-lg:    0 8px 40px rgba(26,20,16,.14);
-      --nav-h:        68px;
-      --max-w:        1200px;
-    }
-    body.dark {
-      --green-bg:  rgba(74,222,128,.13);
-      --green-text:#4ade80;
-      --bg:        #17120d;
-      --surface:   #231a12;
-      --surface2:  #2d2016;
-      --border:    #3d2d1e;
-      --text:      #f0ebe4;
-      --text2:     #c8b5a4;
-      --text3:     #7d6b5c;
-      --shadow:    0 2px 16px rgba(0,0,0,.30);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,.50);
-    }
-
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background .25s, color .25s; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-    button { cursor: pointer; border: none; background: none; font: inherit; }
-
-    /* ── UTILITY ── */
-    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
-    .section    { padding: 5rem 0; }
-    .section--alt { background: var(--surface2); }
-
-    .label {
-      display: inline-block;
-      font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: .75rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800;
-      color: var(--text); margin-bottom: .9rem; line-height: 1.15;
-    }
-    .section-desc { color: var(--text2); margin-bottom: 3rem; max-width: 540px; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: .45rem;
-      padding: .7rem 1.4rem; border-radius: 8px;
-      font-size: .875rem; font-weight: 600; transition: all .2s;
-    }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-dk); transform: translateY(-1px); }
-    .btn-outline { border: 1.5px solid var(--border); color: var(--text); }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ── NAV ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: var(--nav-h); display: flex; align-items: center;
-      background: var(--bg);
-      border-bottom: 1px solid transparent;
-      transition: border-color .25s, box-shadow .25s, background .25s;
-    }
-    .nav.scrolled { border-color: var(--border); box-shadow: var(--shadow); }
-    .nav__inner {
-      display: flex; align-items: center;
-      width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; gap: 2rem;
-    }
-    .nav__logo {
-      font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700;
-      color: var(--accent); white-space: nowrap; flex-shrink: 0;
-    }
-    .nav__links { display: flex; align-items: center; gap: 1.75rem; margin: 0 auto; }
-    .nav__links a { font-size: .85rem; font-weight: 500; color: var(--text2); transition: color .2s; }
-    .nav__links a:hover, .nav__links a.active { color: var(--accent); }
-    .nav__actions { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
-
-    .nav__icon-btn {
-      width: 36px; height: 36px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text2); border: 1.5px solid var(--border);
-      font-size: 1rem; transition: all .2s;
-    }
-    .nav__icon-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .nav__hamburger { display: none; }
-
-    /* Mobile overlay */
-    .mobile-menu {
-      display: none; position: fixed; inset: 0; z-index: 199;
-      background: var(--bg); flex-direction: column;
-      align-items: center; justify-content: center; gap: 2rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--text); transition: color .2s; }
-    .mobile-menu a:hover { color: var(--accent); }
-    .mobile-menu__close { position: absolute; top: 1.25rem; right: 1.5rem; font-size: 1.5rem; color: var(--text2); }
-
-    /* ── HERO ── */
-    .hero { padding-top: calc(var(--nav-h) + 5rem); padding-bottom: 5rem; }
-    .hero__grid {
-      display: grid; grid-template-columns: 1fr 460px; align-items: center; gap: 4rem;
-    }
-    .hero__eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--green-bg); color: var(--green-text);
-      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
-      padding: .35rem .9rem; border-radius: 99px; margin-bottom: 1.5rem;
-    }
-    .hero__eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green-text); }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.14;
-      color: var(--text); margin-bottom: 1.25rem;
-    }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero__sub { font-size: 1rem; color: var(--text2); line-height: 1.75; margin-bottom: 2rem; max-width: 500px; }
-    .hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
-    .hero__social { display: flex; align-items: center; gap: .75rem; }
-    .hero__social-label { font-size: .78rem; color: var(--text3); }
-    .hero__social-link {
-      display: flex; align-items: center; gap: .35rem;
-      font-size: .82rem; font-weight: 500; color: var(--text2);
-      border: 1.5px solid var(--border); padding: .28rem .7rem;
-      border-radius: 6px; transition: all .2s;
-    }
-    .hero__social-link:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Hero card */
-    .hero__card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 2rem;
-      box-shadow: var(--shadow-lg); position: relative;
-    }
-    .hero__card::before {
-      content: ''; position: absolute; top: -22px; right: -22px;
-      width: 110px; height: 110px; border-radius: 50%;
-      background: var(--accent-faint); z-index: -1;
-    }
-    .hero__card::after {
-      content: ''; position: absolute; bottom: -14px; left: -14px;
-      width: 70px; height: 70px; border-radius: 50%;
-      background: var(--accent-faint); z-index: -1;
-    }
-    .hero__photo {
-      width: 240px; height: 240px; border-radius: var(--radius);
-      object-fit: cover; margin: 0 auto 1.25rem;
-    }
-    .hero__card-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; text-align: center; margin-bottom: .2rem; }
-    .hero__card-role { font-size: .82rem; color: var(--text3); text-align: center; margin-bottom: 1.5rem; }
-    .hero__stats { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
-    .hero__stat { background: var(--surface2); border-radius: 10px; padding: .7rem .9rem; }
-    .hero__stat-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--accent); display: block; }
-    .hero__stat-lbl { font-size: .72rem; color: var(--text3); }
-
-    /* ── PLATFORMS STRIP ── */
-    .platforms { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); padding: 1.1rem 0; overflow: hidden; }
-    .platforms__track { display: flex; gap: 2.5rem; align-items: center; white-space: nowrap; animation: ticker 28s linear infinite; }
-    .platforms__track:hover { animation-play-state: paused; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .platforms__item { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); }
-    .platforms__sep { color: var(--accent); opacity: .5; }
-
-    /* ── ABOUT ── */
-    .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .about__bio { font-size: .975rem; color: var(--text2); line-height: 1.8; margin-bottom: 1.25rem; }
-    .about__stats { display: flex; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
-    .about__stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--accent); display: block; }
-    .about__stat-lbl { font-size: .75rem; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; }
-
-    /* Timeline */
-    .tl { position: relative; padding-left: 1.75rem; }
-    .tl::before { content: ''; position: absolute; left: 0; top: .4rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent); border-radius: 2px; }
-    .tl__item { position: relative; padding-bottom: 2rem; }
-    .tl__item::before { content: ''; position: absolute; left: -2.1rem; top: .45rem; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
-    .tl__period { font-size: .7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .25rem; }
-    .tl__role { font-weight: 600; color: var(--text); margin-bottom: .15rem; }
-    .tl__org { font-size: .85rem; color: var(--text2); margin-bottom: .35rem; }
-    .tl__desc { font-size: .82rem; color: var(--text3); line-height: 1.65; }
-
-    /* ── PORTFOLIO ── */
-    .portfolio__filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-    .filter-btn {
-      padding: .4rem 1rem; border-radius: 99px;
-      font-size: .82rem; font-weight: 500; color: var(--text2);
-      border: 1.5px solid var(--border); transition: all .2s;
-    }
-    .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .portfolio__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .pcard {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; transition: transform .25s, box-shadow .25s;
-    }
-    .pcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .pcard.hidden { display: none; }
-    .pcard__thumb { position: relative; height: 210px; overflow: hidden; }
-    .pcard__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .pcard:hover .pcard__thumb img { transform: scale(1.06); }
-    .pcard__overlay {
-      position: absolute; inset: 0; background: rgba(26,20,16,.72);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .25s;
-    }
-    .pcard:hover .pcard__overlay { opacity: 1; }
-    .pcard__overlay a {
-      background: var(--accent); color: #fff;
-      padding: .5rem 1.2rem; border-radius: 8px;
-      font-size: .82rem; font-weight: 600; transition: background .2s;
-    }
-    .pcard__overlay a:hover { background: var(--accent-dk); }
-    .pcard__body { padding: 1rem 1.2rem; }
-    .pcard__tag {
-      display: inline-block; font-size: .68rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: .08em;
-      color: var(--accent); background: var(--accent-faint);
-      padding: .18rem .55rem; border-radius: 4px; margin-bottom: .45rem;
-    }
-    .pcard__title { font-weight: 600; color: var(--text); margin-bottom: .2rem; font-size: .95rem; }
-    .pcard__desc { font-size: .8rem; color: var(--text3); line-height: 1.55; }
-    .portfolio__footer { text-align: center; margin-top: 3rem; }
-
-    /* ── SERVICES ── */
-    .services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .scard {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 2rem; transition: transform .25s, box-shadow .25s, border-color .25s;
-    }
-    .scard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
-    .scard__icon { font-size: 1.6rem; margin-bottom: .9rem; }
-    .scard__title { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: .5rem; }
-    .scard__desc { font-size: .855rem; color: var(--text2); line-height: 1.65; }
-
-    /* ── PROCESS ── */
-    .process__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .pstep { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; }
-    .pstep__num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: .5rem; }
-    .pstep__icon { font-size: 1.4rem; margin-bottom: .65rem; }
-    .pstep__title { font-weight: 700; color: var(--text); margin-bottom: .4rem; }
-    .pstep__desc { font-size: .84rem; color: var(--text2); line-height: 1.6; }
-
-    /* ── SKILLS ── */
-    .skills__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .skill-cat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
-    .skill-cat__title { font-weight: 700; font-size: .9rem; color: var(--text); margin-bottom: .9rem; display: flex; align-items: center; gap: .4rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .skill-tag { background: var(--surface2); color: var(--text2); font-size: .78rem; font-weight: 500; padding: .28rem .65rem; border-radius: 6px; }
-
-    /* ── TESTIMONIALS ── */
-    .tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .tcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
-    .tcard__stars { color: var(--accent); font-size: .9rem; letter-spacing: .05em; margin-bottom: 1rem; }
-    .tcard__quote { font-size: .885rem; color: var(--text2); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
-    .tcard__author { display: flex; align-items: center; gap: .75rem; }
-    .tcard__avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
-    .tcard__name { font-weight: 600; font-size: .875rem; color: var(--text); }
-    .tcard__role { font-size: .78rem; color: var(--text3); }
-    .tcard__role a { color: var(--accent); }
-
-    /* ── CONTACT ── */
-    .contact__grid { display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: start; }
-    .cinfo__item { display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1.75rem; }
-    .cinfo__icon { width: 42px; height: 42px; border-radius: 10px; background: var(--accent-faint); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-    .cinfo__lbl { font-size: .73rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: .15rem; }
-    .cinfo__val { font-weight: 600; color: var(--text); font-size: .925rem; }
-
-    .cform { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem; }
-    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .ffield { margin-bottom: 1.2rem; }
-    .flabel { display: block; font-size: .8rem; font-weight: 600; color: var(--text2); margin-bottom: .35rem; }
-    .finput, .fselect, .ftextarea {
-      width: 100%; padding: .65rem .95rem;
-      background: var(--surface2); border: 1.5px solid var(--border);
-      border-radius: 8px; color: var(--text); font: inherit; font-size: .875rem;
-      transition: border-color .2s;
-    }
-    .finput:focus, .fselect:focus, .ftextarea:focus { outline: none; border-color: var(--accent); }
-    .ftextarea { resize: vertical; min-height: 130px; }
-    .fsubmit {
-      width: 100%; padding: .85rem; background: var(--accent); color: #fff;
-      border-radius: 8px; font-weight: 600; font-size: .95rem;
-      transition: background .2s;
-    }
-    .fsubmit:hover { background: var(--accent-dk); }
-
-    /* ── FOOTER ── */
-    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 0; }
-    .footer__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
-    .footer__logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; }
-    .footer__tag { font-size: .85rem; color: var(--text3); line-height: 1.65; }
-    .footer__head { font-weight: 600; font-size: .875rem; color: var(--text); margin-bottom: 1rem; }
-    .footer__links { display: flex; flex-direction: column; gap: .55rem; }
-    .footer__links a { font-size: .85rem; color: var(--text2); transition: color .2s; }
-    .footer__links a:hover { color: var(--accent); }
-    .footer__citem { font-size: .85rem; color: var(--text2); margin-bottom: .55rem; }
-    .footer__bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-    .footer__copy { font-size: .78rem; color: var(--text3); }
-    .footer__bottom-links { display: flex; gap: 1.25rem; }
-    .footer__bottom-links a { font-size: .8rem; color: var(--text3); transition: color .2s; }
-    .footer__bottom-links a:hover { color: var(--accent); }
-
-    /* ── SCROLL TOP ── */
-    .scroll-top {
-      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
-      width: 42px; height: 42px; background: var(--accent); color: #fff;
-      border-radius: 10px; font-size: 1rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity .25s, transform .25s;
-    }
-    .scroll-top.show { opacity: 1; pointer-events: auto; }
-    .scroll-top:hover { transform: translateY(-2px); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .hero__grid      { grid-template-columns: 1fr; }
-      .hero__card      { max-width: 400px; margin: 0 auto; }
-      .about__grid     { grid-template-columns: 1fr; gap: 3rem; }
-      .process__grid   { grid-template-columns: repeat(2, 1fr); }
-      .skills__grid    { grid-template-columns: repeat(2, 1fr); }
-      .contact__grid   { grid-template-columns: 1fr; gap: 3rem; }
-      .footer__grid    { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 900px) {
-      .portfolio__grid  { grid-template-columns: repeat(2, 1fr); }
-      .services__grid   { grid-template-columns: repeat(2, 1fr); }
-      .tgrid            { grid-template-columns: 1fr; }
-      .pricing__grid    { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
-    }
-    @media (max-width: 768px) {
-      .nav__links  { display: none; }
-      .nav__hamburger { display: flex; }
-      .nav__cta    { display: none; }
-      .hero        { padding-top: calc(var(--nav-h) + 3rem); }
-      .portfolio__grid { grid-template-columns: 1fr; }
-      .services__grid  { grid-template-columns: 1fr; }
-      .skills__grid    { grid-template-columns: 1fr; }
-      .frow            { grid-template-columns: 1fr; }
-      .footer__grid    { grid-template-columns: 1fr; gap: 2rem; }
-      .footer__bottom  { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-    @media (max-width: 540px) {
-      .process__grid { grid-template-columns: 1fr; }
-      .about__stats  { gap: 1.25rem; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Will Martin",
+    "url": "https://willpower.codes/",
+    "image": "https://willpower.codes/assets/img/site/will-martin.webp",
+    "jobTitle": "Freelance Web Solutions Developer, Designer & Marketing Professional",
+    "worksFor": { "@type": "Organization", "name": "willpower.codes" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+    "email": "mailto:w_martin@outlook.com",
+    "sameAs": ["https://www.linkedin.com/in/will-martin1986/"],
+    "knowsAbout": ["WordPress", "Drupal", "Shopify", "Salesforce", "HubSpot", "Web accessibility", "WCAG 2.2", "AI automation", "Project management"]
+  }
+  </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- NAV -->
-<nav class="nav" id="main-nav">
-  <div class="nav__inner">
-    <a href="#home" class="nav__logo">willpower.codes</a>
+<header class="site-header" id="site-header">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="willpower.codes home"><span class="brand__mark" aria-hidden="true">W</span>willpower.codes</a>
     <ul class="nav__links" id="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#portfolio">Work</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
     </ul>
     <div class="nav__actions">
-      <button class="nav__icon-btn" id="theme-toggle" title="Toggle dark mode">🌙</button>
-      <a href="#contact" class="btn btn-primary nav__cta" style="padding:.55rem 1.1rem;font-size:.82rem;">Let's Talk</a>
-      <button class="nav__icon-btn nav__hamburger" id="menu-btn">☰</button>
+      <a class="btn btn--primary btn--sm" href="#contact">Let's talk</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
-</nav>
+</header>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-menu__close nav__icon-btn" id="menu-close">✕</button>
-  <a href="#about">About</a>
-  <a href="#portfolio">Work</a>
-  <a href="#services">Services</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</div>
+<main id="main">
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero__grid">
-      <div>
-        <div class="hero__eyebrow">Available for new projects</div>
-        <h1>Premium Web Design &amp; Strategy. <em>Your Dedicated Technical Partner.</em></h1>
-        <p class="hero__sub">Full-stack web designer and developer with 15+ years building websites, brands, and digital systems for SMBs and solo founders. High-quality results without the agency price tag.</p>
-        <div class="hero__ctas">
-          <a href="#portfolio" class="btn btn-primary">See My Work</a>
-          <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+<section class="hero" id="top">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <a class="badge rise" href="#contact"><span class="live-dot"></span>Open for new projects<span class="badge__arrow" aria-hidden="true">→</span></a>
+    <h1 class="hero__title rise rise-1">Web platforms that <span class="muted">run like infrastructure.</span></h1>
+    <p class="hero__sub rise rise-2">I design, build, and operate the websites, integrations, and AI tooling teams depend on, across WordPress, Drupal, Shopify, and Salesforce. Fifteen years of agency, in-house, and Microsoft experience. One accountable partner.</p>
+    <div class="hero__ctas rise rise-3">
+      <a class="btn btn--primary" href="#contact">Start a project <span aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" href="#work">See the work</a>
+    </div>
+    <p class="hero__byline rise rise-4">
+      <img src="assets/img/site/will-martin.webp" alt="" width="36" height="36">
+      <span><strong>Will Martin</strong> · Denver, CO · <span class="stars" aria-hidden="true">★★★★★</span><span class="sr-only">Five-star</span> client-rated</span>
+    </p>
+
+    <div class="palette rise rise-5" aria-label="Example searches across my services and projects" role="region">
+      <div class="palette__beam" aria-hidden="true"></div>
+      <div class="palette__body">
+        <div class="palette__search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6F6A60" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <div class="palette__query" aria-hidden="true"><span data-palette-typed>migrate our drupal site to a modern stack</span><span class="caret"></span></div>
+          <span class="kbd" aria-hidden="true">esc</span>
         </div>
-        <div class="hero__social">
-          <span class="hero__social-label">Find me on</span>
-          <a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" class="hero__social-link">LinkedIn</a>
+        <div class="palette__results">
+          <div class="palette__label"><span>Best matches</span><span data-palette-count>4 results</span></div>
+          <ul class="palette__list" data-palette-list>
+            <li class="result"><span class="result__icon">MIG</span><span class="result__text"><span class="result__title">Platform migration &amp; re-platforming</span><span class="result__meta">Drupal · WordPress · Shopify · headless</span></span><span class="result__kind">Service</span></li>
+            <li class="result"><span class="result__icon">DSC</span><span class="result__text"><span class="result__title">Technical discovery &amp; scoping</span><span class="result__meta">Requirements, architecture, and estimates</span></span><span class="result__kind">Service</span></li>
+            <li class="result"><span class="result__icon">PM</span><span class="result__text"><span class="result__title">Projects I've managed</span><span class="result__meta">Denver International Airport, E-470, Colorado AG, and more</span></span><span class="result__kind">Portfolio</span></li>
+            <li class="result"><span class="result__icon">OPS</span><span class="result__text"><span class="result__title">WebOps after launch</span><span class="result__meta">Updates, monitoring, and triage</span></span><span class="result__kind">Service</span></li>
+          </ul>
         </div>
-      </div>
-      <div>
-        <div class="hero__card">
-          <img src="assets/img/profile.png" alt="Will Martin" class="hero__photo">
-          <div class="hero__card-name">Will Martin</div>
-          <div class="hero__card-role">Denver, CO &middot; willpower.codes</div>
-          <div class="hero__stats">
-            <div class="hero__stat">
-              <span class="hero__stat-num">15+</span>
-              <span class="hero__stat-lbl">Years Building</span>
-            </div>
-            <div class="hero__stat">
-              <span class="hero__stat-num">50+</span>
-              <span class="hero__stat-lbl">Projects Done</span>
-            </div>
-            <div class="hero__stat">
-              <span class="hero__stat-num">5&nbsp;★</span>
-              <span class="hero__stat-lbl">Client Rating</span>
-            </div>
-            <div class="hero__stat">
-              <span class="hero__stat-num">10+</span>
-              <span class="hero__stat-lbl">Platforms</span>
-            </div>
-          </div>
-        </div>
+        <div class="palette__foot"><span class="mono">willpower.codes/services</span><span>↑↓ to navigate · ↵ to open</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PLATFORMS STRIP -->
-<div class="platforms">
-  <div class="platforms__track" id="platforms-track">
-    <span class="platforms__item">WordPress</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Shopify</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Drupal</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Airtable</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">HubSpot</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Salesforce</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Zapier</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Figma</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Adobe Creative Suite</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">ChatGPT / Claude AI</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Webflow</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Squarespace</span><span class="platforms__sep">·</span>
-    <!-- duplicate for seamless loop -->
-    <span class="platforms__item">WordPress</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Shopify</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Drupal</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Airtable</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">HubSpot</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Salesforce</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Zapier</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Figma</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Adobe Creative Suite</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">ChatGPT / Claude AI</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Webflow</span><span class="platforms__sep">·</span>
-    <span class="platforms__item">Squarespace</span><span class="platforms__sep">·</span>
+<section class="proof" aria-label="Clients and employers">
+  <div class="container proof__inner">
+    <p class="proof__label">Where I've built and shipped</p>
+    <ul class="proof__list">
+      <li>Microsoft</li><li>Denver International Airport</li><li>E-470</li><li>Colorado Attorney General</li><li>Project C.U.R.E.</li><li>Hale Pet Door</li><li>Little Colorado</li>
+    </ul>
   </div>
-</div>
+</section>
 
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="about__grid">
-      <div>
-        <span class="label">About</span>
-        <h2 class="section-title">Building the web since 2007</h2>
-        <p class="about__bio">I've been building websites and digital brands since 2007: freelancing, working in-house at startups, and doing enterprise-level project work at a Denver digital agency. Today, I specialize in helping small businesses and independent entrepreneurs get the kind of polished, high-performing web presence that used to require a big agency budget.</p>
-        <p class="about__bio">I build with modern tools and AI-assisted workflows that keep quality high and timelines short. Whether you need a five-page brochure site or a full e-commerce operation, I handle the full stack: strategy, design, development, copy, and launch.</p>
-        <div class="about__stats">
-          <div>
-            <span class="about__stat-num">15+</span>
-            <span class="about__stat-lbl">Years Building</span>
-          </div>
-          <div>
-            <span class="about__stat-num">10+</span>
-            <span class="about__stat-lbl">Platforms</span>
-          </div>
-          <div>
-            <span class="about__stat-num">50+</span>
-            <span class="about__stat-lbl">Projects</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn btn-primary">Work With Me</a>
+<section id="about">
+  <div class="container section__inner about">
+    <div class="about__intro reveal">
+      <div class="person">
+        <img src="assets/img/site/will-martin.webp" alt="Portrait of Will Martin" width="88" height="88">
+        <div><p class="person__name">Will Martin</p><p class="meta">Web platforms, WebOps, and AI tooling · Denver, CO</p></div>
       </div>
-      <div>
-        <span class="label">Experience</span>
-        <div class="tl">
-          <div class="tl__item">
-            <div class="tl__period">2023 - Current</div>
-            <div class="tl__role">Technical Sales Engineer <br><span style="font-weight:200;color:var(--text3)">/ Digital Project Manager / WebOps Specialist</span></div>
-            <div class="tl__org">Fruition, Denver Digital Agency</div>
-            <div class="tl__desc">Scope and sell complex web projects through technical discovery and AI-powered RFP evaluations, scopes, and proposals. Build full-stack internal tools to automate workflows across the software development lifecycle. Deliver expert web support across WordPress, Drupal, and Shopify, and manage projects end-to-end from kickoff through launch.</div>
-          </div>
-          <div class="tl__item">
-            <div class="tl__period">2020 - 2023</div>
-            <div class="tl__role">Marketing &amp; Administrative Manager</div>
-            <div class="tl__org">Little Colorado, Denver</div>
-            <div class="tl__desc">Owned the full digital presence of a growing e-commerce brand: website design and development, online advertising, social media, and custom internal tooling for inventory tracking and performance reporting. Managed all marketing, partnerships, and day-to-day business operations.</div>
-          </div>
-          <div class="tl__item">
-            <div class="tl__period">2019 - 2020</div>
-            <div class="tl__role">Executive Assistant to the CEO</div>
-            <div class="tl__org">Access.mobile, Denver</div>
-            <div class="tl__desc">Built and maintained a custom CRM tool, managed website updates, and created branded marketing materials for a tech startup. Coordinated executive operations and a week-long international company retreat.</div>
-          </div>
-          <div class="tl__item">
-            <div class="tl__period">2012 - 2018</div>
-            <div class="tl__role">Business Administrator</div>
-            <div class="tl__org">Microsoft, Mountain View</div>
-            <div class="tl__desc">Supported engineering teams at one of the world's largest tech companies. Contributed to team websites and event promotion design while managing communications, executive support, and operational logistics across the organization.</div>
-          </div>
-          <div class="tl__item">
-            <div class="tl__period">2007 - Present</div>
-            <div class="tl__role">Freelance Web &amp; Print Designer</div>
-            <div class="tl__org">willpower.codes, Denver</div>
-            <div class="tl__desc">Custom websites, logos, print ads, and magazines built with a focus on conversions. Advertising strategy via Google Ads and social media, graphic design, social content, and photography for SMBs and entrepreneurs across Colorado and beyond.</div>
-          </div>
+      <h2 class="h2">Hi, I'm Will. <span class="muted">I've been building the web since 2007.</span></h2>
+      <p class="lead">I've worked in every aspect of web projects: designing and developing for small businesses as a freelancer, running the online operations of a growing e-commerce brand, managing business operations for teams at Microsoft, and, most recently, scoping, selling, and managing client web projects at Fruition, a Denver digital agency. Today I bring all of that to willpower.codes.</p>
+      <p class="lead">That means you get one person who understands the business case, the build, and the operations after launch. I work with modern tools and AI-assisted workflows that keep quality high and timelines short.</p>
+      <div class="stats">
+        <div class="stat"><p class="stat__num">15<span>+</span></p><p class="meta">Years building</p></div>
+        <div class="stat"><p class="stat__num">50<span>+</span></p><p class="meta">Projects delivered</p></div>
+        <div class="stat"><p class="stat__num">10<span>+</span></p><p class="meta">Platforms</p></div>
+        <div class="stat"><p class="stat__num">5<span>★</span></p><p class="meta">Client rating</p></div>
+      </div>
+    </div>
+
+    <div class="experience reveal">
+      <div class="experience__head">
+        <div class="experience__title"><h3>Experience</h3><span class="meta">2007 to now</span></div>
+        <div class="track" aria-hidden="true">
+          <span class="c-freelance-bar" style="left:0;width:100%"></span>
         </div>
+        <div class="track" aria-hidden="true">
+          <span class="c-ms" style="left:28.3%;width:28.3%;animation-delay:.2s"></span>
+          <span class="c-am" style="left:62.9%;width:3.8%;animation-delay:.35s"></span>
+          <span class="c-lc" style="left:68.9%;width:13.1%;animation-delay:.45s"></span>
+          <span class="c-fruition" style="left:82%;width:15.6%;animation-delay:.55s"></span>
+        </div>
+        <div class="track__axis meta" aria-hidden="true"><span style="left:0">2007</span><span style="left:28.3%">2012</span><span style="left:56.6%">2018</span><span style="left:82%">2023</span><span style="right:0">Now</span></div>
+      </div>
+      <ol class="jobs">
+        <li class="job">
+          <span class="job__swatch c-freelance" aria-hidden="true"></span>
+          <div>
+            <div class="job__when"><span class="meta">2007 – Now · willpower.codes, Denver</span><span class="pill-current">Current</span></div>
+            <h4 class="job__title">Freelance Web Solutions Developer, Designer &amp; Marketing Professional</h4>
+            <p>Custom websites, logos, print ads, and magazines that blend strong visual design with functional web development, built with a focus on conversions. Advertising strategy grounded in user research on Google Ads and social media, plus graphic design and social content creation, including photography touch-ups and light video editing.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="job__swatch c-fruition" aria-hidden="true"></span>
+          <div>
+            <p class="meta">Jun 2023 – Jul 2026 · Fruition, Denver</p>
+            <h4 class="job__title job__title--tight">Technical Sales Engineer</h4>
+            <p class="meta job__previous">Previously Digital Project Manager and Service Desk Associate</p>
+            <p>Performed technical reviews and discovery of websites and web applications, created scopes and budget estimates, and wrote proposals that helped secure new client projects. Managed digital projects from kickoff to launch, on time and on budget, as the liaison between clients and delivery teams. Provided web support across WordPress, Drupal, and Shopify, and built AI-powered tools for RFP evaluations and workflow automation.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="job__swatch c-lc" aria-hidden="true"></span>
+          <div>
+            <p class="meta">Sep 2020 – Apr 2023 · Little Colorado, Denver</p>
+            <h4 class="job__title">Marketing &amp; Administrative Manager</h4>
+            <p>Oversaw all aspects of online business operations, including the website front end and back end, advertising campaigns, social media, accounting, customer service, partnerships, and HR. Implemented business software and SaaS, optimized shipping, and developed custom tools for performance tracking and inventory management.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="job__swatch c-am" aria-hidden="true"></span>
+          <div>
+            <p class="meta">Jul 2019 – Apr 2020 · access.mobile, Denver</p>
+            <h4 class="job__title">Executive Assistant to the Chief Executive Officer</h4>
+            <p>Managed the CEO's calendar, travel, and daily operations. Organized a week-long global retreat and shareholder and board meetings. Built and maintained a CRM tool, managed website updates, and created branded marketing materials.</p>
+          </div>
+        </li>
+        <li class="job">
+          <span class="job__swatch c-ms" aria-hidden="true"></span>
+          <div>
+            <p class="meta">Sep 2012 – Apr 2018 · Microsoft, Mountain View, CA</p>
+            <h4 class="job__title">Business Manager</h4>
+            <p>Oversaw administrative and business operations, including executive communications, newsletters, presentations, head count, procurement, vendor coordination, marketing budgets, and event planning. Also contributed design work for team events and an official app logo.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="education">
+        <h4>Education</h4>
+        <ul>
+          <li><strong>San Jose State University</strong> · Bachelor's, Software Engineering (in progress)</li>
+          <li><strong>University of Colorado Boulder</strong> · Bachelor's, English Language</li>
+          <li><strong>Pueblo Community College</strong> · Associate's, Business Administration</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section class="section section--alt" id="portfolio">
-  <div class="container">
-    <span class="label">Portfolio</span>
-    <h2 class="section-title">Featured Work</h2>
-    <p class="section-desc">A selection of projects spanning web design, brand identity, e-commerce, and AI-assisted apps.</p>
-
-    <div class="portfolio__filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="web">Web &amp; CMS</button>
-      <button class="filter-btn" data-filter="ecom">E-Commerce</button>
-      <button class="filter-btn" data-filter="brand">Brand &amp; Logo</button>
-      <button class="filter-btn" data-filter="print">Print &amp; Design</button>
-    </div>
-
-    <div class="portfolio__grid">
-
-      <!-- Web -->
-      <div class="pcard" data-cat="web">
-        <div class="pcard__thumb"><img src="assets/img/gallery/crema.jpg" alt="Crema Coffee"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Web</span><div class="pcard__title">Crema Coffee Roasters</div><div class="pcard__desc">Custom WordPress site with brand integration, e-commerce setup, and on-page SEO.</div></div>
-      </div>
-
-      <div class="pcard" data-cat="web">
-        <div class="pcard__thumb"><img src="assets/img/gallery/homeroom.jpg" alt="Homeroom"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Web</span><div class="pcard__title">Homeroom</div><div class="pcard__desc">Small business website redesign with updated copy, photography curation, and SEO structure.</div></div>
-      </div>
-
-      <div class="pcard" data-cat="web">
-        <div class="pcard__thumb"><img src="assets/img/gallery/sodura.JPG" alt="Sodura"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Web</span><div class="pcard__title">Sodura</div><div class="pcard__desc">WordPress CMS build with WooCommerce, custom fields, and Salesforce lead capture integration.</div></div>
-      </div>
-
-      <!-- E-Commerce -->
-      <div class="pcard" data-cat="ecom">
-        <div class="pcard__thumb"><img src="assets/img/gallery/buttonandbug.jpg" alt="Button &amp; Bug"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">E-Commerce</span><div class="pcard__title">Button &amp; Bug</div><div class="pcard__desc">Shopify storefront with custom theme, optimized product pages, SEO, and owner training.</div></div>
-      </div>
-
-      <div class="pcard" data-cat="ecom">
-        <div class="pcard__thumb"><img src="assets/img/gallery/littlecolorado.jpg" alt="Little Colorado"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">E-Commerce</span><div class="pcard__title">Little Colorado</div><div class="pcard__desc">E-commerce redesign with omni-channel marketplace setup, PPC campaigns, and social media management.</div></div>
-      </div>
-
-      <!-- Brand -->
-      <div class="pcard" data-cat="brand">
-        <div class="pcard__thumb"><img src="assets/img/gallery/LittleandBraveLogo_ColorSlogan.jpg" alt="Little &amp; Brave"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Brand</span><div class="pcard__title">Little &amp; Brave</div><div class="pcard__desc">Logo design and brand identity system with color palette, typography, and usage guidelines.</div></div>
-      </div>
-
-      <div class="pcard" data-cat="brand">
-        <div class="pcard__thumb"><img src="assets/img/gallery/tossuplogo.jpg" alt="Toss Up Sports"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Brand</span><div class="pcard__title">Toss Up Sports</div><div class="pcard__desc">Logo system and brand identity for a sports entertainment startup.</div></div>
-      </div>
-
-      <div class="pcard" data-cat="brand">
-        <div class="pcard__thumb"><img src="assets/img/gallery/MemoryChests_Logo.jpg" alt="Memory Chests"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Brand</span><div class="pcard__title">Memory Chests</div><div class="pcard__desc">Logo and full brand identity for a keepsake product brand, print and web ready.</div></div>
-      </div>
-
-      <!-- Print -->
-      <div class="pcard" data-cat="print">
-        <div class="pcard__thumb"><img src="assets/img/gallery/rivercards.jpg" alt="Business Cards"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Print</span><div class="pcard__title">River Music - Business Cards</div><div class="pcard__desc">Custom card design that became an organic referral tool, driving consistent new bookings.</div></div>
-      </div>
-
-      <div class="pcard" data-cat="print" data-hide-all="true">
-        <div class="pcard__thumb"><img src="assets/img/gallery/SimpleconsLookBook.jpg" alt="Simplecons Lookbook"><div class="pcard__overlay"><a href="gallery.html">View Gallery</a></div></div>
-        <div class="pcard__body"><span class="pcard__tag">Print</span><div class="pcard__title">Simplecons Lookbook</div><div class="pcard__desc">Product catalog and print-ready lookbook design for a lifestyle brand.</div></div>
-      </div>
-
-    </div>
-
-    <div class="portfolio__footer">
-      <a href="gallery.html" class="btn btn-outline">Browse Full Portfolio Gallery</a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
 <section class="section" id="services">
-  <div class="container">
-    <span class="label">Services</span>
-    <h2 class="section-title">What I Can Do for You</h2>
-    <p class="section-desc">From a single landing page to a full brand overhaul, I cover the full spectrum of web and digital design.</p>
+  <div class="container section__inner">
+    <div class="section-head reveal">
+      <h2 class="h2">One partner across <span class="muted">the whole stack.</span></h2>
+      <p class="lead">Most vendors own one layer. I've owned all of them: the platform, the integrations behind it, the automation around it, and the operations after launch.</p>
+    </div>
 
-    <div class="services__grid">
-      <div class="scard">
-        <div class="scard__icon">🌐</div>
-        <div class="scard__title">Website Design &amp; Development</div>
-        <div class="scard__desc">Custom websites built on WordPress, Shopify, or plain HTML/CSS. Mobile-first, fast, accessible, and structured to convert visitors into clients.</div>
+    <div class="diagram reveal">
+      <div class="diagram__bar"><strong>How the pieces connect</strong><span class="status"><span class="live-dot"></span>Data flowing</span></div>
+      <div class="diagram__scroll">
+        <div class="diagram__canvas" role="img" aria-label="Diagram: website, storefront, and lead-capture channels feed a WordPress, Drupal, or Shopify core platform, which connects through n8n, Zapier, and AI tooling to Salesforce, HubSpot, Airtable, GA4, and team tools like Slack.">
+          <svg width="1120" height="424" viewBox="0 0 1120 424" aria-hidden="true">
+            <g class="diagram__lines">
+              <path d="M224 96 C277 96 277 224 330 224"/><path d="M224 224 L330 224"/><path d="M224 352 C277 352 277 224 330 224"/>
+              <path d="M530 224 C575 224 575 152 620 152"/><path d="M530 224 C575 224 575 296 620 296"/><path d="M720 264 L720 184"/>
+              <path d="M820 152 C858 152 858 96 896 96"/><path d="M820 152 C858 152 858 224 896 224"/><path d="M820 152 C858 152 858 352 896 352"/>
+            </g>
+            <path class="pulse" pathLength="100" d="M224 96 C277 96 277 224 330 224" style="animation-delay:0s"/>
+            <path class="pulse" pathLength="100" d="M224 224 L330 224" style="animation-delay:.35s"/>
+            <path class="pulse" pathLength="100" d="M224 352 C277 352 277 224 330 224" style="animation-delay:.7s"/>
+            <path class="pulse" pathLength="100" d="M530 224 C575 224 575 152 620 152" style="animation-delay:1.05s"/>
+            <path class="pulse" pathLength="100" d="M530 224 C575 224 575 296 620 296" style="animation-delay:1.25s"/>
+            <path class="pulse" pathLength="100" d="M720 264 L720 184" style="animation-delay:1.8s"/>
+            <path class="pulse" pathLength="100" d="M820 152 C858 152 858 96 896 96" style="animation-delay:2s"/>
+            <path class="pulse" pathLength="100" d="M820 152 C858 152 858 224 896 224" style="animation-delay:2.2s"/>
+            <path class="pulse" pathLength="100" d="M820 152 C858 152 858 352 896 352" style="animation-delay:2.4s"/>
+          </svg>
+          <span class="diagram__col" style="left:24px">Channels</span>
+          <span class="diagram__col" style="left:330px">Platform</span>
+          <span class="diagram__col" style="left:620px">Orchestration</span>
+          <span class="diagram__col" style="left:896px">Systems of record</span>
+          <div class="node" style="left:24px;top:64px"><small>Channel</small><span>Website &amp; content</span></div>
+          <div class="node" style="left:24px;top:192px"><small>Channel</small><span>Storefront &amp; orders</span></div>
+          <div class="node" style="left:24px;top:320px"><small>Channel</small><span>Forms &amp; lead capture</span></div>
+          <div class="node node--core" style="left:330px;top:174px"><small>Core platform</small><span>WordPress · Drupal · Shopify</span><small>Owned end to end</small></div>
+          <div class="node" style="left:620px;top:120px"><small>Automation</small><span>n8n · Zapier · REST APIs</span></div>
+          <div class="node" style="left:620px;top:264px"><small>AI layer</small><span>Claude · GPT tooling</span></div>
+          <div class="node" style="left:896px;top:64px"><small>CRM</small><span>Salesforce · HubSpot</span></div>
+          <div class="node" style="left:896px;top:192px"><small>Data</small><span>Airtable · GA4 · GTM</span></div>
+          <div class="node" style="left:896px;top:320px"><small>Team</small><span>Slack · Email · Reports</span></div>
+        </div>
       </div>
-      <div class="scard">
-        <div class="scard__icon">🛍️</div>
-        <div class="scard__title">Shopify &amp; E-Commerce</div>
-        <div class="scard__desc">Product-focused storefronts with clean UX, optimized checkout, multi-channel marketplace setup, and hands-on training so you own and run your store confidently.</div>
-      </div>
-      <div class="scard">
-        <div class="scard__icon">⚙️</div>
-        <div class="scard__title">WordPress &amp; CMS Build</div>
-        <div class="scard__desc">Theme customization, plugin integration, and full builds on WordPress, Drupal, or Webflow. Your content, your control, no developer dependency.</div>
-      </div>
-      <div class="scard">
-        <div class="scard__icon">🔗</div>
-        <div class="scard__title">Integrations &amp; AI-Powered Workflows</div>
-        <div class="scard__desc">Connect your site to Salesforce, Zapier, HubSpot, Airtable, and more. Build custom AI tools and automations that eliminate repetitive tasks and scale your operations.</div>
-      </div>
-      <div class="scard">
-        <div class="scard__icon">✏️</div>
-        <div class="scard__title">Brand Identity &amp; Logo Design</div>
-        <div class="scard__desc">Logos, color palettes, and brand systems that give your business a professional, consistent look across every touchpoint, print and digital.</div>
-      </div>
-      <div class="scard">
-        <div class="scard__icon">📈</div>
-        <div class="scard__title">SEO, AIO &amp; Paid Ads</div>
-        <div class="scard__desc">On-page SEO, AI-driven content optimization, WCAG 2.2 AA accessibility audits, and paid advertising on Google and Meta. Get found, stay found, and convert at every stage.</div>
-      </div>
+    </div>
+
+    <div class="grid-3">
+      <article class="card tile reveal">
+        <span class="tag">WCAG 2.2 AA</span>
+        <div><h3>Accessibility &amp; performance</h3><p>WCAG 2.2 AA audits and remediation, Core Web Vitals, SEO, and AI-search readiness, built into every release.</p></div>
+        <div class="demo audit" data-audit aria-hidden="true">
+          <div class="progress"><span data-audit-bar></span></div>
+          <ul class="checks">
+            <li class="check"><span class="check__icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Color contrast 4.5:1 or better</li>
+            <li class="check"><span class="check__icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Keyboard access &amp; focus order</li>
+            <li class="check"><span class="check__icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Landmarks &amp; heading structure</li>
+            <li class="check"><span class="check__icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Alt text &amp; media captions</li>
+            <li class="check"><span class="check__icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Reduced-motion support</li>
+          </ul>
+          <div class="audit__status" data-audit-status>Auditing… 0 of 5</div>
+        </div>
+      </article>
+
+      <article class="card tile reveal">
+        <span class="tag">Salesforce · HubSpot · n8n</span>
+        <div><h3>Integrations &amp; automation</h3><p>Salesforce, HubSpot, Airtable, and GA4 wired to your site through Zapier, n8n, or custom APIs, so every lead lands where your team works.</p></div>
+        <ol class="demo flow" aria-hidden="true">
+          <li class="flow__rail"></li>
+          <li class="flow__dot"></li>
+          <li class="flow__step"><span class="flow__code">WEB</span><span class="flow__name">Website form</span><span class="flow__role">Trigger</span></li>
+          <li class="flow__step"><span class="flow__code">N8N</span><span class="flow__name">Enrich &amp; route</span><span class="flow__role">Workflow</span></li>
+          <li class="flow__step"><span class="flow__code">SF</span><span class="flow__name">Salesforce lead</span><span class="flow__role">CRM</span></li>
+          <li class="flow__step"><span class="flow__code">#</span><span class="flow__name">Sales team alert</span><span class="flow__role">Notify</span></li>
+        </ol>
+      </article>
+
+      <article class="card tile reveal">
+        <span class="tag">Claude · GPT</span>
+        <div><h3>AI tooling for teams</h3><p>Internal tools that take repetitive work off your team's plate: RFP analysis, scoping drafts, content operations, and reporting.</p></div>
+        <div class="demo agent" data-agent aria-hidden="true">
+          <p class="agent__head">Agent run · <span class="mono">rfp-intake.pdf</span></p>
+          <ul class="steps">
+            <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Parse the RFP document</li>
+            <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Extract requirements &amp; deadlines</li>
+            <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Map requirements to services</li>
+            <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Flag risks &amp; open questions</li>
+            <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Draft scope &amp; estimate ranges</li>
+          </ul>
+          <div class="agent__out" data-agent-out></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="grid-4">
+      <article class="card service reveal">
+        <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span>
+        <div><h3>Platform engineering</h3><p>Custom builds and re-platforms on WordPress, Drupal, Shopify, and Webflow, with structured content and code your next team can maintain.</p></div>
+      </article>
+      <article class="card service reveal">
+        <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+        <div><h3>WebOps &amp; support</h3><p>Ownership after launch: updates, monitoring, triage, and steady improvement across multi-platform estates.</p></div>
+      </article>
+      <article class="card service reveal">
+        <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg></span>
+        <div><h3>Discovery &amp; project management</h3><p>Technical discovery, scoping, and delivery management that turn a fuzzy brief into a plan stakeholders sign off on, then a launch.</p></div>
+      </article>
+      <article class="card service reveal">
+        <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></span>
+        <div><h3>Brand identity &amp; design</h3><p>Logos, palettes, and brand systems that hold together across web, print, and every customer touchpoint.</p></div>
+      </article>
+    </div>
+
+    <div class="tags platforms reveal">
+      <span class="platforms__label">Platforms &amp; tools</span>
+      <span class="tag tag--white">WordPress</span><span class="tag tag--white">Drupal</span><span class="tag tag--white">Shopify</span><span class="tag tag--white">WooCommerce</span>
+      <span class="tag tag--white">Webflow</span><span class="tag tag--white">BigCommerce</span><span class="tag tag--white">Salesforce</span><span class="tag tag--white">HubSpot</span>
+      <span class="tag tag--white">Airtable</span><span class="tag tag--white">Zapier</span><span class="tag tag--white">n8n</span><span class="tag tag--white">Stripe</span>
+      <span class="tag tag--white">ShipStation</span><span class="tag tag--white">GA4 · Tag Manager</span><span class="tag tag--white">Claude · ChatGPT · Cursor</span><span class="tag tag--white">Figma · Adobe CS</span>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section section--alt" id="process">
-  <div class="container">
-    <span class="label">How It Works</span>
-    <h2 class="section-title">My Process</h2>
-    <p class="section-desc">A clear workflow from first call to launch day, with no surprises along the way.</p>
+<section class="section" id="work">
+  <div class="container section__inner">
+    <div class="section-head section-head--row reveal">
+      <h2 class="h2">Platforms in production.</h2>
+      <a class="btn btn--ghost btn--sm" href="gallery.html">Full portfolio <span aria-hidden="true">→</span></a>
+    </div>
 
-    <div class="process__grid">
-      <div class="pstep">
-        <div class="pstep__num">01</div>
-        <div class="pstep__icon">💬</div>
-        <div class="pstep__title">Discover</div>
-        <div class="pstep__desc">We talk through your goals, your audience, and what success looks like for your project. No commitment required.</div>
-      </div>
-      <div class="pstep">
-        <div class="pstep__num">02</div>
-        <div class="pstep__icon">📐</div>
-        <div class="pstep__title">Plan</div>
-        <div class="pstep__desc">I map out scope, timeline, and deliverables. A clear proposal with flat pricing, so you know exactly what you're getting.</div>
-      </div>
-      <div class="pstep">
-        <div class="pstep__num">03</div>
-        <div class="pstep__icon">🔨</div>
-        <div class="pstep__title">Build</div>
-        <div class="pstep__desc">Clean, well-structured code and thoughtful design. Regular check-ins keep us aligned and feedback rounds are built in.</div>
-      </div>
-      <div class="pstep">
-        <div class="pstep__num">04</div>
-        <div class="pstep__icon">🚀</div>
-        <div class="pstep__title">Launch</div>
-        <div class="pstep__desc">QA testing, accessibility review against WCAG 2.2 AA standards, and go-live. CMS training and ongoing support available after launch.</div>
-      </div>
+    <div class="grid-3">
+      <article class="card case reveal">
+        <div class="browser"><div class="browser__frame">
+          <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">littlecolorado.com</span></div>
+          <div class="browser__shot"><img src="assets/img/work/little-colorado-sm.webp" alt="Little Colorado storefront homepage" width="691" height="938" loading="lazy" decoding="async"></div>
+        </div></div>
+        <div class="case__body">
+          <p class="meta">Shopify · Amazon · Google Ads · Email</p>
+          <h3>Little Colorado</h3>
+          <p>Started as a website client and grew into running the brand's entire technical side: a Shopify 2.0 storefront with mega menus and metafields, an Amazon brand store, PPC, and newsletters.</p>
+          <blockquote class="case__quote">“Our PPC campaigns are generating strong leads, and our website is a dream come true.”<cite>Noelle &amp; Bill, owners</cite></blockquote>
+        </div>
+      </article>
+
+      <article class="card case reveal">
+        <div class="browser"><div class="browser__frame">
+          <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">buttonandbug.com</span></div>
+          <div class="browser__shot"><img src="assets/img/work/button-and-bug-sm.webp" alt="Button &amp; Bug Shopify storefront homepage" width="691" height="938" loading="lazy" decoding="async"></div>
+        </div></div>
+        <div class="case__body">
+          <p class="meta">Shopify 2.0 · Custom Liquid · SEO</p>
+          <h3>Button &amp; Bug</h3>
+          <p>Shopify storefront with metafield-driven product pages, handcrafted SEO copy, full legal, tax, and payments setup, and owner training.</p>
+          <blockquote class="case__quote">“I finally have a handle on my own store, and the attention to detail on the SEO and product pages was fantastic.”<cite>Ashley, founder</cite></blockquote>
+        </div>
+      </article>
+
+      <article class="card case reveal">
+        <div class="browser"><div class="browser__frame">
+          <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">woodtoybox.com</span></div>
+          <div class="browser__shot"><img src="assets/img/work/woodtoybox-sm.webp" alt="WoodToyBox storefront homepage" width="691" height="1000" loading="lazy" decoding="async"></div>
+        </div></div>
+        <div class="case__body">
+          <p class="meta">Logo · Shopify · SEO copy</p>
+          <h3>WoodToyBox</h3>
+          <p>Brand and storefront for an acquisition of Little Colorado: a playful logo system and a focused Shopify build that puts the product first.</p>
+          <a class="link" href="https://www.woodtoybox.com" target="_blank" rel="noopener">See it live <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    </div>
+
+    <a class="card teaser reveal" href="gallery.html#managed">
+      <span class="teaser__main">
+        <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3M8 17h6"/></svg></span>
+        <span><span class="teaser__title" style="display:block">Projects I've managed</span><span class="teaser__text" style="display:block">Web projects for Denver International Airport, E-470, the Colorado Attorney General's Office, Project C.U.R.E., and more.</span></span>
+      </span>
+      <span class="btn btn--ghost btn--sm">View managed projects <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="section quotes" id="testimonials" aria-roledescription="carousel" aria-label="Client testimonials" data-carousel>
+  <div class="quotes__inner">
+    <h2 class="sr-only">What clients say</h2>
+    <span class="quotes__stars" aria-hidden="true">★★★★★</span>
+    <div class="quotes__stage" data-carousel-stage aria-live="off">
+      <figure class="quote is-active" aria-roledescription="slide" aria-label="1 of 3">
+        <blockquote>“Will has done so much for us. We are omni-channel marketplace capable, our PPC campaigns are generating strong leads, and our website is a dream come true. We truly felt like we could trust Will with anything.”</blockquote>
+        <figcaption><img src="assets/img/site/testimonial-noelle-bill.webp" alt="" width="40" height="40" loading="lazy"><span><strong>Noelle &amp; Bill</strong> · <a class="link" href="https://www.littlecolorado.com" target="_blank" rel="noopener">Little Colorado</a> · E-commerce &amp; marketing</span></figcaption>
+      </figure>
+      <figure class="quote" aria-roledescription="slide" aria-label="2 of 3">
+        <blockquote>“My customers were thrilled by the new design, and I am thrilled by how my store performs. I finally have a handle on my own store, and the attention to detail on the SEO and product pages was fantastic.”</blockquote>
+        <figcaption><img src="assets/img/site/testimonial-ashley.webp" alt="" width="40" height="40" loading="lazy"><span><strong>Ashley</strong> · <a class="link" href="https://www.buttonandbug.com" target="_blank" rel="noopener">Button &amp; Bug</a> · Shopify e-commerce</span></figcaption>
+      </figure>
+      <figure class="quote" aria-roledescription="slide" aria-label="3 of 3">
+        <blockquote>“After the redesign of my resume and LinkedIn, I landed two jobs. I broke into management and remote work. So many doors have opened that I didn't know were available to me.”</blockquote>
+        <figcaption><img src="assets/img/site/testimonial-kuna.webp" alt="" width="40" height="40" loading="lazy"><span><strong>Kuna</strong> · Regional Manager, Zipcar Hawaii · Resume &amp; LinkedIn client</span></figcaption>
+      </figure>
+    </div>
+    <div class="quotes__controls">
+      <button class="icon-btn" type="button" data-carousel-prev aria-label="Previous testimonial"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="dot-btn" type="button" data-carousel-dot aria-label="Show testimonial 1 of 3" aria-current="true"><span class="dot-btn__track"><span class="dot-btn__fill"></span></span></button>
+      <button class="dot-btn" type="button" data-carousel-dot aria-label="Show testimonial 2 of 3" aria-current="false"><span class="dot-btn__track"><span class="dot-btn__fill"></span></span></button>
+      <button class="dot-btn" type="button" data-carousel-dot aria-label="Show testimonial 3 of 3" aria-current="false"><span class="dot-btn__track"><span class="dot-btn__fill"></span></span></button>
+      <button class="icon-btn" type="button" data-carousel-next aria-label="Next testimonial"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button class="icon-btn quotes__pause" type="button" data-carousel-pause aria-pressed="false" aria-label="Pause testimonials">
+        <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <div class="container">
-    <span class="label">Skills</span>
-    <h2 class="section-title">Tools &amp; Expertise</h2>
-    <p class="section-desc">A broad but practical skillset built over 15+ years of real client work across platforms, industries, and project types.</p>
-
-    <div class="skills__grid">
-      <div class="skill-cat">
-        <div class="skill-cat__title">🖥️ CMS &amp; Platforms</div>
-        <div class="skill-tags">
-          <span class="skill-tag">WordPress</span><span class="skill-tag">Shopify</span><span class="skill-tag">Drupal</span>
-          <span class="skill-tag">Webflow</span><span class="skill-tag">Squarespace</span><span class="skill-tag">BigCommerce</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat__title">💻 Frontend &amp; Dev</div>
-        <div class="skill-tags">
-          <span class="skill-tag">HTML / CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span>
-          <span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">WCAG 2.2 AA</span><span class="skill-tag">Accessibility Remediation</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat__title">🤖 AI &amp; Automation</div>
-        <div class="skill-tags">
-          <span class="skill-tag">ChatGPT / Claude</span><span class="skill-tag">Cursor AI</span><span class="skill-tag">Zapier</span>
-          <span class="skill-tag">n8n</span><span class="skill-tag">Airtable Automations</span><span class="skill-tag">AI App Building</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat__title">🔗 Integrations &amp; CRM</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Salesforce</span><span class="skill-tag">HubSpot</span><span class="skill-tag">Airtable</span>
-          <span class="skill-tag">Mailchimp</span><span class="skill-tag">Google Analytics</span><span class="skill-tag">Google Tag Manager</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat__title">🎨 Design Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Figma</span><span class="skill-tag">Adobe Photoshop</span><span class="skill-tag">Adobe Illustrator</span>
-          <span class="skill-tag">Adobe InDesign</span><span class="skill-tag">Canva</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat__title">📈 Marketing &amp; Ads</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Google Ads / PPC</span><span class="skill-tag">Meta Ads</span><span class="skill-tag">Email Marketing</span>
-          <span class="skill-tag">SEO / Copywriting</span><span class="skill-tag">Social Media</span>
-        </div>
-      </div>
+<section class="section" id="contact">
+  <div class="container section__inner contact">
+    <div class="contact__intro reveal">
+      <h2 class="h2">Have a platform that needs an owner?</h2>
+      <p class="lead">Tell me what you're running and where it hurts. I reply within one business day.</p>
+      <ul class="contact__list">
+        <li><a class="contact__item" href="tel:+17202829804"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><span class="meta">Phone or text</span><span class="contact__value">(720) 282-9804</span></span></a></li>
+        <li><a class="contact__item" href="mailto:w_martin@outlook.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><span class="meta">Email</span><span class="contact__value">w_martin@outlook.com</span></span></a></li>
+        <li><a class="contact__item" href="https://www.linkedin.com/in/will-martin1986/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span><span class="meta">LinkedIn</span><span class="contact__value">will-martin1986 <span aria-hidden="true">↗</span></span></span></a></li>
+        <li><div class="contact__item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><span class="meta">Based in</span><span class="contact__value">Denver, Colorado · Mountain Time</span></span></div></li>
+      </ul>
     </div>
-  </div>
-</section>
 
-<!-- TESTIMONIALS -->
-<section class="section section--alt" id="testimonials">
-  <div class="container">
-    <span class="label">Testimonials</span>
-    <h2 class="section-title">What Clients Say</h2>
-    <p class="section-desc">Real feedback from clients across web design, e-commerce, branding, and print.</p>
-
-    <div class="tgrid">
-      <div class="tcard">
-        <div class="tcard__stars">★★★★★</div>
-        <p class="tcard__quote">"After the redesign of my resume and LinkedIn, I landed two jobs. I broke into management and remote work. So many doors have opened that I didn't know were available to me."</p>
-        <div class="tcard__author">
-          <img src="assets/img/testimonial1.jpg" alt="Kuna" class="tcard__avatar">
-          <div>
-            <div class="tcard__name">Kuna</div>
-            <div class="tcard__role">Regional Manager, Zipcar Hawaii &middot; Resume &amp; LinkedIn Client</div>
-          </div>
-        </div>
+    <form class="form reveal" action="https://formsubmit.co/w_martin@outlook.com" method="POST">
+      <input type="hidden" name="_subject" value="New project inquiry from willpower.codes">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form__row">
+        <div><label class="label" for="first-name">First name</label><input class="field" id="first-name" name="first_name" type="text" placeholder="Jane" autocomplete="given-name" required></div>
+        <div><label class="label" for="last-name">Last name</label><input class="field" id="last-name" name="last_name" type="text" placeholder="Smith" autocomplete="family-name"></div>
       </div>
-
-      <div class="tcard">
-        <div class="tcard__stars">★★★★★</div>
-        <p class="tcard__quote">"My customers were thrilled by the new design, and I am thrilled by how my store performs. I finally have a handle on my own store, and the attention to detail on the SEO and product pages was fantastic."</p>
-        <div class="tcard__author">
-          <img src="assets/img/testimonial2.jpg" alt="Ashley" class="tcard__avatar">
-          <div>
-            <div class="tcard__name">Ashley</div>
-            <div class="tcard__role"><a href="https://www.buttonandbug.com" target="_blank">Button &amp; Bug</a> &middot; Shopify E-Commerce Store</div>
-          </div>
-        </div>
+      <div class="form__row">
+        <div><label class="label" for="email">Work email</label><input class="field" id="email" name="email" type="email" placeholder="jane@company.com" autocomplete="email" required></div>
+        <div><label class="label" for="company">Company <span>(optional)</span></label><input class="field" id="company" name="company" type="text" placeholder="Company name" autocomplete="organization"></div>
       </div>
-
-      <div class="tcard">
-        <div class="tcard__stars">★★★★★</div>
-        <p class="tcard__quote">"Will has done so much for us. We are omni-channel marketplace capable, our PPC campaigns are generating strong leads, and our website is a dream come true. We truly felt like we could trust Will with anything."</p>
-        <div class="tcard__author">
-          <img src="assets/img/testimonial3.jpg" alt="Noelle & Bill" class="tcard__avatar">
-          <div>
-            <div class="tcard__name">Noelle &amp; Bill</div>
-            <div class="tcard__role"><a href="https://www.littlecolorado.com" target="_blank">Little Colorado</a> &middot; E-Commerce &amp; Marketing</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section section--alt" id="contact">
-  <div class="container">
-    <div class="contact__grid">
       <div>
-        <span class="label">Contact</span>
-        <h2 class="section-title">Let's Build Something <em style="color: rgb(185, 107, 40);">Fantastic</em> Together</h2>
-        <p style="color:var(--text2);line-height:1.75;margin-bottom:2.5rem;">Ready to get started or just have questions? Reach out and I'll get back to you within one business day.</p>
-
-        <div class="cinfo__item">
-          <div class="cinfo__icon">📞</div>
-          <div><div class="cinfo__lbl">Phone / Text</div><div class="cinfo__val">‪<a href="tel:+17202829804" target="_blank" style="color:var(--accent)">(720) 282-9804‬</div></div>
-        </div>
-        <div class="cinfo__item">
-          <div class="cinfo__icon">📧</div>
-          <div><div class="cinfo__lbl">Email</div><div class="cinfo__val"><a href="mailto:w_martin@outlook.com" target="_blank" style="color:var(--accent)">w_martin@outlook.com</a></div></div>
-        </div>
-        <div class="cinfo__item">
-          <div class="cinfo__icon">📍</div>
-          <div><div class="cinfo__lbl">Location</div><div class="cinfo__val">Denver, Colorado</div></div>
-        </div>
-        <div class="cinfo__item">
-          <div class="cinfo__icon">💼</div>
-          <div><div class="cinfo__lbl">LinkedIn</div><div class="cinfo__val"><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" style="color:var(--accent)">will-martin1986</a></div></div>
-        </div>
+        <label class="label" for="project-type">What do you need?</label>
+        <select class="field" id="project-type" name="project_type">
+          <option value="">Select a service…</option>
+          <option>Website design &amp; development</option>
+          <option>Platform migration / re-platform</option>
+          <option>Shopify &amp; e-commerce</option>
+          <option>WordPress, Drupal, or CMS work</option>
+          <option>Integrations &amp; automation</option>
+          <option>AI tooling</option>
+          <option>Accessibility &amp; SEO audit</option>
+          <option>WebOps &amp; ongoing support</option>
+          <option>Brand identity &amp; design</option>
+          <option>Something else</option>
+        </select>
       </div>
-
-      <div class="cform">
-        <form action="https://formsubmit.co/w_martin@outlook.com" method="POST">
-          <input type="hidden" name="_subject" value="New project inquiry from willpower.codes">
-          <input type="hidden" name="_captcha" value="false">
-          <div class="frow">
-            <div class="ffield">
-              <label class="flabel">First Name</label>
-              <input type="text" name="first_name" class="finput" placeholder="Jane" required>
-            </div>
-            <div class="ffield">
-              <label class="flabel">Last Name</label>
-              <input type="text" name="last_name" class="finput" placeholder="Smith">
-            </div>
-          </div>
-          <div class="ffield">
-            <label class="flabel">Email Address</label>
-            <input type="email" name="email" class="finput" placeholder="jane@yourbusiness.com" required>
-          </div><br>
-          <div class="ffield">
-            <label class="flabel">Project Type</label>
-            <select name="project_type" class="fselect">
-              <option value="">Select a service...</option>
-              <option>Website Design &amp; Development</option>
-              <option>Shopify / E-Commerce</option>
-              <option>WordPress / CMS Build</option>
-              <option>Brand Identity &amp; Logo</option>
-              <option>AI Workflows &amp; Automation</option>
-              <option>SEO &amp; Integrations</option>
-              <option>Print Design</option>
-              <option>Resume &amp; LinkedIn Design</option>
-              <option>Something Else</option>
-            </select>
-          </div>
-          <div class="ffield">
-            <label class="flabel">Tell me about your project</label>
-            <textarea name="message" class="ftextarea" placeholder="What are you trying to accomplish? Any details about timeline or budget are helpful." required></textarea>
-          </div>
-          <button type="submit" class="fsubmit">Send Message</button>
-        </form>
-      </div>
-    </div>
+      <div><label class="label" for="message">Tell me about your project</label><textarea class="field" id="message" name="message" rows="5" placeholder="What are you trying to accomplish? Timeline and budget details help." required></textarea></div>
+      <button class="btn btn--primary" type="submit">Send message <span aria-hidden="true">→</span></button>
+      <p class="meta form__note">I reply within one business day.</p>
+    </form>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
-      <div>
-        <div class="footer__logo">willpower.codes</div>
-        <div class="footer__tag">Web design and digital strategy for businesses of all sizes. Quality work, honest pricing, no agency overhead.</div>
-      </div>
-      <div>
-        <div class="footer__head">Quick Links</div>
-        <nav class="footer__links">
-          <a href="#about">About</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#services">Services</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <a href="gallery.html">Full Gallery</a>
-        </nav>
-      </div>
-      <div>
-        <div class="footer__head">Get in Touch</div>
-        <div class="footer__citem">720-583-4787</div>
-        <div class="footer__citem">w_martin@outlook.com</div>
-        <div class="footer__citem">Denver, Colorado</div>
-        <div style="margin-top:.9rem;"><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" style="color:var(--accent);font-size:.85rem;font-weight:600;">LinkedIn Profile &rarr;</a></div>
-      </div>
+      <div class="footer__col"><p style="font-weight:600;font-size:15px">willpower.codes</p><p class="footer__about">Web platforms, integrations, and AI tooling from Denver, Colorado.</p></div>
+      <nav class="footer__col" aria-label="Footer"><h2>Site</h2><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="gallery.html">Portfolio gallery</a><a href="#contact">Contact</a></nav>
+      <div class="footer__col"><h2>Contact</h2><a href="tel:+17202829804">(720) 282-9804</a><a href="mailto:w_martin@outlook.com">w_martin@outlook.com</a><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div>
     </div>
-    <div class="footer__bottom">
-      <div class="footer__copy">&copy; 2026 willpower.codes &middot; Will Martin &middot; All rights reserved</div>
-      <div class="footer__bottom-links">
-        <a href="https://www.linkedin.com/in/will-martin1986/" target="_blank">LinkedIn</a>
-        <a href="gallery.html">Portfolio Gallery</a>
-      </div>
-    </div>
+    <div class="footer__bottom meta"><span>© 2026 willpower.codes · Will Martin</span><span>Built to WCAG 2.2 AA</span></div>
   </div>
 </footer>
 
-<button class="scroll-top" id="scroll-top">&#8593;</button>
-
-<script>
-  // ── DARK MODE ──
-  const body = document.body;
-  const themeBtn = document.getElementById('theme-toggle');
-  if (localStorage.getItem('wpTheme') === 'dark') { body.classList.add('dark'); themeBtn.textContent = '☀️'; }
-  themeBtn.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    const dark = body.classList.contains('dark');
-    themeBtn.textContent = dark ? '☀️' : '🌙';
-    localStorage.setItem('wpTheme', dark ? 'dark' : 'light');
-  });
-
-  // ── NAV SCROLL ──
-  const mainNav = document.getElementById('main-nav');
-  const scrollTopBtn = document.getElementById('scroll-top');
-  window.addEventListener('scroll', () => {
-    mainNav.classList.toggle('scrolled', window.scrollY > 50);
-    scrollTopBtn.classList.toggle('show', window.scrollY > 500);
-  }, { passive: true });
-
-  // ── ACTIVE NAV LINK ──
-  const navAs = document.querySelectorAll('.nav__links a');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navAs.forEach(a => a.classList.remove('active'));
-        const match = document.querySelector(`.nav__links a[href="#${e.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  document.querySelectorAll('section[id]').forEach(s => io.observe(s));
-
-  // ── MOBILE MENU ──
-  const mobileMenu = document.getElementById('mobile-menu');
-  document.getElementById('menu-btn').addEventListener('click', () => mobileMenu.classList.add('open'));
-  document.getElementById('menu-close').addEventListener('click', () => mobileMenu.classList.remove('open'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-  // ── PORTFOLIO FILTER ──
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      document.querySelectorAll('.pcard').forEach(c => {
-        const wrongCat = f !== 'all' && c.dataset.cat !== f;
-        const hiddenInAll = f === 'all' && c.dataset.hideAll === 'true';
-        c.classList.toggle('hidden', wrongCat || hiddenInAll);
-      });
-    });
-  });
-  // hide on initial load
-  document.querySelectorAll('.pcard[data-hide-all="true"]').forEach(c => c.classList.add('hidden'));
-
-  // ── SCROLL TOP ──
-  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>
