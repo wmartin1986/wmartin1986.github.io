@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will Martin · Web Platforms, Integrations, and AI Tooling | willpower.codes</title>
-  <meta name="description" content="Will Martin designs, builds, and operates web platforms in Denver: WordPress, Drupal, and Shopify sites, Salesforce and HubSpot integrations, and AI tooling for teams.">
+  <title>Will Martin · Web Design, E-commerce, and Systems Integration | willpower.codes</title>
+  <meta name="description" content="Enterprise-level web design, e-commerce architecture, and custom systems integration without the agency price tag. Will Martin has spent over 15 years helping small businesses, non-profits, and major organizations launch fast, accessible websites.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Will Martin · willpower.codes">
-  <meta property="og:description" content="Web platforms, integrations, and AI tooling, designed, built, and operated by one accountable partner in Denver, Colorado.">
-  <meta property="og:image" content="assets/img/site/will-martin.webp">
+  <meta property="og:description" content="Big-agency web engineering. One dedicated partner. Web design, e-commerce, and systems integration from Denver, Colorado.">
+  <meta property="og:image" content="https://willpower.codes/assets/img/site/will-martin.jpg">
   <meta name="theme-color" content="#F7F6F2">
   <link rel="icon" type="image/png" href="assets/img/willpower_favicon.png">
   <!-- Google tag (gtag.js) -->
@@ -19,7 +19,10 @@
     gtag('js', new Date());
     gtag('config', 'G-2WLEP8DW36');
   </script>
-  <script>document.documentElement.classList.remove('no-js');</script>
+  <script>
+    document.documentElement.classList.remove('no-js');
+    try { if (localStorage.getItem('wpTheme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,13 +33,13 @@
     "@type": "Person",
     "name": "Will Martin",
     "url": "https://willpower.codes/",
-    "image": "https://willpower.codes/assets/img/site/will-martin.webp",
+    "image": "https://willpower.codes/assets/img/site/will-martin.jpg",
     "jobTitle": "Freelance Web Solutions Developer, Designer & Marketing Professional",
     "worksFor": { "@type": "Organization", "name": "willpower.codes" },
     "address": { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" },
     "email": "mailto:w_martin@outlook.com",
     "sameAs": ["https://www.linkedin.com/in/will-martin1986/"],
-    "knowsAbout": ["WordPress", "Drupal", "Shopify", "Salesforce", "HubSpot", "Web accessibility", "WCAG 2.2", "AI automation", "Project management"]
+    "knowsAbout": ["Web design", "E-commerce", "WordPress", "WooCommerce", "Shopify", "Drupal", "Webflow", "Salesforce", "HubSpot", "Systems integration", "Marketing automation", "SEO", "Web accessibility", "WCAG 2.2", "AI automation", "Project management"]
   }
   </script>
 </head>
@@ -45,7 +48,7 @@
 
 <header class="site-header" id="site-header">
   <div class="container nav">
-    <a class="brand" href="#top" aria-label="willpower.codes home"><span class="brand__mark" aria-hidden="true">W</span>willpower.codes</a>
+    <a class="brand" href="#top" aria-label="willpower.codes home"><img class="brand__mark" src="assets/img/site/willpower-mark.webp" alt="" width="26" height="28">willpower.codes</a>
     <ul class="nav__links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -54,6 +57,10 @@
       <li><a href="gallery.html">Gallery</a></li>
     </ul>
     <div class="nav__actions">
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" data-theme-toggle>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
       <a class="btn btn--primary btn--sm" href="#contact">Let's talk</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -67,32 +74,31 @@
 <section class="hero" id="top">
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="container hero__inner">
-    <a class="badge rise" href="#contact"><span class="live-dot"></span>Open for new projects<span class="badge__arrow" aria-hidden="true">→</span></a>
-    <h1 class="hero__title rise rise-1">Web platforms that <span class="muted">run like infrastructure.</span></h1>
-    <p class="hero__sub rise rise-2">I design, build, and operate the websites, integrations, and AI tooling teams depend on, across WordPress, Drupal, Shopify, and Salesforce. Fifteen years of agency, in-house, and Microsoft experience. One accountable partner.</p>
-    <div class="hero__ctas rise rise-3">
+    <a class="badge" href="#contact"><span class="live-dot"></span>Open for new projects<span class="badge__arrow" aria-hidden="true">→</span></a>
+    <h1 class="hero__title">Big-agency web engineering. <span class="muted">One dedicated partner.</span></h1>
+    <p class="hero__sub">Get enterprise-level web design, e-commerce architecture, and custom systems integration without the bloated agency price tag. For over 15 years, I have helped small businesses, non-profits, and major organizations launch fast, accessible, conversion-focused websites.</p>
+    <div class="hero__ctas">
       <a class="btn btn--primary" href="#contact">Start a project <span aria-hidden="true">→</span></a>
       <a class="btn btn--ghost" href="#work">See the work</a>
     </div>
-    <p class="hero__byline rise rise-4">
+    <p class="hero__byline">
       <img src="assets/img/site/will-martin.webp" alt="" width="36" height="36">
-      <span><strong>Will Martin</strong> · Denver, CO · <span class="stars" aria-hidden="true">★★★★★</span><span class="sr-only">Five-star</span> client-rated</span>
+      <span><strong>Will Martin</strong> · Denver, CO · <span class="stars" aria-hidden="true">★★★★★</span><span class="sr-only">Five-star</span> client&#8209;rated</span>
     </p>
 
-    <div class="palette rise rise-5" aria-label="Example searches across my services and projects" role="region">
+    <div class="palette" aria-label="Example searches across my services and projects" role="region">
       <div class="palette__beam" aria-hidden="true"></div>
       <div class="palette__body">
         <div class="palette__search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6F6A60" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           <div class="palette__query" aria-hidden="true"><span data-palette-typed>migrate our drupal site to a modern stack</span><span class="caret"></span></div>
           <span class="kbd" aria-hidden="true">esc</span>
         </div>
         <div class="palette__results">
-          <div class="palette__label"><span>Best matches</span><span data-palette-count>4 results</span></div>
+          <div class="palette__label"><span>Best matches</span><span data-palette-count>3 results</span></div>
           <ul class="palette__list" data-palette-list>
-            <li class="result"><span class="result__icon">MIG</span><span class="result__text"><span class="result__title">Platform migration &amp; re-platforming</span><span class="result__meta">Drupal · WordPress · Shopify · headless</span></span><span class="result__kind">Service</span></li>
+            <li class="result"><span class="result__icon">MIG</span><span class="result__text"><span class="result__title">Platform migration &amp; re-platforming</span><span class="result__meta">Drupal · WordPress · Shopify · Webflow</span></span><span class="result__kind">Service</span></li>
             <li class="result"><span class="result__icon">DSC</span><span class="result__text"><span class="result__title">Technical discovery &amp; scoping</span><span class="result__meta">Requirements, architecture, and estimates</span></span><span class="result__kind">Service</span></li>
-            <li class="result"><span class="result__icon">PM</span><span class="result__text"><span class="result__title">Projects I've managed</span><span class="result__meta">Denver International Airport, E-470, Colorado AG, and more</span></span><span class="result__kind">Portfolio</span></li>
             <li class="result"><span class="result__icon">OPS</span><span class="result__text"><span class="result__title">WebOps after launch</span><span class="result__meta">Updates, monitoring, and triage</span></span><span class="result__kind">Service</span></li>
           </ul>
         </div>
@@ -102,21 +108,25 @@
   </div>
 </section>
 
-<section class="proof" aria-label="Clients and employers">
-  <div class="container proof__inner">
-    <p class="proof__label">Where I've built and shipped</p>
-    <ul class="proof__list">
-      <li>Microsoft</li><li>Denver International Airport</li><li>E-470</li><li>Colorado Attorney General</li><li>Project C.U.R.E.</li><li>Hale Pet Door</li><li>Little Colorado</li>
-    </ul>
+<section class="ticker" aria-label="Platforms and tools I work with" data-ticker>
+  <div class="ticker__viewport">
+    <div class="ticker__track">
+      <ul><li>WordPress</li><li>Shopify</li><li>WooCommerce</li><li>Drupal</li><li>Webflow</li><li>BigCommerce</li><li>Squarespace</li><li>HubSpot</li><li>Salesforce</li><li>Airtable</li><li>Stripe</li><li>ShipStation</li><li>Zapier</li><li>n8n</li><li>Make</li><li>Klaviyo</li><li>Google Analytics</li><li>Google Ads</li><li>Semrush</li><li>Figma</li><li>Adobe Creative Cloud</li><li>Claude</li><li>ChatGPT</li></ul>
+      <ul aria-hidden="true"><li>WordPress</li><li>Shopify</li><li>WooCommerce</li><li>Drupal</li><li>Webflow</li><li>BigCommerce</li><li>Squarespace</li><li>HubSpot</li><li>Salesforce</li><li>Airtable</li><li>Stripe</li><li>ShipStation</li><li>Zapier</li><li>n8n</li><li>Make</li><li>Klaviyo</li><li>Google Analytics</li><li>Google Ads</li><li>Semrush</li><li>Figma</li><li>Adobe Creative Cloud</li><li>Claude</li><li>ChatGPT</li></ul>
+    </div>
   </div>
+  <button class="icon-btn ticker__pause" type="button" aria-pressed="false" aria-label="Pause scrolling list" data-ticker-pause>
+    <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+  </button>
 </section>
 
 <section id="about">
   <div class="container section__inner about">
-    <div class="about__intro reveal">
+    <div class="about__intro">
       <div class="person">
         <img src="assets/img/site/will-martin.webp" alt="Portrait of Will Martin" width="88" height="88">
-        <div><p class="person__name">Will Martin</p><p class="meta">Web platforms, WebOps, and AI tooling · Denver, CO</p></div>
+        <div><p class="person__name">Will Martin</p><p class="meta">Web design, e-commerce, and systems integration · Denver, CO</p></div>
       </div>
       <h2 class="h2">Hi, I'm Will. <span class="muted">I've been building the web since 2007.</span></h2>
       <p class="lead">I've worked in every aspect of web projects: designing and developing for small businesses as a freelancer, running the online operations of a growing e-commerce brand, managing business operations for teams at Microsoft, and, most recently, scoping, selling, and managing client web projects at Fruition, a Denver digital agency. Today I bring all of that to willpower.codes.</p>
@@ -129,17 +139,17 @@
       </div>
     </div>
 
-    <div class="experience reveal">
+    <div class="experience">
       <div class="experience__head">
         <div class="experience__title"><h3>Experience</h3><span class="meta">2007 to now</span></div>
         <div class="track" aria-hidden="true">
           <span class="c-freelance-bar" style="left:0;width:100%"></span>
         </div>
         <div class="track" aria-hidden="true">
-          <span class="c-ms" style="left:28.3%;width:28.3%;animation-delay:.2s"></span>
-          <span class="c-am" style="left:62.9%;width:3.8%;animation-delay:.35s"></span>
-          <span class="c-lc" style="left:68.9%;width:13.1%;animation-delay:.45s"></span>
-          <span class="c-fruition" style="left:82%;width:15.6%;animation-delay:.55s"></span>
+          <span class="c-ms" style="left:28.3%;width:28.3%"></span>
+          <span class="c-am" style="left:62.9%;width:3.8%"></span>
+          <span class="c-lc" style="left:68.9%;width:13.1%"></span>
+          <span class="c-fruition" style="left:82%;width:15.6%"></span>
         </div>
         <div class="track__axis meta" aria-hidden="true"><span style="left:0">2007</span><span style="left:28.3%">2012</span><span style="left:56.6%">2018</span><span style="left:82%">2023</span><span style="right:0">Now</span></div>
       </div>
@@ -189,7 +199,7 @@
       <div class="education">
         <h4>Education</h4>
         <ul>
-          <li><strong>San Jose State University</strong> · Bachelor's, Software Engineering (in progress)</li>
+          <li><strong>San Jose State University</strong> · Bachelor's, Software Engineering</li>
           <li><strong>University of Colorado Boulder</strong> · Bachelor's, English Language</li>
           <li><strong>Pueblo Community College</strong> · Associate's, Business Administration</li>
         </ul>
@@ -200,15 +210,15 @@
 
 <section class="section" id="services">
   <div class="container section__inner">
-    <div class="section-head reveal">
+    <div class="section-head">
       <h2 class="h2">One partner across <span class="muted">the whole stack.</span></h2>
       <p class="lead">Most vendors own one layer. I've owned all of them: the platform, the integrations behind it, the automation around it, and the operations after launch.</p>
     </div>
 
-    <div class="diagram reveal">
+    <div class="diagram">
       <div class="diagram__bar"><strong>How the pieces connect</strong><span class="status"><span class="live-dot"></span>Data flowing</span></div>
       <div class="diagram__scroll">
-        <div class="diagram__canvas" role="img" aria-label="Diagram: website, storefront, and lead-capture channels feed a WordPress, Drupal, or Shopify core platform, which connects through n8n, Zapier, and AI tooling to Salesforce, HubSpot, Airtable, GA4, and team tools like Slack.">
+        <div class="diagram__canvas" role="img" aria-label="Diagram: your website, online store, and lead forms feed one core platform, which connects through integrations, automation, and AI to your CRM and marketing tools, payments and fulfillment, and analytics and reporting.">
           <svg width="1120" height="424" viewBox="0 0 1120 424" aria-hidden="true">
             <g class="diagram__lines">
               <path d="M224 96 C277 96 277 224 330 224"/><path d="M224 224 L330 224"/><path d="M224 352 C277 352 277 224 330 224"/>
@@ -227,23 +237,23 @@
           </svg>
           <span class="diagram__col" style="left:24px">Channels</span>
           <span class="diagram__col" style="left:330px">Platform</span>
-          <span class="diagram__col" style="left:620px">Orchestration</span>
-          <span class="diagram__col" style="left:896px">Systems of record</span>
-          <div class="node" style="left:24px;top:64px"><small>Channel</small><span>Website &amp; content</span></div>
-          <div class="node" style="left:24px;top:192px"><small>Channel</small><span>Storefront &amp; orders</span></div>
-          <div class="node" style="left:24px;top:320px"><small>Channel</small><span>Forms &amp; lead capture</span></div>
-          <div class="node node--core" style="left:330px;top:174px"><small>Core platform</small><span>WordPress · Drupal · Shopify</span><small>Owned end to end</small></div>
-          <div class="node" style="left:620px;top:120px"><small>Automation</small><span>n8n · Zapier · REST APIs</span></div>
-          <div class="node" style="left:620px;top:264px"><small>AI layer</small><span>Claude · GPT tooling</span></div>
-          <div class="node" style="left:896px;top:64px"><small>CRM</small><span>Salesforce · HubSpot</span></div>
-          <div class="node" style="left:896px;top:192px"><small>Data</small><span>Airtable · GA4 · GTM</span></div>
-          <div class="node" style="left:896px;top:320px"><small>Team</small><span>Slack · Email · Reports</span></div>
+          <span class="diagram__col" style="left:620px">Automation &amp; AI</span>
+          <span class="diagram__col" style="left:896px">Business systems</span>
+          <div class="node" style="left:24px;top:64px"><span>Website &amp; content</span></div>
+          <div class="node" style="left:24px;top:192px"><span>Online store &amp; orders</span></div>
+          <div class="node" style="left:24px;top:320px"><span>Forms &amp; lead capture</span></div>
+          <div class="node node--core" style="left:330px;top:174px"><small>Core platform</small><span>Any CMS, store, or custom app</span><small>Owned end to end</small></div>
+          <div class="node" style="left:620px;top:120px"><small>Integrations</small><span>APIs &amp; workflows</span></div>
+          <div class="node" style="left:620px;top:264px"><small>AI layer</small><span>Agents &amp; AI features</span></div>
+          <div class="node" style="left:896px;top:64px"><span>CRM &amp; email marketing</span></div>
+          <div class="node" style="left:896px;top:192px"><span>Payments &amp; fulfillment</span></div>
+          <div class="node" style="left:896px;top:320px"><span>Analytics &amp; reporting</span></div>
         </div>
       </div>
     </div>
 
     <div class="grid-3">
-      <article class="card tile reveal">
+      <article class="card tile">
         <span class="tag">WCAG 2.2 AA</span>
         <div><h3>Accessibility &amp; performance</h3><p>WCAG 2.2 AA audits and remediation, Core Web Vitals, SEO, and AI-search readiness, built into every release.</p></div>
         <div class="demo audit" data-audit aria-hidden="true">
@@ -259,24 +269,24 @@
         </div>
       </article>
 
-      <article class="card tile reveal">
-        <span class="tag">Salesforce · HubSpot · n8n</span>
-        <div><h3>Integrations &amp; automation</h3><p>Salesforce, HubSpot, Airtable, and GA4 wired to your site through Zapier, n8n, or custom APIs, so every lead lands where your team works.</p></div>
+      <article class="card tile">
+        <span class="tag">Any platform, any API</span>
+        <div><h3>Integrations &amp; automation</h3><p>Your site wired to the CRM, marketing, payment, and operations tools you already use, through native integrations, automation platforms, or custom APIs.</p></div>
         <ol class="demo flow" aria-hidden="true">
           <li class="flow__rail"></li>
           <li class="flow__dot"></li>
           <li class="flow__step"><span class="flow__code">WEB</span><span class="flow__name">Website form</span><span class="flow__role">Trigger</span></li>
-          <li class="flow__step"><span class="flow__code">N8N</span><span class="flow__name">Enrich &amp; route</span><span class="flow__role">Workflow</span></li>
-          <li class="flow__step"><span class="flow__code">SF</span><span class="flow__name">Salesforce lead</span><span class="flow__role">CRM</span></li>
+          <li class="flow__step"><span class="flow__code">FLOW</span><span class="flow__name">Enrich &amp; route</span><span class="flow__role">Workflow</span></li>
+          <li class="flow__step"><span class="flow__code">CRM</span><span class="flow__name">New lead in your CRM</span><span class="flow__role">CRM</span></li>
           <li class="flow__step"><span class="flow__code">#</span><span class="flow__name">Sales team alert</span><span class="flow__role">Notify</span></li>
         </ol>
       </article>
 
-      <article class="card tile reveal">
-        <span class="tag">Claude · GPT</span>
-        <div><h3>AI tooling for teams</h3><p>Internal tools that take repetitive work off your team's plate: RFP analysis, scoping drafts, content operations, and reporting.</p></div>
+      <article class="card tile">
+        <span class="tag">For your team &amp; your customers</span>
+        <div><h3>AI tools and automation</h3><p>Internal tools and automations that take repetitive work off your team's plate, plus customer-facing AI: chat assistants, smart search, and AI-powered products you can sell.</p></div>
         <div class="demo agent" data-agent aria-hidden="true">
-          <p class="agent__head">Agent run · <span class="mono">rfp-intake.pdf</span></p>
+          <p class="agent__head"><span data-agent-label>Internal agent</span> · <span class="mono" data-agent-file>rfp-intake.pdf</span></p>
           <ul class="steps">
             <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Parse the RFP document</li>
             <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Extract requirements &amp; deadlines</li>
@@ -284,49 +294,62 @@
             <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Flag risks &amp; open questions</li>
             <li class="step"><span class="step__icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Draft scope &amp; estimate ranges</li>
           </ul>
-          <div class="agent__out" data-agent-out></div>
+          <div class="agent__out"><div class="agent__result" data-agent-out><strong data-agent-result>Draft scope ready for review</strong><span data-agent-note>Sent to #proposals</span></div></div>
         </div>
       </article>
     </div>
 
     <div class="grid-4">
-      <article class="card service reveal">
+      <article class="card service">
         <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span>
-        <div><h3>Platform engineering</h3><p>Custom builds and re-platforms on WordPress, Drupal, Shopify, and Webflow, with structured content and code your next team can maintain.</p></div>
+        <div><h3>Platform engineering</h3><p>Custom builds and re-platforms on the CMS or commerce platform that fits your business, with structured content and code your next team can maintain.</p></div>
       </article>
-      <article class="card service reveal">
+      <article class="card service">
         <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
         <div><h3>WebOps &amp; support</h3><p>Ownership after launch: updates, monitoring, triage, and steady improvement across multi-platform estates.</p></div>
       </article>
-      <article class="card service reveal">
+      <article class="card service">
         <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg></span>
         <div><h3>Discovery &amp; project management</h3><p>Technical discovery, scoping, and delivery management that turn a fuzzy brief into a plan stakeholders sign off on, then a launch.</p></div>
       </article>
-      <article class="card service reveal">
+      <article class="card service">
         <span class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></span>
         <div><h3>Brand identity &amp; design</h3><p>Logos, palettes, and brand systems that hold together across web, print, and every customer touchpoint.</p></div>
       </article>
     </div>
 
-    <div class="tags platforms reveal">
-      <span class="platforms__label">Platforms &amp; tools</span>
-      <span class="tag tag--white">WordPress</span><span class="tag tag--white">Drupal</span><span class="tag tag--white">Shopify</span><span class="tag tag--white">WooCommerce</span>
-      <span class="tag tag--white">Webflow</span><span class="tag tag--white">BigCommerce</span><span class="tag tag--white">Salesforce</span><span class="tag tag--white">HubSpot</span>
-      <span class="tag tag--white">Airtable</span><span class="tag tag--white">Zapier</span><span class="tag tag--white">n8n</span><span class="tag tag--white">Stripe</span>
-      <span class="tag tag--white">ShipStation</span><span class="tag tag--white">GA4 · Tag Manager</span><span class="tag tag--white">Claude · ChatGPT · Cursor</span><span class="tag tag--white">Figma · Adobe CS</span>
+    <div class="toolkit">
+      <div class="toolkit__head">
+        <h3>Platforms &amp; tools</h3>
+        <p>What I design with, build on, connect, and keep running, from the first sketch through years of support.</p>
+      </div>
+      <div class="toolkit__grid">
+        <div class="toolkit__group"><h4>Websites &amp; CMS</h4><div class="tags"><span class="tag">WordPress</span><span class="tag">Gutenberg</span><span class="tag">Elementor</span><span class="tag">Divi</span><span class="tag">ACF</span><span class="tag">Drupal</span><span class="tag">Webflow</span><span class="tag">HubSpot CMS</span><span class="tag">Squarespace</span></div></div>
+        <div class="toolkit__group"><h4>E-commerce &amp; marketplaces</h4><div class="tags"><span class="tag">Shopify</span><span class="tag">Shopify Plus</span><span class="tag">WooCommerce</span><span class="tag">BigCommerce</span><span class="tag">Magento</span><span class="tag">Amazon</span><span class="tag">Walmart</span><span class="tag">Etsy</span><span class="tag">eBay</span></div></div>
+        <div class="toolkit__group"><h4>CRM, payments &amp; operations</h4><div class="tags"><span class="tag">Salesforce</span><span class="tag">HubSpot</span><span class="tag">Airtable</span><span class="tag">Stripe</span><span class="tag">ShipStation</span><span class="tag">QuickBooks</span><span class="tag">NetSuite</span></div></div>
+        <div class="toolkit__group"><h4>Automation &amp; APIs</h4><div class="tags"><span class="tag">Zapier</span><span class="tag">Make</span><span class="tag">n8n</span><span class="tag">REST APIs</span><span class="tag">GraphQL</span><span class="tag">Webhooks</span><span class="tag">OAuth 2.0</span></div></div>
+        <div class="toolkit__group"><h4>Marketing &amp; analytics</h4><div class="tags"><span class="tag">GA4</span><span class="tag">Tag Manager</span><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Klaviyo</span><span class="tag">Mailchimp</span><span class="tag">Looker Studio</span></div></div>
+        <div class="toolkit__group"><h4>SEO</h4><div class="tags"><span class="tag">Search Console</span><span class="tag">Merchant Center</span><span class="tag">Semrush</span><span class="tag">Ahrefs</span><span class="tag">Screaming Frog</span><span class="tag">Yoast</span><span class="tag">Rank Math</span><span class="tag">Schema markup</span></div></div>
+        <div class="toolkit__group"><h4>Accessibility &amp; performance</h4><div class="tags"><span class="tag">WCAG 2.2 AA</span><span class="tag">WAVE</span><span class="tag">axe DevTools</span><span class="tag">Lighthouse</span><span class="tag">NVDA</span><span class="tag">VoiceOver</span><span class="tag">GTmetrix</span></div></div>
+        <div class="toolkit__group"><h4>Design &amp; creative</h4><div class="tags"><span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">InDesign</span><span class="tag">Premiere Pro</span><span class="tag">Lightroom</span><span class="tag">Acrobat Pro</span><span class="tag">Canva</span></div></div>
+        <div class="toolkit__group"><h4>Code</h4><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">PHP</span><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">Liquid</span><span class="tag">SQL</span><span class="tag">Tailwind CSS</span></div></div>
+        <div class="toolkit__group"><h4>Hosting &amp; DevOps</h4><div class="tags"><span class="tag">GitHub</span><span class="tag">Cloudflare</span><span class="tag">WP Engine</span><span class="tag">Kinsta</span><span class="tag">Pantheon</span><span class="tag">AWS</span><span class="tag">cPanel</span><span class="tag">Docker</span></div></div>
+        <div class="toolkit__group"><h4>AI</h4><div class="tags"><span class="tag">Claude</span><span class="tag">ChatGPT</span><span class="tag">Gemini</span><span class="tag">Midjourney</span><span class="tag">Adobe Firefly</span></div></div>
+        <div class="toolkit__group"><h4>Project delivery &amp; support</h4><div class="tags"><span class="tag">Jira</span><span class="tag">Confluence</span><span class="tag">Asana</span><span class="tag">Zendesk</span><span class="tag">Trello</span><span class="tag">Monday.com</span><span class="tag">Slack</span></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section" id="work">
   <div class="container section__inner">
-    <div class="section-head section-head--row reveal">
-      <h2 class="h2">Platforms in production.</h2>
+    <div class="section-head section-head--row">
+      <h2 class="h2">Selected work.</h2>
       <a class="btn btn--ghost btn--sm" href="gallery.html">Full portfolio <span aria-hidden="true">→</span></a>
     </div>
 
-    <div class="grid-3">
-      <article class="card case reveal">
+    <div class="showcase">
+      <article class="card case">
         <div class="browser"><div class="browser__frame">
           <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">littlecolorado.com</span></div>
           <div class="browser__shot"><img src="assets/img/work/little-colorado-sm.webp" alt="Little Colorado storefront homepage" width="691" height="938" loading="lazy" decoding="async"></div>
@@ -335,11 +358,10 @@
           <p class="meta">Shopify · Amazon · Google Ads · Email</p>
           <h3>Little Colorado</h3>
           <p>Started as a website client and grew into running the brand's entire technical side: a Shopify 2.0 storefront with mega menus and metafields, an Amazon brand store, PPC, and newsletters.</p>
-          <blockquote class="case__quote">“Our PPC campaigns are generating strong leads, and our website is a dream come true.”<cite>Noelle &amp; Bill, owners</cite></blockquote>
         </div>
       </article>
 
-      <article class="card case reveal">
+      <article class="card case">
         <div class="browser"><div class="browser__frame">
           <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">buttonandbug.com</span></div>
           <div class="browser__shot"><img src="assets/img/work/button-and-bug-sm.webp" alt="Button &amp; Bug Shopify storefront homepage" width="691" height="938" loading="lazy" decoding="async"></div>
@@ -348,31 +370,47 @@
           <p class="meta">Shopify 2.0 · Custom Liquid · SEO</p>
           <h3>Button &amp; Bug</h3>
           <p>Shopify storefront with metafield-driven product pages, handcrafted SEO copy, full legal, tax, and payments setup, and owner training.</p>
-          <blockquote class="case__quote">“I finally have a handle on my own store, and the attention to detail on the SEO and product pages was fantastic.”<cite>Ashley, founder</cite></blockquote>
         </div>
       </article>
 
-      <article class="card case reveal">
-        <div class="browser"><div class="browser__frame">
-          <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">woodtoybox.com</span></div>
-          <div class="browser__shot"><img src="assets/img/work/woodtoybox-sm.webp" alt="WoodToyBox storefront homepage" width="691" height="1000" loading="lazy" decoding="async"></div>
-        </div></div>
+      <article class="card case case--wide">
+        <div class="case__media"><img src="assets/img/work/little-colorado-carousels-sm.webp" srcset="assets/img/work/little-colorado-carousels-sm.webp 760w, assets/img/work/little-colorado-carousels.webp 1600w" sizes="(min-width: 1000px) 700px, 100vw" alt="Little Colorado Instagram carousel shown on a phone, with its slides laid out on either side" width="760" height="380" loading="lazy" decoding="async"></div>
         <div class="case__body">
-          <p class="meta">Logo · Shopify · SEO copy</p>
-          <h3>WoodToyBox</h3>
-          <p>Brand and storefront for an acquisition of Little Colorado: a playful logo system and a focused Shopify build that puts the product first.</p>
-          <a class="link" href="https://www.woodtoybox.com" target="_blank" rel="noopener">See it live <span aria-hidden="true">↗</span></a>
+          <p class="meta">Instagram · Facebook · TikTok · Copywriting</p>
+          <h3>Little Colorado social media</h3>
+          <p>I managed content creation, copywriting, photography, and community for Little Colorado's social media for over two years, including click-through SEO carousels like these for Instagram.</p>
         </div>
       </article>
     </div>
 
-    <a class="card teaser reveal" href="gallery.html#managed">
-      <span class="teaser__main">
-        <span class="icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3M8 17h6"/></svg></span>
-        <span><span class="teaser__title" style="display:block">Projects I've managed</span><span class="teaser__text" style="display:block">Web projects for Denver International Airport, E-470, the Colorado Attorney General's Office, Project C.U.R.E., and more.</span></span>
-      </span>
-      <span class="btn btn--ghost btn--sm">View managed projects <span aria-hidden="true">→</span></span>
-    </a>
+    <div class="pm-preview">
+      <div class="pm-preview__head">
+        <div>
+          <h3>Projects I've managed</h3>
+          <p>Web projects I've managed as a digital project manager, from discovery and scoping through launch and ongoing operations.</p>
+        </div>
+        <a class="link" href="gallery.html#managed">See all 11 managed projects <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="pm-grid">
+        <div class="pm-col">
+          <a class="pm-tile" href="gallery.html#managed" style="--h:260px"><img src="assets/img/managed/e470-sm.webp" alt="" width="760" height="844" loading="lazy" decoding="async"><span class="pm-tile__label"><strong>E-470</strong><span>2026 · Project manager &amp; web operations</span></span></a>
+          <a class="pm-tile" href="gallery.html#managed" style="--h:180px"><img src="assets/img/managed/halepetdoor-sm.webp" alt="" width="760" height="844" loading="lazy" decoding="async"><span class="pm-tile__label"><strong>Hale Pet Door</strong><span>2025 – 2026 · Project manager</span></span></a>
+        </div>
+        <div class="pm-col">
+          <a class="pm-tile" href="gallery.html#managed" style="--h:180px"><img src="assets/img/managed/coag-sm.webp" alt="" width="760" height="844" loading="lazy" decoding="async"><span class="pm-tile__label"><strong>Colorado Attorney General</strong><span>2025 · Project manager</span></span></a>
+          <a class="pm-tile" href="gallery.html#managed" style="--h:260px"><img src="assets/img/managed/ubiquinol-sm.webp" alt="" width="760" height="844" loading="lazy" decoding="async"><span class="pm-tile__label"><strong>Kaneka Ubiquinol</strong><span>2024 · Project manager</span></span></a>
+        </div>
+        <div class="pm-col">
+          <a class="pm-tile" href="gallery.html#managed" style="--h:220px"><img src="assets/img/managed/flydenver-sm.webp" alt="" width="760" height="543" loading="lazy" decoding="async"><span class="pm-tile__label"><strong>Denver International Airport</strong><span>2023 – 2024 · Project &amp; account manager</span></span></a>
+          <a class="pm-tile" href="gallery.html#managed" style="--h:220px"><img src="assets/img/managed/projectcure-sm.webp" alt="" width="760" height="808" loading="lazy" decoding="async"><span class="pm-tile__label"><strong>Project C.U.R.E.</strong><span>2023 · Project manager</span></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-cta">
+      <p>Websites, storefronts, brand identities, marketing, and more in the full portfolio.</p>
+      <a class="btn btn--primary" href="gallery.html">See the full portfolio <span aria-hidden="true">→</span></a>
+    </div>
   </div>
 </section>
 
@@ -410,7 +448,7 @@
 
 <section class="section" id="contact">
   <div class="container section__inner contact">
-    <div class="contact__intro reveal">
+    <div class="contact__intro">
       <h2 class="h2">Have a platform that needs an owner?</h2>
       <p class="lead">Tell me what you're running and where it hurts. I reply within one business day.</p>
       <ul class="contact__list">
@@ -421,7 +459,7 @@
       </ul>
     </div>
 
-    <form class="form reveal" action="https://formsubmit.co/w_martin@outlook.com" method="POST">
+    <form class="form" action="https://formsubmit.co/w_martin@outlook.com" method="POST">
       <input type="hidden" name="_subject" value="New project inquiry from willpower.codes">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -461,7 +499,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
-      <div class="footer__col"><p style="font-weight:600;font-size:15px">willpower.codes</p><p class="footer__about">Web platforms, integrations, and AI tooling from Denver, Colorado.</p></div>
+      <div class="footer__col"><p class="brand footer__brand"><img class="brand__mark" src="assets/img/site/willpower-mark.webp" alt="" width="30" height="32" loading="lazy">willpower.codes</p><p class="footer__about">Custom websites, online stores, and the integrations that run behind them, designed, built, and managed by Will Martin in Denver, Colorado. Over 15 years of development, design, e-commerce, and project leadership for small businesses, non-profits, and major organizations, with big-agency quality and none of the big-agency overhead.</p></div>
       <nav class="footer__col" aria-label="Footer"><h2>Site</h2><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="gallery.html">Portfolio gallery</a><a href="#contact">Contact</a></nav>
       <div class="footer__col"><h2>Contact</h2><a href="tel:+17202829804">(720) 282-9804</a><a href="mailto:w_martin@outlook.com">w_martin@outlook.com</a><a href="https://www.linkedin.com/in/will-martin1986/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></div>
     </div>

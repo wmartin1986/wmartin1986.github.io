@@ -1,6 +1,26 @@
-// willpower.codes — shared behavior: nav, scroll reveal, hero search demo, service demos, testimonials.
+// willpower.codes — shared behavior: nav, theme toggle, platform ticker, hero search demo, service demos, testimonials.
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Light/dark theme ──
+  // The choice is applied before paint by the inline script in <head>; this keeps the button in sync.
+  const themeBtn = document.querySelector('[data-theme-toggle]');
+  if (themeBtn) {
+    const root = document.documentElement;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const sync = () => {
+      const dark = root.dataset.theme === 'dark';
+      themeBtn.setAttribute('aria-pressed', String(dark));
+      if (themeMeta) themeMeta.content = dark ? '#13110E' : '#F7F6F2';
+    };
+    themeBtn.addEventListener('click', () => {
+      if (root.dataset.theme === 'dark') delete root.dataset.theme;
+      else root.dataset.theme = 'dark';
+      try { localStorage.setItem('wpTheme', root.dataset.theme || 'light'); } catch (e) { /* storage blocked */ }
+      sync();
+    });
+    sync();
+  }
 
   // ── Mobile menu ──
   const header = document.getElementById('site-header');
@@ -18,17 +38,15 @@
     }));
   }
 
-  // ── Scroll reveal ──
-  const reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add('is-visible'));
+  // ── Platform ticker pause (WCAG 2.2.2: moving content needs a pause control) ──
+  const ticker = document.querySelector('[data-ticker]');
+  const tickerPause = ticker && ticker.querySelector('[data-ticker-pause]');
+  if (tickerPause) {
+    tickerPause.addEventListener('click', () => {
+      const paused = ticker.classList.toggle('is-paused');
+      tickerPause.setAttribute('aria-pressed', String(paused));
+      tickerPause.setAttribute('aria-label', paused ? 'Play scrolling list' : 'Pause scrolling list');
+    });
   }
 
   // Runs `fn` on an interval only while `el` is on screen and the tab is visible.
@@ -51,19 +69,18 @@
   const countEl = document.querySelector('[data-palette-count]');
   const queries = [
     { text: 'migrate our drupal site to a modern stack', results: [
-      ['MIG', 'Platform migration & re-platforming', 'Drupal · WordPress · Shopify · headless', 'Service'],
+      ['MIG', 'Platform migration & re-platforming', 'Drupal · WordPress · Shopify · Webflow', 'Service'],
       ['DSC', 'Technical discovery & scoping', 'Requirements, architecture, and estimates', 'Service'],
-      ['PM', 'Projects I’ve managed', 'Denver International Airport, E-470, Colorado AG, and more', 'Portfolio'],
       ['OPS', 'WebOps after launch', 'Updates, monitoring, and triage', 'Service']
     ] },
     { text: 'connect salesforce and hubspot to our site', results: [
-      ['PCU', 'Project C.U.R.E.', 'WordPress with HubSpot, Salesforce, Classy, and Stripe', 'Project'],
-      ['NCV', 'Native Campervans', 'Store automation into Airtable and Salesforce', 'Project'],
-      ['CRM', 'CRM & marketing automation', 'Salesforce · HubSpot · Zapier · n8n', 'Service']
+      ['CRM', 'CRM & marketing automation', 'Salesforce · HubSpot · Klaviyo', 'Service'],
+      ['API', 'Custom integrations', 'REST and GraphQL APIs, webhooks, and Stripe', 'Service'],
+      ['AUT', 'Workflow automation', 'Zapier · Make · n8n', 'Service']
     ] },
     { text: 'launch an online store our team can run', results: [
-      ['HPD', 'Hale Pet Door', 'Store build, wholesale storefronts, ERP, and ShipStation', 'Project'],
       ['B&B', 'Button & Bug', 'Shopify 2.0 storefront, SEO, and owner training', 'Case study'],
+      ['LC', 'Little Colorado', 'Shopify, Amazon, Google Ads, and email', 'Case study'],
       ['ECM', 'Shopify & e-commerce', 'Storefronts, marketplaces, and checkout', 'Service']
     ] },
     { text: 'audit our site for wcag 2.2 aa', results: [
@@ -72,9 +89,9 @@
       ['CWV', 'Performance & SEO baseline', 'Core Web Vitals, structured data, and AI search', 'Service']
     ] },
     { text: 'build a custom web app for our team', results: [
-      ['E470', 'E-470', 'Live highway camera web app', 'Project'],
-      ['CAG', 'Colorado Attorney General', 'Custom training platform on WordPress', 'Project'],
-      ['AI', 'AI tooling for teams', 'Workflow automation with Claude and GPT', 'Service']
+      ['APP', 'Custom web apps', 'Portals, dashboards, and internal tools', 'Service'],
+      ['AI', 'AI tools & automation', 'Internal tools and customer-facing AI', 'Service'],
+      ['DSC', 'Technical discovery & scoping', 'Requirements, architecture, and estimates', 'Service']
     ] }
   ];
 
@@ -138,28 +155,48 @@
         status.textContent = 'Auditing… ' + done + ' of ' + checks.length;
       }
     };
+    // Five checks, then a long rest on the passed state so the card isn't always busy.
     if (reduceMotion) paint(checks.length);
-    else { let t = 0; paint(0); whileVisible(audit, 900, () => { t = (t + 1) % 9; paint(t); }); }
+    else { let t = 0; paint(0); whileVisible(audit, 1000, () => { t = (t + 1) % 14; paint(t); }); }
   }
 
   // ── AI agent demo ──
+  // Alternates an internal tool with a customer-facing one. Step labels stay short so the card keeps one height.
   const agent = document.querySelector('[data-agent]');
   if (agent) {
     const steps = agent.querySelectorAll('.step');
     const out = agent.querySelector('[data-agent-out]');
+    const runs = [
+      { label: 'Internal agent', file: 'rfp-intake.pdf', result: 'Draft scope ready for review', note: 'Sent to #proposals',
+        steps: ['Parse the RFP document', 'Extract requirements & deadlines', 'Map requirements to services', 'Flag risks & open questions', 'Draft scope & estimate ranges'] },
+      { label: 'Customer assistant', file: 'live-chat', result: 'Answer sent to the customer', note: 'Resolved in 6 seconds',
+        steps: ['Read the customer’s question', 'Look up the order in your store', 'Check the shipping status', 'Draft a reply in your voice', 'Hand off to staff if needed'] }
+    ];
+    const load = (run) => {
+      agent.querySelector('[data-agent-label]').textContent = run.label;
+      agent.querySelector('[data-agent-file]').textContent = run.file;
+      out.querySelector('[data-agent-result]').textContent = run.result;
+      out.querySelector('[data-agent-note]').textContent = run.note;
+      steps.forEach((s, i) => { s.lastChild.textContent = run.steps[i]; });
+    };
     const paint = (step) => {
       steps.forEach((s, i) => {
         s.classList.toggle('is-done', i < step);
         s.classList.toggle('is-running', i === step && step < steps.length);
       });
-      if (step >= steps.length) {
-        if (!out.firstChild) out.innerHTML = '<div class="agent__result"><strong>Draft scope ready for review</strong><span>Sent to <span class="mono">#proposals</span></span></div>';
-      } else {
-        out.replaceChildren();
-      }
+      out.classList.toggle('is-shown', step >= steps.length);
     };
     if (reduceMotion) paint(steps.length);
-    else { let t = 3; paint(t); whileVisible(agent, 900, () => { t = (t + 1) % 8; paint(t); }); }
+    else {
+      const CYCLE = steps.length + 8; // run the steps, then rest on the result
+      let t = 0, r = 0;
+      paint(t);
+      whileVisible(agent, 1100, () => {
+        t += 1;
+        if (t >= CYCLE) { t = 0; r = (r + 1) % runs.length; load(runs[r]); }
+        paint(t);
+      });
+    }
   }
 
   // ── Testimonials carousel ──

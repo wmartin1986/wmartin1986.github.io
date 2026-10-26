@@ -1,39 +1,21 @@
-// willpower.codes — portfolio page: category filters and the project detail view.
+// willpower.codes — portfolio page: the project detail view.
 (() => {
-  const chips = [...document.querySelectorAll('[data-filter]')];
-  const managedGroup = document.querySelector('[data-group="managed"]');
-  const workGroup = document.querySelector('[data-group="work"]');
-  const managedCards = [...document.querySelectorAll('.managed-card')];
-  const workCards = [...document.querySelectorAll('.work-card')];
-  const workTitle = document.querySelector('[data-work-title]');
-  const workCount = document.querySelector('[data-work-count]');
-  const totalEl = document.querySelector('[data-count-total]');
+  const cards = [...document.querySelectorAll('.managed-card, .work-card')];
 
-  // ── Filters ──
-  const countFor = (f) => {
-    if (f === 'all') return managedCards.length + workCards.length;
-    if (f === 'managed') return managedCards.length;
-    return workCards.filter((c) => c.dataset.cat === f).length;
-  };
-  const labelFor = (chip) => chip.firstChild.textContent.trim();
-  chips.forEach((chip) => { chip.querySelector('.chip__count').textContent = countFor(chip.dataset.filter); });
-  if (totalEl) totalEl.textContent = countFor('all');
-
-  function applyFilter(f) {
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === f)));
-    managedGroup.hidden = !(f === 'all' || f === 'managed');
-    workGroup.hidden = f === 'managed';
-    let shown = 0;
-    workCards.forEach((c) => {
-      const on = f === 'all' || c.dataset.cat === f;
-      c.hidden = !on;
-      if (on) shown += 1;
+  // ── Masonry ──
+  // Each card spans as many 4px grid rows as it is tall, so cards fill left to right in page order.
+  if ('ResizeObserver' in window) {
+    const ROW = 4;
+    const fit = new ResizeObserver((entries) => entries.forEach(({ target }) => {
+      const li = target.parentElement;
+      const gap = parseFloat(getComputedStyle(li.parentElement).columnGap) || 0;
+      li.style.gridRowEnd = 'span ' + Math.ceil((target.getBoundingClientRect().height + gap) / ROW);
+    }));
+    document.querySelectorAll('.masonry').forEach((grid) => {
+      grid.classList.add('masonry--grid');
+      grid.querySelectorAll('.work-card > button').forEach((btn) => fit.observe(btn));
     });
-    workTitle.textContent = f === 'all' ? 'Design & build work' : labelFor(chips.find((c) => c.dataset.filter === f));
-    workCount.textContent = shown + (shown === 1 ? ' piece' : ' pieces');
   }
-  chips.forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.filter)));
-  applyFilter('all');
 
   // ── Detail view ──
   const dialog = document.getElementById('lightbox');
@@ -83,9 +65,9 @@
     }
   }
 
+  // Previous/next stay within the card's own section.
   function open(li) {
-    const group = li.classList.contains('managed-card') ? managedCards : workCards;
-    list = group.filter((c) => !c.hidden);
+    list = [...li.closest('[data-group]').querySelectorAll('.managed-card, .work-card')];
     index = list.indexOf(li);
     opener = li.querySelector('button');
     render();
@@ -95,7 +77,7 @@
 
   const step = (d) => { index = (index + d + list.length) % list.length; render(); };
 
-  [...managedCards, ...workCards].forEach((li) => li.querySelector('button').addEventListener('click', () => open(li)));
+  cards.forEach((li) => li.querySelector('button').addEventListener('click', () => open(li)));
   q('[data-lb-prev]').addEventListener('click', () => step(-1));
   q('[data-lb-next]').addEventListener('click', () => step(1));
   q('[data-lb-close]').addEventListener('click', () => dialog.close());
