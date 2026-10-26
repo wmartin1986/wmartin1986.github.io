@@ -42,42 +42,42 @@
   --shadow-lift: 0 24px 48px -28px rgba(22, 20, 15, .28);
 }
 
-/* Dark mode, chosen with the header toggle and remembered per visitor. */
+/* Dark mode: follows the visitor's system setting until they pick one with the header toggle. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #13110E;
-  --surface: #1C1A16;
-  --surface-2: #23201B;
-  --line: #312D27;
-  --line-soft: #29261F;
-  --line-strong: #403B33;
+  --bg: #232220;
+  --surface: #2B2A27;
+  --surface-2: #32312E;
+  --line: #3D3B37;
+  --line-soft: #363430;
+  --line-strong: #4B4843;
   --ink: #F4F1EA;
-  --ink-2: #DCD7CD;
-  --text-2: #BDB6AA;
-  --text-3: #9C9588;
-  --muted-head: #8C8579;
-  --accent-ink: #EE9A62;
-  --accent-tint: #2A1F17;
-  --accent-tint-2: #2B2018;
-  --accent-line: rgba(238, 154, 98, .3);
-  --green: #5CC48A;
-  --green-bg: #173323;
-  --header-bg: rgba(19, 17, 14, .82);
+  --ink-2: #DEDAD1;
+  --text-2: #C3BDB2;
+  --text-3: #A8A195;
+  --muted-head: #969083;
+  --accent-ink: #F0A06A;
+  --accent-tint: #3A2C22;
+  --accent-tint-2: #3B2D22;
+  --accent-line: rgba(240, 160, 106, .3);
+  --green: #6BCB95;
+  --green-bg: #22402F;
+  --header-bg: rgba(35, 34, 32, .85);
   --grid-line: rgba(244, 241, 234, .06);
-  --edge: #37322B;
-  --skel-1: #24211C;
-  --skel-2: #2F2B25;
-  --track-bg: #2A2722;
-  --education-bg: #191713;
-  --hover-line: #7A5236;
-  --diagram-line: #3A352E;
-  --done-bg: #6B645A;
-  --c-freelance: #9C7457;
-  --c-freelance-bar: #8A6750;
+  --edge: #45423D;
+  --skel-1: #2F2E2B;
+  --skel-2: #3A3835;
+  --track-bg: #3A3835;
+  --education-bg: #282725;
+  --hover-line: #8A5E3E;
+  --diagram-line: #4A4742;
+  --done-bg: #6F685E;
+  --c-freelance: #A47C5E;
+  --c-freelance-bar: #92705A;
   --c-lc: #D6D0C4;
-  --c-am: #8E877B;
-  --c-ms: #6A645A;
-  --shadow-lift: 0 24px 48px -28px rgba(0, 0, 0, .75);
+  --c-am: #958E82;
+  --c-ms: #77716A;
+  --shadow-lift: 0 24px 48px -28px rgba(0, 0, 0, .6);
 }
 :root[data-theme="dark"] .brand__mark { filter: invert(.95); }
 
@@ -102,8 +102,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 @media (max-width: 480px) { .container { padding: 0 16px; } }
-.section { border-top: 1px solid var(--line); }
-.section__inner { padding-block: clamp(80px, 10vw, 120px); }
+.section__inner { padding-block: clamp(56px, 7vw, 88px); }
 .section--white { background: var(--surface); }
 
 .skip-link {
@@ -118,7 +117,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 .h2 .muted, .hero__title .muted { color: var(--muted-head); }
 .lead { font-size: 18px; line-height: 1.6; color: var(--text-2); }
 .meta { font-size: 13px; line-height: 1.4; color: var(--text-3); font-variant-numeric: tabular-nums; }
-.section-head { display: flex; flex-direction: column; gap: 16px; max-width: 760px; margin-bottom: 48px; }
+.section-head { display: flex; flex-direction: column; gap: 16px; max-width: 760px; margin-bottom: 40px; }
 .section-head--row { flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; max-width: none; gap: 24px; }
 
 /* ── Buttons & links ── */
@@ -415,7 +414,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--accent-tint); border: 1px solid var(--accent-line);
   display: grid; place-items: center; color: var(--accent);
 }
-.toolkit { margin-top: 64px; }
+.toolkit { margin-top: 48px; }
 .toolkit__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 32px; margin-bottom: 18px; }
 .toolkit__head h3 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
 .toolkit__head p { max-width: 560px; font-size: 15px; line-height: 1.6; color: var(--text-2); }
@@ -450,7 +449,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   .case--wide .case__body { padding: 22px 24px 24px; }
 }
 
-.pm-preview { margin-top: 56px; }
+.pm-preview { margin-top: 48px; }
 .pm-preview__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; margin-bottom: 18px; }
 .pm-preview__head h3 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
 .pm-preview__head p { max-width: 620px; margin-top: 6px; font-size: 15px; line-height: 1.6; color: var(--text-2); }
@@ -471,12 +470,12 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   .pm-tile img { height: 140px; }
 }
 
-.work-cta { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+.work-cta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 28px; border-top: 1px solid var(--line); }
 .work-cta p { font-size: 17px; color: var(--ink-2); }
 
 /* ── Testimonials ── */
-.quotes { background: var(--surface); }
-.quotes__inner { max-width: 1000px; margin: 0 auto; padding: clamp(72px, 9vw, 112px) 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.quotes { background: var(--surface); border-block: 1px solid var(--line); }
+.quotes__inner { max-width: 1000px; margin: 0 auto; padding: clamp(56px, 7vw, 88px) 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 28px; }
 .quotes__stars { color: var(--accent); font-size: 15px; letter-spacing: .2em; }
 .quotes__stage { display: grid; width: 100%; }
 .quote {
@@ -562,7 +561,7 @@ textarea.field { resize: vertical; min-height: 140px; }
 }
 
 .group { padding-top: 48px; padding-bottom: 8px; scroll-margin-top: 72px; }
-.group--earlier { padding-top: 72px; }
+.group--earlier { padding-top: 56px; }
 .group__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; margin-bottom: 20px; }
 .group__head h2 { font-size: clamp(26px, 3vw, 36px); line-height: 1.05; letter-spacing: -.04em; font-weight: 600; }
 .group__head p { max-width: 640px; font-size: 15.5px; line-height: 1.6; color: var(--text-2); margin-top: 8px; }

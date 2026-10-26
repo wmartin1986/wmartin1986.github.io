@@ -20,7 +20,13 @@
   </script>
   <script>
     document.documentElement.classList.remove('no-js');
-    try { if (localStorage.getItem('wpTheme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+    // A saved choice from the theme toggle wins; otherwise follow the system setting.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('wpTheme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.dataset.theme = 'dark';
+    })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

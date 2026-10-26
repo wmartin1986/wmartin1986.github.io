@@ -3,23 +3,27 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ── Light/dark theme ──
-  // The choice is applied before paint by the inline script in <head>; this keeps the button in sync.
+  // The starting theme is set before paint by the inline script in <head>; this keeps the button in sync
+  // and follows system changes until the visitor picks a theme themselves.
   const themeBtn = document.querySelector('[data-theme-toggle]');
   if (themeBtn) {
     const root = document.documentElement;
     const themeMeta = document.querySelector('meta[name="theme-color"]');
-    const sync = () => {
-      const dark = root.dataset.theme === 'dark';
+    const system = window.matchMedia('(prefers-color-scheme: dark)');
+    const saved = () => { try { return localStorage.getItem('wpTheme'); } catch (e) { return null; } };
+    const setDark = (dark) => {
+      if (dark) root.dataset.theme = 'dark';
+      else delete root.dataset.theme;
       themeBtn.setAttribute('aria-pressed', String(dark));
-      if (themeMeta) themeMeta.content = dark ? '#13110E' : '#F7F6F2';
+      if (themeMeta) themeMeta.content = dark ? '#232220' : '#F7F6F2';
     };
     themeBtn.addEventListener('click', () => {
-      if (root.dataset.theme === 'dark') delete root.dataset.theme;
-      else root.dataset.theme = 'dark';
-      try { localStorage.setItem('wpTheme', root.dataset.theme || 'light'); } catch (e) { /* storage blocked */ }
-      sync();
+      const dark = root.dataset.theme !== 'dark';
+      setDark(dark);
+      try { localStorage.setItem('wpTheme', dark ? 'dark' : 'light'); } catch (e) { /* storage blocked */ }
     });
-    sync();
+    system.addEventListener('change', (e) => { if (!saved()) setDark(e.matches); });
+    setDark(root.dataset.theme === 'dark');
   }
 
   // ── Mobile menu ──
