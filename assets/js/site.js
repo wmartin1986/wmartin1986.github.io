@@ -122,7 +122,8 @@
     countEl.textContent = 'Searching…';
   }
 
-  if (typedEl && listEl && !reduceMotion) {
+  // The demos below only swap text and states, nothing slides, so they also run for reduced-motion visitors.
+  if (typedEl && listEl) {
     let qi = 0, n = 0, hold = 0;
     typedEl.textContent = '';
     renderSkeleton();
@@ -160,8 +161,20 @@
       }
     };
     // Five checks, then a long rest on the passed state so the card isn't always busy.
-    if (reduceMotion) paint(checks.length);
-    else { let t = 0; paint(0); whileVisible(audit, 1000, () => { t = (t + 1) % 14; paint(t); }); }
+    let t = 0;
+    paint(0);
+    whileVisible(audit, 1000, () => { t = (t + 1) % 14; paint(t); });
+  }
+
+  // ── Integrations demo, reduced motion ──
+  // The travelling dot is hidden for reduced motion, so the steps light up in turn instead.
+  const flowSteps = document.querySelectorAll('.flow__step');
+  if (reduceMotion && flowSteps.length) {
+    let i = 0;
+    whileVisible(flowSteps[0].parentElement, 1200, () => {
+      flowSteps.forEach((s, k) => s.classList.toggle('is-lit', k === i));
+      i = (i + 1) % (flowSteps.length + 1);
+    });
   }
 
   // ── AI agent demo ──
@@ -190,17 +203,43 @@
       });
       out.classList.toggle('is-shown', step >= steps.length);
     };
-    if (reduceMotion) paint(steps.length);
-    else {
-      const CYCLE = steps.length + 8; // run the steps, then rest on the result
-      let t = 0, r = 0;
+    const CYCLE = steps.length + 8; // run the steps, then rest on the result
+    let t = 0, r = 0;
+    paint(t);
+    whileVisible(agent, 1100, () => {
+      t += 1;
+      if (t >= CYCLE) { t = 0; r = (r + 1) % runs.length; load(runs[r]); }
       paint(t);
-      whileVisible(agent, 1100, () => {
-        t += 1;
-        if (t >= CYCLE) { t = 0; r = (r + 1) % runs.length; load(runs[r]); }
-        paint(t);
+    });
+  }
+
+  // ── Stacked services diagram (narrow screens) ──
+  // Draws the connecting lines from the nodes' real positions, so they line up at any width.
+  const flowmap = document.querySelector('[data-flowmap]');
+  if (flowmap && 'ResizeObserver' in window) {
+    const svg = flowmap.querySelector('svg');
+    // [from, to, delay]; the AI layer feeds Integrations sideways, everything else flows down.
+    const links = [['ch1', 'core', 0], ['ch2', 'core', .35], ['ch3', 'core', .7], ['core', 'int', 1.05], ['core', 'ai', 1.25],
+      ['ai', 'int', 1.8], ['int', 'sys1', 2], ['int', 'sys2', 2.2], ['int', 'sys3', 2.4]];
+    const draw = () => {
+      const box = flowmap.getBoundingClientRect();
+      if (!box.width) return;
+      const at = (key) => {
+        const r = flowmap.querySelector('[data-fm="' + key + '"]').getBoundingClientRect();
+        return { l: r.left - box.left, r: r.right - box.left, t: r.top - box.top, b: r.bottom - box.top, x: r.left + r.width / 2 - box.left, y: r.top + r.height / 2 - box.top };
+      };
+      const paths = links.map(([from, to, delay]) => {
+        const a = at(from), b = at(to);
+        if (from === 'ai') return { d: 'M' + a.l + ' ' + a.y + ' L' + b.r + ' ' + b.y, delay };
+        const mid = (a.b + b.t) / 2;
+        return { d: 'M' + a.x + ' ' + a.b + ' C' + a.x + ' ' + mid + ' ' + b.x + ' ' + mid + ' ' + b.x + ' ' + b.t, delay };
       });
-    }
+      svg.setAttribute('width', box.width);
+      svg.setAttribute('height', box.height);
+      svg.innerHTML = '<g class="diagram__lines">' + paths.map((p) => '<path d="' + p.d + '"/>').join('') + '</g>' +
+        paths.map((p) => '<path class="pulse" pathLength="100" style="--d:' + p.delay + 's" d="' + p.d + '"/>').join('');
+    };
+    new ResizeObserver(draw).observe(flowmap);
   }
 
   // ── Testimonials carousel ──
